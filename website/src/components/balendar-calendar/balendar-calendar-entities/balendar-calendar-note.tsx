@@ -38,6 +38,7 @@ export default function BalendarCalendarNote(props: BalendarCalendarNoteProps) {
           margin: `1px ${isJoinedRight ? "0px" : "10px"} 1px ${isJoinedLeft ? "0px" : "10px"}`,
           backgroundColor: backgroundColor,
           textAlign: 'left',
+          cursor: 'pointer'
         })}
       >
         <Text>{children}</Text>

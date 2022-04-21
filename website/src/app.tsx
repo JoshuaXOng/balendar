@@ -1,4 +1,5 @@
 import React, { useReducer, useState } from 'react';
+import { Provider } from 'react-redux'
 import {
   AppShell,
   Navbar,
@@ -15,13 +16,13 @@ import BalendarCalendar from './components/balendar-calendar/balendar-calendar';
 import NoteForm from './components/note-form/note-form';
 import BalendarCalendarDay from './components/balendar-calendar/balendar-calendar-entities/balendar-calendar-day';
 import { DragDropContext } from 'react-beautiful-dnd';
-import { AppContext } from './app-context';
-import InifiniteScroll from './components/infinite-scroll/infinite-scroll';
+import { AppContext } from './old/app-context';
+import { appStore } from './app-store';
 
 export default function App() {
   const theme = useMantineTheme();
   return (
-    <AppContext.Provider value={{ header: { height: 70 }, allNotes: [], balendarCalendarSetAllNotes: () => {} }}>
+    <Provider store={appStore}>
       <AppShell
         styles={{
           main: {
@@ -42,6 +43,6 @@ export default function App() {
       >
         <BalendarCalendar></BalendarCalendar>
       </AppShell>
-    </AppContext.Provider>
+    </Provider>
   );
 }

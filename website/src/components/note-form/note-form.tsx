@@ -20,11 +20,13 @@ import {
   Button
 } from '@mantine/core';
 import { DatePicker } from '@mantine/dates';
+import { useSelector, useDispatch } from 'react-redux'
 import { createNote, CreateNoteProps, getAllNotes, toNotesApiDateFromDate } from '../../services/notes-api';
-import { AppContext } from '../../app-context';
+import { AppContext } from '../../old/app-context';
+import { appStore, notesSlice, stylesSlice } from '../../app-store';
 
 export default function NoteForm() {
-  const appContext = useContext(AppContext);
+  const appDispatch = useDispatch();
 
   const [date, setDate] = useState<string | undefined>(undefined);
   const [headerText, setHeaderText] = useState("");
@@ -34,13 +36,12 @@ export default function NoteForm() {
     if (!date) return setDate(undefined);
     setDate(toNotesApiDateFromDate(date));
   }
-
+  
   const handleSubmission = async ({ headerText, bodyText, begDatetime }: CreateNoteProps) => {
     await createNote({ headerText, bodyText, begDatetime });
     getAllNotes()
       .then(response => response.json())
-      .then(notes => appContext.allNotes = notes)
-      .then(notes => appContext.balendarCalendarSetAllNotes(notes));
+      .then(allNotes => appDispatch(notesSlice.actions.setAllNotes({ allNotes })));
   }
 
   return (

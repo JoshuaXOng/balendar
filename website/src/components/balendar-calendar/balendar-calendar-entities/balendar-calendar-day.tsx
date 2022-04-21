@@ -26,22 +26,19 @@ import BalendarCalendarNote from './balendar-calendar-note';
 import { Note } from '../../../models/note';
 import { toDateFromNotesApi, toNotesApiDateFromDate } from '../../../services/notes-api';
 import { MONTHS } from '../../../utils/date-utils';
-import { AppContext } from '../../../app-context';
+import { AppContext } from '../../../old/app-context';
+import { appStore } from '../../../app-store';
 
 type BalendarCalendarDayProps = {
   currentDatetime: Date;
 }
 
-// useMemo
 export default function BalendarCalendarDay(props: BalendarCalendarDayProps) {
   const { currentDatetime } = props;
 
-  const appContext = useContext(AppContext);
   const [dayNotes, setDayNotes] = useState([] as Note[]);
   
-  useEffect(() => {
-    setDayNotes(appContext.allNotes.filter(n => n.begDatetime === toNotesApiDateFromDate(currentDatetime)));
-  }, [appContext.allNotes])
+  appStore.subscribe(() => setDayNotes(appStore.getState().notes.allNotes.filter(n => n.begDatetime === toNotesApiDateFromDate(currentDatetime))))
 
   return (
     useMemo(() => 

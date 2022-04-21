@@ -21,19 +21,21 @@ import {
   Skeleton
 } from '@mantine/core';
 import { Calendar, DatePicker, Month } from '@mantine/dates';
+import { useSelector, useDispatch } from 'react-redux'
 import BalendarCalendarDay from './balendar-calendar-entities/balendar-calendar-day';
 import BalendarCalendarWeek from './balendar-calendar-entities/balendar-calendar-week';
-import { AppContext } from '../../app-context';
+import { AppContext } from '../../old/app-context';
 import { getAllNotes } from '../../services/notes-api';
 import { generateMondays, getClosestPrevMonday } from '../../utils/date-utils';
 import { useScrollLock } from '@mantine/hooks';
-import InfiniteScroll from '../infinite-scroll/infinite-scroll';
 import short, { uuid } from 'short-uuid';
+import { appStore, notesSlice } from '../../app-store';
 
 export default function BalendarCalendar() {
-  const appContext = useContext(AppContext);
+  const appState = appStore.getState();
+  const appDispatch = useDispatch();
   
-  const offset = appContext.header.height !as number + 50;
+  const offset = appState.styles.headerHeight !as number + 50;
   const initialCalendarHeight = window.innerHeight - offset;
   const [calendarHeight, setCalendarHeight] = useState(initialCalendarHeight);
   const handleWindowReize = () => {
@@ -42,16 +44,11 @@ export default function BalendarCalendar() {
   useEffect(() => {
     window.addEventListener("resize", () => handleWindowReize(), false);
   }, []);
-
-  const [_, setAllNotes] = useState(appContext.allNotes);
-  appContext.balendarCalendarSetAllNotes = setAllNotes;
+  
   useEffect(() => {
     getAllNotes()
       .then(response => response.json())
-      .then(allNotes => {
-        appContext.allNotes = allNotes;
-        setAllNotes(allNotes);
-      });
+      .then(allNotes => appDispatch(notesSlice.actions.setAllNotes({ allNotes })))
   }, [])
 
   const currentWeeksMonday = getClosestPrevMonday();
