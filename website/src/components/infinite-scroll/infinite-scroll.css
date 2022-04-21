@@ -1,0 +1,11 @@
+.infinite-scroll {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.infinite-scroll::-webkit-scrollbar {
+    display: none;
+}
