@@ -28,8 +28,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping(value = "/api/v0/notes/")
 public class NoteController {
     MongoOperations mongoOperations;
@@ -67,7 +69,7 @@ public class NoteController {
 
     @RequestMapping(method = RequestMethod.POST)
     public CalendarNoteDTO createNote(@RequestBody CreateNoteDataDTO createNoteData) {
-        if (createNoteData.headerText.isBlank() || createNoteData.bodyText.isBlank() || (createNoteData.begDatetime == null && createNoteData.endDatetime == null)) 
+        if (createNoteData.headerText.isBlank() || (createNoteData.begDatetime == null && createNoteData.endDatetime == null)) 
             throw new ClientFaultException();
 
         CalendarNote insertedNote = this.mongoOperations.insert(createNoteData.toCalendarNote());

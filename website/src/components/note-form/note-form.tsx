@@ -53,8 +53,9 @@ export default function NoteForm() {
         <Input placeholder="Enter text" onChange={(event: any) => setHeaderText(event.target.value)}/>
       </InputWrapper>
       <Textarea
-        placeholder="Enter text"
         label="Body"
+        placeholder="Enter text"
+        minRows={7}
         onChange={(event: any) => setBodyText(event.target.value)}
       />
       <Button onClick={() => handleSubmission({ headerText, bodyText, begDatetime: date })}>Create</Button>

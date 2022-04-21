@@ -11,12 +11,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 
-import balendar.app.routes.dtos.CreateNoteDataDTO;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import java.util.ArrayList;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
@@ -40,7 +36,7 @@ class NoteControllerTest {
 
 	@Test
 	public void testAddNote() throws Exception {
-		MockHttpServletRequestBuilder addNoteRequest = post("/api/v0/notes/")
+		MockHttpServletRequestBuilder addNoteRequest1 = post("/api/v0/notes/")
 			.contentType(MediaType.APPLICATION_JSON)
 			.content("""
 				{ 
@@ -50,16 +46,27 @@ class NoteControllerTest {
 					\"endDatetime\": \"2022-04-20\" 
 				}
 			""");
-		this.server.perform(addNoteRequest)
+		this.server.perform(addNoteRequest1)
+			.andDo(print())
+			.andExpect(status().isOk());
+
+		MockHttpServletRequestBuilder addNoteRequest2 = post("/api/v0/notes/")
+			.contentType(MediaType.APPLICATION_JSON)
+			.content("""
+				{ 
+					\"headerText\": \"Header-2\", 
+					\"bodyText\": \"Body-2\",
+					\"endDatetime\": \"2022-04-20\" 
+				}
+			""");
+		this.server.perform(addNoteRequest2)
 			.andDo(print())
 			.andExpect(status().isOk());
 	}
 
 	@Test
 	public void testGetAllNotes() throws Exception {
-		MockHttpServletRequestBuilder getAllNotesRequest = post("/api/v0/notes/")
-			.contentType(MediaType.APPLICATION_JSON)
-			.content("{ \"headerText\": \"hi\", \"bodyText\": \"okokokok\" }");
+		MockHttpServletRequestBuilder getAllNotesRequest = get("/api/v0/notes/");
 		this.server.perform(getAllNotesRequest)
 			.andDo(print())
 			.andExpect(status().isOk());
