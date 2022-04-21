@@ -53,7 +53,7 @@ export default function BalendarCalendarDay(props: BalendarCalendarDayProps) {
         })}
       >
         <Text>{currentDatetime.getDate() === 1 ? `${MONTHS[currentDatetime.getMonth()]} ${currentDatetime.getDate()}` : `${currentDatetime.getDate()}`}</Text>
-        {dayNotes.map((dn, index) => <BalendarCalendarNote key={index} backgroundColor='salmon' isJoinedLeft={false} isJoinedRight={true}>{dn.headerText}</BalendarCalendarNote>)}
+        {dayNotes.map((dn, index) => <BalendarCalendarNote key={index} backgroundColor='salmon' isJoinedLeft={false} isJoinedRight={true} note={dn} />)}
       </Box>
     , [dayNotes.length])
   );

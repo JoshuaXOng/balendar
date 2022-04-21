@@ -19,30 +19,35 @@ import {
   SimpleGrid
 } from '@mantine/core';
 import { Calendar, DatePicker, Month } from '@mantine/dates';
+import { useSelector, useDispatch } from 'react-redux'
+import { Note } from '../../../models/note';
+import { appStore, notesSlice } from '../../../app-store';
 
 type BalendarCalendarNoteProps = {
   backgroundColor: string,
   isJoinedLeft: boolean,
   isJoinedRight: boolean,
-  children: string,
+  note: Note,
 }
 
 export default function BalendarCalendarNote(props: BalendarCalendarNoteProps) {
-  const { backgroundColor, isJoinedLeft, isJoinedRight, children } = props;
+  const { backgroundColor, isJoinedLeft, isJoinedRight, note } = props;
+
+  const appDispatch = useDispatch();
+
   return (
-    useMemo(() => 
-      <Box
-        sx={(theme) => ({
-          paddingLeft: 10,
-          borderRadius: `${isJoinedLeft ? "0px" : "5px"} ${isJoinedRight ? "0px" : "5px"} ${isJoinedRight ? "0px" : "5px"} ${isJoinedLeft ? "0px" : "5px"}`,
-          margin: `1px ${isJoinedRight ? "0px" : "10px"} 1px ${isJoinedLeft ? "0px" : "10px"}`,
-          backgroundColor: backgroundColor,
-          textAlign: 'left',
-          cursor: 'pointer'
-        })}
-      >
-        <Text>{children}</Text>
-      </Box>
-    , [children.length])
+    <Box
+      sx={(theme) => ({
+        paddingLeft: 10,
+        borderRadius: `${isJoinedLeft ? "0px" : "5px"} ${isJoinedRight ? "0px" : "5px"} ${isJoinedRight ? "0px" : "5px"} ${isJoinedLeft ? "0px" : "5px"}`,
+        margin: `1px ${isJoinedRight ? "0px" : "10px"} 1px ${isJoinedLeft ? "0px" : "10px"}`,
+        backgroundColor: backgroundColor,
+        textAlign: 'left',
+        cursor: 'default'
+      })}
+      onClick={() => appDispatch(notesSlice.actions.setSelectedNote({ selectedNote: note }))}
+    >
+      <Text>{note.headerText}</Text>
+    </Box>
   );
 }

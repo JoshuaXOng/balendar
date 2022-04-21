@@ -18,7 +18,8 @@ export const stylesSlice = createSlice({
 export const notesSlice = createSlice({
   name: 'notes',
   initialState: {
-    allNotes: [] as Note[]
+    allNotes: [] as Note[],
+    selectedNote: undefined
   },
   reducers: {
     addNote(state, action) {
@@ -30,8 +31,11 @@ export const notesSlice = createSlice({
       })
     },
     setAllNotes(state, action) {
-      state.allNotes = action.payload.allNotes
-    } 
+      state.allNotes = action.payload.allNotes;
+    },
+    setSelectedNote(state, action) {
+      state.selectedNote = action.payload.selectedNote;
+    }
   }
 })
 

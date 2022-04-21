@@ -44,8 +44,14 @@ export default function NoteForm() {
       .then(allNotes => appDispatch(notesSlice.actions.setAllNotes({ allNotes })));
   }
 
+  const [isUpdatingNote, setIsUpdatingNote] = useState(false);
+  appStore.subscribe(() => {
+    if (appStore.getState().notes.selectedNote) setIsUpdatingNote(true);
+  })
+
   return (
     <Group direction="column" grow={true}>
+      <Title order={4}>{isUpdatingNote ? "Update Note" : "Create Note"}</Title>
       <DatePicker placeholder="Pick date" label="Event date" onChange={(date) => handleOnDateChange(date)} required />
       <InputWrapper
         label="Header"
