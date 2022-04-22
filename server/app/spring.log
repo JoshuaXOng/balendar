@@ -1,182 +1,421 @@
-2022-04-21 13:51:22.566  INFO 31852 --- [main] balendar.app.App                         : Starting App using Java 15.0.2 on DESKTOP-2L25P9V with PID 31852 (C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app\build\classes\java\main started by Joshua Ong in C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app)
-2022-04-21 13:51:22.573  INFO 31852 --- [main] balendar.app.App                         : No active profile set, falling back to 1 default profile: "default"
-2022-04-21 13:51:23.127  INFO 31852 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2022-04-21 13:51:23.182  INFO 31852 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49 ms. Found 1 MongoDB repository interfaces.
-2022-04-21 13:51:23.669  INFO 31852 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-04-21 13:51:23.679  INFO 31852 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-04-21 13:51:23.679  INFO 31852 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
-2022-04-21 13:51:23.757  INFO 31852 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-04-21 13:51:23.757  INFO 31852 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1132 ms
-2022-04-21 13:51:23.927  INFO 31852 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
-2022-04-21 13:51:23.995  INFO 31852 --- [cluster-ClusterId{value='6260d4bbbe157c3709be3587', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:291}] to 127.0.0.1:27017
-2022-04-21 13:51:23.995  INFO 31852 --- [cluster-ClusterId{value='6260d4bbbe157c3709be3587', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=19245200}
-2022-04-21 13:51:23.995  INFO 31852 --- [cluster-rtt-ClusterId{value='6260d4bbbe157c3709be3587', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:290}] to 127.0.0.1:27017
-2022-04-21 13:51:24.649  INFO 31852 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-04-21 13:51:24.656  INFO 31852 --- [main] balendar.app.App                         : Started App in 2.557 seconds (JVM running for 2.952)
-2022-04-21 14:01:56.829  INFO 31852 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-04-21 14:01:56.829  INFO 31852 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-04-21 14:01:56.830  INFO 31852 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-04-21 14:01:56.904  INFO 31852 --- [http-nio-8080-exec-1] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:3, serverValue:292}] to 127.0.0.1:27017
-2022-04-21 14:07:17.282  INFO 5852 --- [main] balendar.app.App                         : Starting App using Java 15.0.2 on DESKTOP-2L25P9V with PID 5852 (C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app\build\classes\java\main started by Joshua Ong in C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app)
-2022-04-21 14:07:17.284  INFO 5852 --- [main] balendar.app.App                         : No active profile set, falling back to 1 default profile: "default"
-2022-04-21 14:07:17.798  INFO 5852 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2022-04-21 14:07:17.841  INFO 5852 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39 ms. Found 1 MongoDB repository interfaces.
-2022-04-21 14:07:18.405  INFO 5852 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-04-21 14:07:18.418  INFO 5852 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-04-21 14:07:18.419  INFO 5852 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
-2022-04-21 14:07:18.542  INFO 5852 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-04-21 14:07:18.543  INFO 5852 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1217 ms
-2022-04-21 14:07:18.794  INFO 5852 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
-2022-04-21 14:07:18.871  INFO 5852 --- [cluster-rtt-ClusterId{value='6260d87636254465b21da01c', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:294}] to 127.0.0.1:27017
-2022-04-21 14:07:18.871  INFO 5852 --- [cluster-ClusterId{value='6260d87636254465b21da01c', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:293}] to 127.0.0.1:27017
-2022-04-21 14:07:18.871  INFO 5852 --- [cluster-ClusterId{value='6260d87636254465b21da01c', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=18597000}
-2022-04-21 14:07:19.472  INFO 5852 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-04-21 14:07:19.478  INFO 5852 --- [main] balendar.app.App                         : Started App in 2.585 seconds (JVM running for 2.922)
-2022-04-21 14:07:26.846  INFO 5852 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-04-21 14:07:26.847  INFO 5852 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-04-21 14:07:26.847  INFO 5852 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2022-04-21 14:07:46.118  INFO 22072 --- [main] balendar.app.App                         : Starting App using Java 15.0.2 on DESKTOP-2L25P9V with PID 22072 (C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app\build\classes\java\main started by Joshua Ong in C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app)
-2022-04-21 14:07:46.121  INFO 22072 --- [main] balendar.app.App                         : No active profile set, falling back to 1 default profile: "default"
-2022-04-21 14:07:46.646  INFO 22072 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2022-04-21 14:07:46.689  INFO 22072 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 38 ms. Found 1 MongoDB repository interfaces.
-2022-04-21 14:07:47.176  INFO 22072 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-04-21 14:07:47.186  INFO 22072 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-04-21 14:07:47.186  INFO 22072 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
-2022-04-21 14:07:47.264  INFO 22072 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-04-21 14:07:47.265  INFO 22072 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1096 ms
-2022-04-21 14:07:47.425  INFO 22072 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
-2022-04-21 14:07:47.494  INFO 22072 --- [cluster-rtt-ClusterId{value='6260d8936fffd45238ee924b', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:296}] to 127.0.0.1:27017
-2022-04-21 14:07:47.494  INFO 22072 --- [cluster-ClusterId{value='6260d8936fffd45238ee924b', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:295}] to 127.0.0.1:27017
-2022-04-21 14:07:47.494  INFO 22072 --- [cluster-ClusterId{value='6260d8936fffd45238ee924b', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=17875400}
-2022-04-21 14:07:47.982  INFO 22072 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-04-21 14:07:47.988  INFO 22072 --- [main] balendar.app.App                         : Started App in 2.27 seconds (JVM running for 2.632)
-2022-04-21 14:07:50.989  INFO 22072 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-04-21 14:07:50.990  INFO 22072 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-04-21 14:07:50.991  INFO 22072 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-04-21 14:07:51.147  INFO 22072 --- [http-nio-8080-exec-2] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:3, serverValue:297}] to 127.0.0.1:27017
-2022-04-21 14:07:51.150  INFO 22072 --- [http-nio-8080-exec-1] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:4, serverValue:298}] to 127.0.0.1:27017
-2022-04-21 19:35:27.535 ERROR 22072 --- [http-nio-8080-exec-8] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException: Cannot invoke "String.isBlank()" because "createNoteData.bodyText" is null] with root cause
-
-java.lang.NullPointerException: Cannot invoke "String.isBlank()" because "createNoteData.bodyText" is null
-	at balendar.app.routes.NoteController.createNote(NoteController.java:72) ~[main/:na]
-	at jdk.internal.reflect.GeneratedMethodAccessor42.invoke(Unknown Source) ~[na:na]
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.19.jar:5.3.19]
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.19.jar:5.3.19]
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.16.jar:5.3.16]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.16.jar:5.3.16]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.16.jar:5.3.16]
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.16.jar:5.3.16]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067) ~[spring-webmvc-5.3.16.jar:5.3.16]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.16.jar:5.3.16]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.16.jar:5.3.16]
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.16.jar:5.3.16]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) ~[tomcat-embed-core-9.0.58.jar:4.0.FR]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.16.jar:5.3.16]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.58.jar:4.0.FR]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.58.jar:9.0.58]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.19.jar:5.3.19]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.19.jar:5.3.19]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.19.jar:5.3.19]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.19.jar:5.3.19]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.19.jar:5.3.19]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.19.jar:5.3.19]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:359) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:889) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1735) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
-
-2022-04-21 19:36:34.200 ERROR 22072 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException: Cannot invoke "String.isBlank()" because "createNoteData.bodyText" is null] with root cause
-
-java.lang.NullPointerException: Cannot invoke "String.isBlank()" because "createNoteData.bodyText" is null
-	at balendar.app.routes.NoteController.createNote(NoteController.java:72) ~[main/:na]
-	at jdk.internal.reflect.GeneratedMethodAccessor42.invoke(Unknown Source) ~[na:na]
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.19.jar:5.3.19]
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.19.jar:5.3.19]
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.16.jar:5.3.16]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.16.jar:5.3.16]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.16.jar:5.3.16]
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.16.jar:5.3.16]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067) ~[spring-webmvc-5.3.16.jar:5.3.16]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.16.jar:5.3.16]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.16.jar:5.3.16]
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.16.jar:5.3.16]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) ~[tomcat-embed-core-9.0.58.jar:4.0.FR]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.16.jar:5.3.16]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.58.jar:4.0.FR]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.58.jar:9.0.58]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.19.jar:5.3.19]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.19.jar:5.3.19]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.19.jar:5.3.19]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.19.jar:5.3.19]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.19.jar:5.3.19]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.19.jar:5.3.19]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:359) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:889) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1735) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.58.jar:9.0.58]
-	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
-
-2022-04-21 19:37:35.564  INFO 2340 --- [main] balendar.app.App                         : Starting App using Java 15.0.2 on DESKTOP-2L25P9V with PID 2340 (C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app\build\classes\java\main started by Joshua Ong in C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app)
-2022-04-21 19:37:35.567  INFO 2340 --- [main] balendar.app.App                         : No active profile set, falling back to 1 default profile: "default"
-2022-04-21 19:37:36.058  INFO 2340 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2022-04-21 19:37:36.110  INFO 2340 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45 ms. Found 1 MongoDB repository interfaces.
-2022-04-21 19:37:36.643  INFO 2340 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-04-21 19:37:36.653  INFO 2340 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-04-21 19:37:36.654  INFO 2340 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
-2022-04-21 19:37:36.742  INFO 2340 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-04-21 19:37:36.742  INFO 2340 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1135 ms
-2022-04-21 19:37:36.892  INFO 2340 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
-2022-04-21 19:37:36.986  INFO 2340 --- [cluster-ClusterId{value='626125e08873db3801c1bf17', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:300}] to 127.0.0.1:27017
-2022-04-21 19:37:36.986  INFO 2340 --- [cluster-rtt-ClusterId{value='626125e08873db3801c1bf17', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:299}] to 127.0.0.1:27017
-2022-04-21 19:37:36.987  INFO 2340 --- [cluster-ClusterId{value='626125e08873db3801c1bf17', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=19147800}
-2022-04-21 19:37:37.822  INFO 2340 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-04-21 19:37:37.829  INFO 2340 --- [main] balendar.app.App                         : Started App in 2.711 seconds (JVM running for 3.133)
-2022-04-21 19:37:39.259  INFO 2340 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-04-21 19:37:39.260  INFO 2340 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-22 09:28:22.542  INFO 31100 --- [main] balendar.app.App                         : Starting App using Java 15.0.2 on DESKTOP-2L25P9V with PID 31100 (C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app\build\classes\java\main started by Joshua Ong in C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app)
+2022-04-22 09:28:22.550  INFO 31100 --- [main] balendar.app.App                         : No active profile set, falling back to 1 default profile: "default"
+2022-04-22 09:28:23.097  INFO 31100 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2022-04-22 09:28:23.147  INFO 31100 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44 ms. Found 1 MongoDB repository interfaces.
+2022-04-22 09:28:23.636  INFO 31100 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-04-22 09:28:23.647  INFO 31100 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-22 09:28:23.647  INFO 31100 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-04-22 09:28:23.741  INFO 31100 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-22 09:28:23.742  INFO 31100 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1141 ms
+2022-04-22 09:28:23.910  INFO 31100 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2022-04-22 09:28:23.976  INFO 31100 --- [cluster-ClusterId{value='6261e897e486510474f94e45', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:306}] to 127.0.0.1:27017
+2022-04-22 09:28:23.976  INFO 31100 --- [cluster-rtt-ClusterId{value='6261e897e486510474f94e45', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:305}] to 127.0.0.1:27017
+2022-04-22 09:28:23.976  INFO 31100 --- [cluster-ClusterId{value='6261e897e486510474f94e45', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=18167100}
+2022-04-22 09:28:24.492  INFO 31100 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-04-22 09:28:24.498  INFO 31100 --- [main] balendar.app.App                         : Started App in 2.43 seconds (JVM running for 2.76)
+2022-04-22 09:28:42.953  INFO 31100 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-22 09:28:42.953  INFO 31100 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-22 09:28:42.955  INFO 31100 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-04-22 09:28:43.054  INFO 31100 --- [http-nio-8080-exec-1] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:3, serverValue:307}] to 127.0.0.1:27017
+2022-04-22 12:18:23.981  INFO 31100 --- [http-nio-8080-exec-6] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:4, serverValue:308}] to 127.0.0.1:27017
+2022-04-22 13:33:03.240  INFO 6500 --- [main] balendar.app.App                         : Starting App using Java 15.0.2 on DESKTOP-2L25P9V with PID 6500 (C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app\build\classes\java\main started by Joshua Ong in C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app)
+2022-04-22 13:33:03.243  INFO 6500 --- [main] balendar.app.App                         : No active profile set, falling back to 1 default profile: "default"
+2022-04-22 13:33:03.732  INFO 6500 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2022-04-22 13:33:03.785  INFO 6500 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49 ms. Found 1 MongoDB repository interfaces.
+2022-04-22 13:33:04.249  INFO 6500 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-04-22 13:33:04.258  INFO 6500 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-22 13:33:04.258  INFO 6500 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-04-22 13:33:04.330  INFO 6500 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-22 13:33:04.331  INFO 6500 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1039 ms
+2022-04-22 13:33:04.492  INFO 6500 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2022-04-22 13:33:04.553  INFO 6500 --- [cluster-ClusterId{value='626221f0f187a32702791a64', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:310}] to 127.0.0.1:27017
+2022-04-22 13:33:04.553  INFO 6500 --- [cluster-ClusterId{value='626221f0f187a32702791a64', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=16024100}
+2022-04-22 13:33:04.554  INFO 6500 --- [cluster-rtt-ClusterId{value='626221f0f187a32702791a64', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:309}] to 127.0.0.1:27017
+2022-04-22 13:33:05.031  INFO 6500 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-04-22 13:33:05.037  INFO 6500 --- [main] balendar.app.App                         : Started App in 2.19 seconds (JVM running for 2.496)
+2022-04-22 13:33:11.749  INFO 6500 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-22 13:33:11.750  INFO 6500 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-22 13:33:11.751  INFO 6500 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-04-22 13:33:11.921  INFO 6500 --- [http-nio-8080-exec-3] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:3, serverValue:311}] to 127.0.0.1:27017
+2022-04-22 13:34:05.626  INFO 28368 --- [main] balendar.app.App                         : Starting App using Java 15.0.2 on DESKTOP-2L25P9V with PID 28368 (C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app\build\classes\java\main started by Joshua Ong in C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app)
+2022-04-22 13:34:05.629  INFO 28368 --- [main] balendar.app.App                         : No active profile set, falling back to 1 default profile: "default"
+2022-04-22 13:34:06.101  INFO 28368 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2022-04-22 13:34:06.169  INFO 28368 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 61 ms. Found 1 MongoDB repository interfaces.
+2022-04-22 13:34:06.651  INFO 28368 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-04-22 13:34:06.661  INFO 28368 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-22 13:34:06.662  INFO 28368 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-04-22 13:34:06.737  INFO 28368 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-22 13:34:06.738  INFO 28368 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1069 ms
+2022-04-22 13:34:06.907  INFO 28368 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2022-04-22 13:34:06.968  INFO 28368 --- [cluster-ClusterId{value='6262222e48fc0836fd82089a', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:313}] to 127.0.0.1:27017
+2022-04-22 13:34:06.968  INFO 28368 --- [cluster-rtt-ClusterId{value='6262222e48fc0836fd82089a', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:312}] to 127.0.0.1:27017
+2022-04-22 13:34:06.968  INFO 28368 --- [cluster-ClusterId{value='6262222e48fc0836fd82089a', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=16090600}
+2022-04-22 13:34:07.450  INFO 28368 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-04-22 13:34:07.456  INFO 28368 --- [main] balendar.app.App                         : Started App in 2.206 seconds (JVM running for 2.519)
+2022-04-22 13:34:15.930  INFO 28368 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-22 13:34:15.931  INFO 28368 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-22 13:34:15.933  INFO 28368 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-04-22 13:34:16.137  INFO 28368 --- [http-nio-8080-exec-3] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:3, serverValue:314}] to 127.0.0.1:27017
+2022-04-22 13:37:04.731  INFO 11888 --- [main] balendar.app.App                         : Starting App using Java 15.0.2 on DESKTOP-2L25P9V with PID 11888 (C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app\build\classes\java\main started by Joshua Ong in C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app)
+2022-04-22 13:37:04.733  INFO 11888 --- [main] balendar.app.App                         : No active profile set, falling back to 1 default profile: "default"
+2022-04-22 13:37:05.320  INFO 11888 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2022-04-22 13:37:05.394  INFO 11888 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 65 ms. Found 1 MongoDB repository interfaces.
+2022-04-22 13:37:06.156  INFO 11888 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-04-22 13:37:06.173  INFO 11888 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-22 13:37:06.174  INFO 11888 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-04-22 13:37:06.337  INFO 11888 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-22 13:37:06.338  INFO 11888 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1560 ms
+2022-04-22 13:37:06.534  INFO 11888 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2022-04-22 13:37:06.602  INFO 11888 --- [cluster-rtt-ClusterId{value='626222e2188a3c0685a941cd', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:315}] to 127.0.0.1:27017
+2022-04-22 13:37:06.602  INFO 11888 --- [cluster-ClusterId{value='626222e2188a3c0685a941cd', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:316}] to 127.0.0.1:27017
+2022-04-22 13:37:06.602  INFO 11888 --- [cluster-ClusterId{value='626222e2188a3c0685a941cd', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=16932300}
+2022-04-22 13:37:07.190  INFO 11888 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-04-22 13:37:07.196  INFO 11888 --- [main] balendar.app.App                         : Started App in 2.89 seconds (JVM running for 3.227)
+2022-04-22 13:37:14.448  INFO 11888 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-22 13:37:14.449  INFO 11888 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-22 13:37:14.451  INFO 11888 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-04-22 13:37:14.642  INFO 11888 --- [http-nio-8080-exec-2] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:3, serverValue:317}] to 127.0.0.1:27017
+2022-04-22 13:38:37.789  INFO 3588 --- [main] balendar.app.App                         : Starting App using Java 15.0.2 on DESKTOP-2L25P9V with PID 3588 (C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app\build\classes\java\main started by Joshua Ong in C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app)
+2022-04-22 13:38:37.792  INFO 3588 --- [main] balendar.app.App                         : No active profile set, falling back to 1 default profile: "default"
+2022-04-22 13:38:38.300  INFO 3588 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2022-04-22 13:38:38.345  INFO 3588 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 1 MongoDB repository interfaces.
+2022-04-22 13:38:38.859  INFO 3588 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-04-22 13:38:38.880  INFO 3588 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-22 13:38:38.880  INFO 3588 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-04-22 13:38:38.969  INFO 3588 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-22 13:38:38.970  INFO 3588 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1131 ms
+2022-04-22 13:38:39.188  INFO 3588 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2022-04-22 13:38:39.286  INFO 3588 --- [cluster-rtt-ClusterId{value='6262233fd28a4858da72a029', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:318}] to 127.0.0.1:27017
+2022-04-22 13:38:39.286  INFO 3588 --- [cluster-ClusterId{value='6262233fd28a4858da72a029', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:319}] to 127.0.0.1:27017
+2022-04-22 13:38:39.287  INFO 3588 --- [cluster-ClusterId{value='6262233fd28a4858da72a029', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=18402900}
+2022-04-22 13:38:39.948  INFO 3588 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-04-22 13:38:39.954  INFO 3588 --- [main] balendar.app.App                         : Started App in 2.573 seconds (JVM running for 2.885)
+2022-04-22 13:38:45.021  INFO 3588 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-22 13:38:45.023  INFO 3588 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-22 13:38:45.025  INFO 3588 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-04-22 13:38:45.228  INFO 3588 --- [http-nio-8080-exec-2] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:3, serverValue:320}] to 127.0.0.1:27017
+2022-04-22 13:42:57.661  INFO 39552 --- [main] balendar.app.App                         : Starting App using Java 15.0.2 on DESKTOP-2L25P9V with PID 39552 (C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app\build\classes\java\main started by Joshua Ong in C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app)
+2022-04-22 13:42:57.664  INFO 39552 --- [main] balendar.app.App                         : No active profile set, falling back to 1 default profile: "default"
+2022-04-22 13:42:58.130  INFO 39552 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2022-04-22 13:42:58.172  INFO 39552 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 1 MongoDB repository interfaces.
+2022-04-22 13:42:58.817  INFO 39552 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-04-22 13:42:58.831  INFO 39552 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-22 13:42:58.831  INFO 39552 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-04-22 13:42:58.942  INFO 39552 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-22 13:42:58.942  INFO 39552 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1235 ms
+2022-04-22 13:42:59.140  INFO 39552 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2022-04-22 13:42:59.211  INFO 39552 --- [cluster-rtt-ClusterId{value='62622443045dc35a90045b55', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:322}] to 127.0.0.1:27017
+2022-04-22 13:42:59.211  INFO 39552 --- [cluster-ClusterId{value='62622443045dc35a90045b55', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:321}] to 127.0.0.1:27017
+2022-04-22 13:42:59.212  INFO 39552 --- [cluster-ClusterId{value='62622443045dc35a90045b55', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=16955600}
+2022-04-22 13:42:59.709  INFO 39552 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-04-22 13:42:59.716  INFO 39552 --- [main] balendar.app.App                         : Started App in 2.428 seconds (JVM running for 2.771)
+2022-04-22 13:43:04.737  INFO 39552 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-22 13:43:04.738  INFO 39552 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-22 13:43:04.739  INFO 39552 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-04-22 13:43:04.938  INFO 39552 --- [http-nio-8080-exec-2] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:3, serverValue:323}] to 127.0.0.1:27017
+2022-04-22 13:45:48.409  INFO 16424 --- [main] balendar.app.App                         : Starting App using Java 15.0.2 on DESKTOP-2L25P9V with PID 16424 (C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app\build\classes\java\main started by Joshua Ong in C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app)
+2022-04-22 13:45:48.413  INFO 16424 --- [main] balendar.app.App                         : No active profile set, falling back to 1 default profile: "default"
+2022-04-22 13:45:49.187  INFO 16424 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2022-04-22 13:45:49.253  INFO 16424 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 61 ms. Found 1 MongoDB repository interfaces.
+2022-04-22 13:45:49.899  INFO 16424 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-04-22 13:45:49.911  INFO 16424 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-22 13:45:49.911  INFO 16424 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-04-22 13:45:50.018  INFO 16424 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-22 13:45:50.019  INFO 16424 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1486 ms
+2022-04-22 13:45:50.248  INFO 16424 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2022-04-22 13:45:50.324  INFO 16424 --- [cluster-rtt-ClusterId{value='626224eecd0c2f383d5182be', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:325}] to 127.0.0.1:27017
+2022-04-22 13:45:50.324  INFO 16424 --- [cluster-ClusterId{value='626224eecd0c2f383d5182be', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:324}] to 127.0.0.1:27017
+2022-04-22 13:45:50.325  INFO 16424 --- [cluster-ClusterId{value='626224eecd0c2f383d5182be', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=19274200}
+2022-04-22 13:45:50.944  INFO 16424 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-04-22 13:45:50.952  INFO 16424 --- [main] balendar.app.App                         : Started App in 3.114 seconds (JVM running for 3.468)
+2022-04-22 13:45:52.340  INFO 16424 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-22 13:45:52.341  INFO 16424 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-22 13:45:52.342  INFO 16424 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-04-22 13:45:52.505  INFO 16424 --- [http-nio-8080-exec-2] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:3, serverValue:326}] to 127.0.0.1:27017
+2022-04-22 13:47:39.479  INFO 1700 --- [main] balendar.app.App                         : Starting App using Java 15.0.2 on DESKTOP-2L25P9V with PID 1700 (C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app\build\classes\java\main started by Joshua Ong in C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app)
+2022-04-22 13:47:39.481  INFO 1700 --- [main] balendar.app.App                         : No active profile set, falling back to 1 default profile: "default"
+2022-04-22 13:47:39.929  INFO 1700 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2022-04-22 13:47:39.970  INFO 1700 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 1 MongoDB repository interfaces.
+2022-04-22 13:47:40.428  INFO 1700 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-04-22 13:47:40.438  INFO 1700 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-22 13:47:40.439  INFO 1700 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-04-22 13:47:40.521  INFO 1700 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-22 13:47:40.522  INFO 1700 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 998 ms
+2022-04-22 13:47:40.688  INFO 1700 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2022-04-22 13:47:40.759  INFO 1700 --- [cluster-ClusterId{value='6262255c5fb68661a81415de', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:327}] to 127.0.0.1:27017
+2022-04-22 13:47:40.759  INFO 1700 --- [cluster-rtt-ClusterId{value='6262255c5fb68661a81415de', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:328}] to 127.0.0.1:27017
+2022-04-22 13:47:40.760  INFO 1700 --- [cluster-ClusterId{value='6262255c5fb68661a81415de', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=16751400}
+2022-04-22 13:47:41.271  INFO 1700 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-04-22 13:47:41.279  INFO 1700 --- [main] balendar.app.App                         : Started App in 2.192 seconds (JVM running for 2.521)
+2022-04-22 13:47:45.310  INFO 1700 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-22 13:47:45.311  INFO 1700 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-22 13:47:45.313  INFO 1700 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-04-22 13:47:45.513  INFO 1700 --- [http-nio-8080-exec-2] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:3, serverValue:329}] to 127.0.0.1:27017
+2022-04-22 13:48:18.938  INFO 38392 --- [main] balendar.app.App                         : Starting App using Java 15.0.2 on DESKTOP-2L25P9V with PID 38392 (C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app\build\classes\java\main started by Joshua Ong in C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app)
+2022-04-22 13:48:18.940  INFO 38392 --- [main] balendar.app.App                         : No active profile set, falling back to 1 default profile: "default"
+2022-04-22 13:48:19.446  INFO 38392 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2022-04-22 13:48:19.502  INFO 38392 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49 ms. Found 1 MongoDB repository interfaces.
+2022-04-22 13:48:20.183  INFO 38392 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-04-22 13:48:20.195  INFO 38392 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-22 13:48:20.196  INFO 38392 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-04-22 13:48:20.324  INFO 38392 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-22 13:48:20.325  INFO 38392 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1343 ms
+2022-04-22 13:48:20.538  INFO 38392 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2022-04-22 13:48:20.600  INFO 38392 --- [cluster-ClusterId{value='62622584554a605011365e05', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:330}] to 127.0.0.1:27017
+2022-04-22 13:48:20.601  INFO 38392 --- [cluster-ClusterId{value='62622584554a605011365e05', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=17139700}
+2022-04-22 13:48:20.600  INFO 38392 --- [cluster-rtt-ClusterId{value='62622584554a605011365e05', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:331}] to 127.0.0.1:27017
+2022-04-22 13:48:21.214  INFO 38392 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-04-22 13:48:21.221  INFO 38392 --- [main] balendar.app.App                         : Started App in 2.842 seconds (JVM running for 3.387)
+2022-04-22 13:48:24.275  INFO 38392 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-22 13:48:24.275  INFO 38392 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-22 13:48:24.276  INFO 38392 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-04-22 13:48:24.426  INFO 38392 --- [http-nio-8080-exec-2] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:3, serverValue:332}] to 127.0.0.1:27017
+2022-04-22 13:48:43.345  INFO 36948 --- [main] balendar.app.App                         : Starting App using Java 15.0.2 on DESKTOP-2L25P9V with PID 36948 (C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app\build\classes\java\main started by Joshua Ong in C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app)
+2022-04-22 13:48:43.348  INFO 36948 --- [main] balendar.app.App                         : No active profile set, falling back to 1 default profile: "default"
+2022-04-22 13:48:43.927  INFO 36948 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2022-04-22 13:48:43.968  INFO 36948 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 37 ms. Found 1 MongoDB repository interfaces.
+2022-04-22 13:48:44.922  INFO 36948 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-04-22 13:48:44.935  INFO 36948 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-22 13:48:44.935  INFO 36948 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-04-22 13:48:45.041  INFO 36948 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-22 13:48:45.042  INFO 36948 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1654 ms
+2022-04-22 13:48:45.324  INFO 36948 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2022-04-22 13:48:45.441  INFO 36948 --- [cluster-ClusterId{value='6262259d891ac110803bfb2d', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:334}] to 127.0.0.1:27017
+2022-04-22 13:48:45.442  INFO 36948 --- [cluster-ClusterId{value='6262259d891ac110803bfb2d', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=29773700}
+2022-04-22 13:48:45.441  INFO 36948 --- [cluster-rtt-ClusterId{value='6262259d891ac110803bfb2d', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:333}] to 127.0.0.1:27017
+2022-04-22 13:48:46.055  INFO 36948 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-04-22 13:48:46.063  INFO 36948 --- [main] balendar.app.App                         : Started App in 3.261 seconds (JVM running for 3.604)
+2022-04-22 13:48:49.616  INFO 36948 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-22 13:48:49.617  INFO 36948 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-22 13:48:49.618  INFO 36948 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-04-22 13:48:49.816  INFO 36948 --- [http-nio-8080-exec-3] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:3, serverValue:335}] to 127.0.0.1:27017
+2022-04-22 13:49:14.691  INFO 28744 --- [main] balendar.app.App                         : Starting App using Java 15.0.2 on DESKTOP-2L25P9V with PID 28744 (C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app\build\classes\java\main started by Joshua Ong in C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app)
+2022-04-22 13:49:14.693  INFO 28744 --- [main] balendar.app.App                         : No active profile set, falling back to 1 default profile: "default"
+2022-04-22 13:49:15.580  INFO 28744 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2022-04-22 13:49:15.653  INFO 28744 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 64 ms. Found 1 MongoDB repository interfaces.
+2022-04-22 13:49:16.237  INFO 28744 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-04-22 13:49:16.247  INFO 28744 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-22 13:49:16.248  INFO 28744 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-04-22 13:49:16.345  INFO 28744 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-22 13:49:16.346  INFO 28744 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1607 ms
+2022-04-22 13:49:16.501  INFO 28744 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2022-04-22 13:49:16.564  INFO 28744 --- [cluster-rtt-ClusterId{value='626225bcd019c417f95bab23', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:336}] to 127.0.0.1:27017
+2022-04-22 13:49:16.564  INFO 28744 --- [cluster-ClusterId{value='626225bcd019c417f95bab23', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:337}] to 127.0.0.1:27017
+2022-04-22 13:49:16.565  INFO 28744 --- [cluster-ClusterId{value='626225bcd019c417f95bab23', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=18819500}
+2022-04-22 13:49:17.134  INFO 28744 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-04-22 13:49:17.141  INFO 28744 --- [main] balendar.app.App                         : Started App in 2.833 seconds (JVM running for 3.198)
+2022-04-22 13:49:19.463  INFO 28744 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-22 13:49:19.464  INFO 28744 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-22 13:49:19.464  INFO 28744 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-04-22 13:49:19.659  INFO 28744 --- [http-nio-8080-exec-2] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:3, serverValue:338}] to 127.0.0.1:27017
+2022-04-22 13:49:35.903  INFO 4608 --- [main] balendar.app.App                         : Starting App using Java 15.0.2 on DESKTOP-2L25P9V with PID 4608 (C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app\build\classes\java\main started by Joshua Ong in C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app)
+2022-04-22 13:49:35.905  INFO 4608 --- [main] balendar.app.App                         : No active profile set, falling back to 1 default profile: "default"
+2022-04-22 13:49:36.445  INFO 4608 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2022-04-22 13:49:36.489  INFO 4608 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 1 MongoDB repository interfaces.
+2022-04-22 13:49:36.949  INFO 4608 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-04-22 13:49:36.958  INFO 4608 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-22 13:49:36.959  INFO 4608 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-04-22 13:49:37.037  INFO 4608 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-22 13:49:37.038  INFO 4608 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1082 ms
+2022-04-22 13:49:37.191  INFO 4608 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2022-04-22 13:49:37.247  INFO 4608 --- [cluster-ClusterId{value='626225d13153a7773d12dcc2', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:340}] to 127.0.0.1:27017
+2022-04-22 13:49:37.247  INFO 4608 --- [cluster-rtt-ClusterId{value='626225d13153a7773d12dcc2', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:339}] to 127.0.0.1:27017
+2022-04-22 13:49:37.248  INFO 4608 --- [cluster-ClusterId{value='626225d13153a7773d12dcc2', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=15544400}
+2022-04-22 13:49:37.755  INFO 4608 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-04-22 13:49:37.761  INFO 4608 --- [main] balendar.app.App                         : Started App in 2.305 seconds (JVM running for 2.768)
+2022-04-22 13:49:37.881  INFO 4608 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-22 13:49:37.881  INFO 4608 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-22 13:49:37.882  INFO 4608 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-04-22 13:49:37.998  WARN 4608 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `java.sql.Date` from String "2022-04-15": expected format "yyyy-MM--dd"; nested exception is com.fasterxml.jackson.databind.exc.InvalidFormatException: Cannot deserialize value of type `java.sql.Date` from String "2022-04-15": expected format "yyyy-MM--dd"<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 52] (through reference chain: balendar.app.routes.dtos.UpdateNoteDataDTO["begDatetime"])]
+2022-04-22 13:49:38.075  INFO 4608 --- [http-nio-8080-exec-3] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:3, serverValue:341}] to 127.0.0.1:27017
+2022-04-22 13:50:27.768  INFO 34548 --- [main] balendar.app.App                         : Starting App using Java 15.0.2 on DESKTOP-2L25P9V with PID 34548 (C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app\build\classes\java\main started by Joshua Ong in C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app)
+2022-04-22 13:50:27.771  INFO 34548 --- [main] balendar.app.App                         : No active profile set, falling back to 1 default profile: "default"
+2022-04-22 13:50:28.219  INFO 34548 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2022-04-22 13:50:28.265  INFO 34548 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 41 ms. Found 1 MongoDB repository interfaces.
+2022-04-22 13:50:28.776  INFO 34548 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-04-22 13:50:28.788  INFO 34548 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-22 13:50:28.788  INFO 34548 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-04-22 13:50:28.885  INFO 34548 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-22 13:50:28.885  INFO 34548 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1075 ms
+2022-04-22 13:50:29.137  INFO 34548 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2022-04-22 13:50:29.204  INFO 34548 --- [cluster-rtt-ClusterId{value='62622605c6911f102324404a', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:343}] to 127.0.0.1:27017
+2022-04-22 13:50:29.204  INFO 34548 --- [cluster-ClusterId{value='62622605c6911f102324404a', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:342}] to 127.0.0.1:27017
+2022-04-22 13:50:29.204  INFO 34548 --- [cluster-ClusterId{value='62622605c6911f102324404a', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=17802800}
+2022-04-22 13:50:29.873  INFO 34548 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-04-22 13:50:29.879  INFO 34548 --- [main] balendar.app.App                         : Started App in 2.503 seconds (JVM running for 2.83)
+2022-04-22 13:50:34.790  INFO 34548 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-22 13:50:34.791  INFO 34548 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-22 13:50:34.792  INFO 34548 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-04-22 13:50:34.985  INFO 34548 --- [http-nio-8080-exec-3] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:3, serverValue:344}] to 127.0.0.1:27017
+2022-04-22 13:51:13.864  INFO 12920 --- [main] balendar.app.App                         : Starting App using Java 15.0.2 on DESKTOP-2L25P9V with PID 12920 (C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app\build\classes\java\main started by Joshua Ong in C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app)
+2022-04-22 13:51:13.868  INFO 12920 --- [main] balendar.app.App                         : No active profile set, falling back to 1 default profile: "default"
+2022-04-22 13:51:14.524  INFO 12920 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2022-04-22 13:51:14.577  INFO 12920 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 1 MongoDB repository interfaces.
+2022-04-22 13:51:15.629  INFO 12920 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-04-22 13:51:15.644  INFO 12920 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-22 13:51:15.644  INFO 12920 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-04-22 13:51:15.769  INFO 12920 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-22 13:51:15.770  INFO 12920 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1842 ms
+2022-04-22 13:51:16.019  INFO 12920 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2022-04-22 13:51:16.089  INFO 12920 --- [cluster-rtt-ClusterId{value='62622634cc23af0c778e81e7', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:346}] to 127.0.0.1:27017
+2022-04-22 13:51:16.089  INFO 12920 --- [cluster-ClusterId{value='62622634cc23af0c778e81e7', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:345}] to 127.0.0.1:27017
+2022-04-22 13:51:16.089  INFO 12920 --- [cluster-ClusterId{value='62622634cc23af0c778e81e7', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=17496400}
+2022-04-22 13:51:16.692  INFO 12920 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-04-22 13:51:16.702  INFO 12920 --- [main] balendar.app.App                         : Started App in 3.221 seconds (JVM running for 3.527)
+2022-04-22 13:51:18.302  INFO 12920 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-22 13:51:18.303  INFO 12920 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-22 13:51:18.304  INFO 12920 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-04-22 13:51:18.465  INFO 12920 --- [http-nio-8080-exec-2] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:3, serverValue:347}] to 127.0.0.1:27017
+2022-04-22 13:51:29.367  INFO 31900 --- [main] balendar.app.App                         : Starting App using Java 15.0.2 on DESKTOP-2L25P9V with PID 31900 (C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app\build\classes\java\main started by Joshua Ong in C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app)
+2022-04-22 13:51:29.369  INFO 31900 --- [main] balendar.app.App                         : No active profile set, falling back to 1 default profile: "default"
+2022-04-22 13:51:29.911  INFO 31900 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2022-04-22 13:51:29.953  INFO 31900 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 38 ms. Found 1 MongoDB repository interfaces.
+2022-04-22 13:51:30.416  INFO 31900 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-04-22 13:51:30.427  INFO 31900 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-22 13:51:30.427  INFO 31900 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-04-22 13:51:30.528  INFO 31900 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-22 13:51:30.528  INFO 31900 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1115 ms
+2022-04-22 13:51:30.731  INFO 31900 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2022-04-22 13:51:30.803  INFO 31900 --- [cluster-rtt-ClusterId{value='62622642aca00569b0d86053', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:349}] to 127.0.0.1:27017
+2022-04-22 13:51:30.803  INFO 31900 --- [cluster-ClusterId{value='62622642aca00569b0d86053', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:348}] to 127.0.0.1:27017
+2022-04-22 13:51:30.804  INFO 31900 --- [cluster-ClusterId{value='62622642aca00569b0d86053', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=18396100}
+2022-04-22 13:51:31.408  INFO 31900 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-04-22 13:51:31.415  INFO 31900 --- [main] balendar.app.App                         : Started App in 2.429 seconds (JVM running for 2.767)
+2022-04-22 13:51:36.286  INFO 31900 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-22 13:51:36.287  INFO 31900 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-22 13:51:36.288  INFO 31900 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-04-22 13:51:36.493  INFO 31900 --- [http-nio-8080-exec-2] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:3, serverValue:350}] to 127.0.0.1:27017
+2022-04-22 13:52:25.504  INFO 12048 --- [main] balendar.app.App                         : Starting App using Java 15.0.2 on DESKTOP-2L25P9V with PID 12048 (C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app\build\classes\java\main started by Joshua Ong in C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app)
+2022-04-22 13:52:25.506  INFO 12048 --- [main] balendar.app.App                         : No active profile set, falling back to 1 default profile: "default"
+2022-04-22 13:52:25.981  INFO 12048 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2022-04-22 13:52:26.042  INFO 12048 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 56 ms. Found 1 MongoDB repository interfaces.
+2022-04-22 13:52:26.761  INFO 12048 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-04-22 13:52:26.785  INFO 12048 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-22 13:52:26.785  INFO 12048 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-04-22 13:52:26.895  INFO 12048 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-22 13:52:26.896  INFO 12048 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1347 ms
+2022-04-22 13:52:27.067  INFO 12048 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2022-04-22 13:52:27.124  INFO 12048 --- [cluster-ClusterId{value='6262267bb098503de2efe073', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:352}] to 127.0.0.1:27017
+2022-04-22 13:52:27.124  INFO 12048 --- [cluster-rtt-ClusterId{value='6262267bb098503de2efe073', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:351}] to 127.0.0.1:27017
+2022-04-22 13:52:27.125  INFO 12048 --- [cluster-ClusterId{value='6262267bb098503de2efe073', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=16372500}
+2022-04-22 13:52:27.602  INFO 12048 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-04-22 13:52:27.609  INFO 12048 --- [main] balendar.app.App                         : Started App in 2.481 seconds (JVM running for 2.806)
+2022-04-22 13:52:32.113  INFO 12048 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-22 13:52:32.113  INFO 12048 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-22 13:52:32.114  INFO 12048 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-04-22 13:52:32.312  INFO 12048 --- [http-nio-8080-exec-3] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:3, serverValue:353}] to 127.0.0.1:27017
+2022-04-22 13:53:05.503  INFO 16520 --- [main] balendar.app.App                         : Starting App using Java 15.0.2 on DESKTOP-2L25P9V with PID 16520 (C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app\build\classes\java\main started by Joshua Ong in C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app)
+2022-04-22 13:53:05.505  INFO 16520 --- [main] balendar.app.App                         : No active profile set, falling back to 1 default profile: "default"
+2022-04-22 13:53:05.989  INFO 16520 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2022-04-22 13:53:06.037  INFO 16520 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44 ms. Found 1 MongoDB repository interfaces.
+2022-04-22 13:53:06.615  INFO 16520 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-04-22 13:53:06.629  INFO 16520 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-22 13:53:06.629  INFO 16520 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-04-22 13:53:06.725  INFO 16520 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-22 13:53:06.725  INFO 16520 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1178 ms
+2022-04-22 13:53:06.968  INFO 16520 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2022-04-22 13:53:07.041  INFO 16520 --- [cluster-ClusterId{value='626226a2917d1054375b5fcb', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:354}] to 127.0.0.1:27017
+2022-04-22 13:53:07.041  INFO 16520 --- [cluster-rtt-ClusterId{value='626226a2917d1054375b5fcb', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:355}] to 127.0.0.1:27017
+2022-04-22 13:53:07.042  INFO 16520 --- [cluster-ClusterId{value='626226a2917d1054375b5fcb', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=18727400}
+2022-04-22 13:53:07.549  INFO 16520 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-04-22 13:53:07.555  INFO 16520 --- [main] balendar.app.App                         : Started App in 2.442 seconds (JVM running for 2.751)
+2022-04-22 13:53:17.969  INFO 16520 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-22 13:53:17.970  INFO 16520 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-22 13:53:17.971  INFO 16520 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-04-22 13:53:18.138  INFO 16520 --- [http-nio-8080-exec-3] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:3, serverValue:356}] to 127.0.0.1:27017
+2022-04-22 14:00:46.091  INFO 14480 --- [main] balendar.app.App                         : Starting App using Java 15.0.2 on DESKTOP-2L25P9V with PID 14480 (C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app\build\classes\java\main started by Joshua Ong in C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app)
+2022-04-22 14:00:46.094  INFO 14480 --- [main] balendar.app.App                         : No active profile set, falling back to 1 default profile: "default"
+2022-04-22 14:00:46.521  INFO 14480 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2022-04-22 14:00:46.561  INFO 14480 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 1 MongoDB repository interfaces.
+2022-04-22 14:00:47.003  INFO 14480 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-04-22 14:00:47.013  INFO 14480 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-22 14:00:47.013  INFO 14480 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-04-22 14:00:47.088  INFO 14480 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-22 14:00:47.089  INFO 14480 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 954 ms
+2022-04-22 14:00:47.236  INFO 14480 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2022-04-22 14:00:47.297  INFO 14480 --- [cluster-ClusterId{value='6262286f2975c40aff7c1575', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:358}] to 127.0.0.1:27017
+2022-04-22 14:00:47.297  INFO 14480 --- [cluster-rtt-ClusterId{value='6262286f2975c40aff7c1575', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:357}] to 127.0.0.1:27017
+2022-04-22 14:00:47.297  INFO 14480 --- [cluster-ClusterId{value='6262286f2975c40aff7c1575', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=17735600}
+2022-04-22 14:00:47.793  INFO 14480 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-04-22 14:00:47.799  INFO 14480 --- [main] balendar.app.App                         : Started App in 2.135 seconds (JVM running for 2.51)
+2022-04-22 14:00:54.775  INFO 14480 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-22 14:00:54.777  INFO 14480 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-22 14:00:54.778  INFO 14480 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-04-22 14:00:54.977  INFO 14480 --- [http-nio-8080-exec-2] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:3, serverValue:359}] to 127.0.0.1:27017
+2022-04-22 14:01:17.791  INFO 31420 --- [main] balendar.app.App                         : Starting App using Java 15.0.2 on DESKTOP-2L25P9V with PID 31420 (C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app\build\classes\java\main started by Joshua Ong in C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app)
+2022-04-22 14:01:17.794  INFO 31420 --- [main] balendar.app.App                         : No active profile set, falling back to 1 default profile: "default"
+2022-04-22 14:01:18.511  INFO 31420 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2022-04-22 14:01:18.578  INFO 31420 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 60 ms. Found 1 MongoDB repository interfaces.
+2022-04-22 14:01:19.201  INFO 31420 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-04-22 14:01:19.210  INFO 31420 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-22 14:01:19.210  INFO 31420 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-04-22 14:01:19.289  INFO 31420 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-22 14:01:19.289  INFO 31420 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1448 ms
+2022-04-22 14:01:19.439  INFO 31420 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2022-04-22 14:01:19.494  INFO 31420 --- [cluster-ClusterId{value='6262288fd52f0e362beffb56', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:361}] to 127.0.0.1:27017
+2022-04-22 14:01:19.494  INFO 31420 --- [cluster-rtt-ClusterId{value='6262288fd52f0e362beffb56', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:360}] to 127.0.0.1:27017
+2022-04-22 14:01:19.494  INFO 31420 --- [cluster-ClusterId{value='6262288fd52f0e362beffb56', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=15117900}
+2022-04-22 14:01:20.149  INFO 31420 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-04-22 14:01:20.157  INFO 31420 --- [main] balendar.app.App                         : Started App in 2.815 seconds (JVM running for 3.158)
+2022-04-22 14:01:23.674  INFO 31420 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-22 14:01:23.674  INFO 31420 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-22 14:01:23.675  INFO 31420 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-04-22 14:01:23.843  INFO 31420 --- [http-nio-8080-exec-1] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:3, serverValue:362}] to 127.0.0.1:27017
+2022-04-22 14:02:24.342  INFO 18656 --- [main] balendar.app.App                         : Starting App using Java 15.0.2 on DESKTOP-2L25P9V with PID 18656 (C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app\build\classes\java\main started by Joshua Ong in C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app)
+2022-04-22 14:02:24.344  INFO 18656 --- [main] balendar.app.App                         : No active profile set, falling back to 1 default profile: "default"
+2022-04-22 14:02:24.791  INFO 18656 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2022-04-22 14:02:24.830  INFO 18656 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 1 MongoDB repository interfaces.
+2022-04-22 14:02:25.260  INFO 18656 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-04-22 14:02:25.269  INFO 18656 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-22 14:02:25.270  INFO 18656 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-04-22 14:02:25.341  INFO 18656 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-22 14:02:25.342  INFO 18656 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 957 ms
+2022-04-22 14:02:25.490  INFO 18656 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2022-04-22 14:02:25.545  INFO 18656 --- [cluster-rtt-ClusterId{value='626228d17d0a39404b147cc8', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:363}] to 127.0.0.1:27017
+2022-04-22 14:02:25.545  INFO 18656 --- [cluster-ClusterId{value='626228d17d0a39404b147cc8', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:364}] to 127.0.0.1:27017
+2022-04-22 14:02:25.545  INFO 18656 --- [cluster-ClusterId{value='626228d17d0a39404b147cc8', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=15748700}
+2022-04-22 14:02:26.023  INFO 18656 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-04-22 14:02:26.030  INFO 18656 --- [main] balendar.app.App                         : Started App in 2.06 seconds (JVM running for 2.373)
+2022-04-22 14:02:32.973  INFO 18656 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-22 14:02:32.974  INFO 18656 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-22 14:02:32.975  INFO 18656 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-04-22 14:02:33.168  INFO 18656 --- [http-nio-8080-exec-2] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:3, serverValue:365}] to 127.0.0.1:27017
+2022-04-22 14:03:05.938  INFO 7116 --- [main] balendar.app.App                         : Starting App using Java 15.0.2 on DESKTOP-2L25P9V with PID 7116 (C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app\build\classes\java\main started by Joshua Ong in C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app)
+2022-04-22 14:03:05.940  INFO 7116 --- [main] balendar.app.App                         : No active profile set, falling back to 1 default profile: "default"
+2022-04-22 14:03:06.496  INFO 7116 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2022-04-22 14:03:06.537  INFO 7116 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 37 ms. Found 1 MongoDB repository interfaces.
+2022-04-22 14:03:06.988  INFO 7116 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-04-22 14:03:06.997  INFO 7116 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-22 14:03:06.998  INFO 7116 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-04-22 14:03:07.074  INFO 7116 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-22 14:03:07.075  INFO 7116 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1088 ms
+2022-04-22 14:03:07.223  INFO 7116 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2022-04-22 14:03:07.282  INFO 7116 --- [cluster-rtt-ClusterId{value='626228fb78711e158720675a', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:367}] to 127.0.0.1:27017
+2022-04-22 14:03:07.282  INFO 7116 --- [cluster-ClusterId{value='626228fb78711e158720675a', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:366}] to 127.0.0.1:27017
+2022-04-22 14:03:07.282  INFO 7116 --- [cluster-ClusterId{value='626228fb78711e158720675a', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=15388300}
+2022-04-22 14:03:07.816  INFO 7116 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-04-22 14:03:07.822  INFO 7116 --- [main] balendar.app.App                         : Started App in 2.409 seconds (JVM running for 2.82)
+2022-04-22 14:03:14.600  INFO 7116 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-22 14:03:14.600  INFO 7116 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-22 14:03:14.601  INFO 7116 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-04-22 14:03:14.766  INFO 7116 --- [http-nio-8080-exec-2] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:3, serverValue:368}] to 127.0.0.1:27017
+2022-04-22 14:07:19.829  INFO 35536 --- [main] balendar.app.App                         : Starting App using Java 15.0.2 on DESKTOP-2L25P9V with PID 35536 (C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app\build\classes\java\main started by Joshua Ong in C:\Users\jxo\Desktop\CodingRepos\Personal\balendar\server\app)
+2022-04-22 14:07:19.832  INFO 35536 --- [main] balendar.app.App                         : No active profile set, falling back to 1 default profile: "default"
+2022-04-22 14:07:20.455  INFO 35536 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2022-04-22 14:07:20.510  INFO 35536 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49 ms. Found 1 MongoDB repository interfaces.
+2022-04-22 14:07:21.115  INFO 35536 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-04-22 14:07:21.145  INFO 35536 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-22 14:07:21.145  INFO 35536 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-04-22 14:07:21.244  INFO 35536 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-22 14:07:21.245  INFO 35536 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1364 ms
+2022-04-22 14:07:21.423  INFO 35536 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2022-04-22 14:07:21.487  INFO 35536 --- [cluster-rtt-ClusterId{value='626229f9fc090724242e6fc9', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:370}] to 127.0.0.1:27017
+2022-04-22 14:07:21.487  INFO 35536 --- [cluster-ClusterId{value='626229f9fc090724242e6fc9', description='null'}-127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:369}] to 127.0.0.1:27017
+2022-04-22 14:07:21.489  INFO 35536 --- [cluster-ClusterId{value='626229f9fc090724242e6fc9', description='null'}-127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=16913100}
+2022-04-22 14:07:22.040  INFO 35536 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-04-22 14:07:22.046  INFO 35536 --- [main] balendar.app.App                         : Started App in 2.731 seconds (JVM running for 3.234)
+2022-04-22 14:07:24.509  INFO 35536 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-22 14:07:24.509  INFO 35536 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-22 14:07:24.510  INFO 35536 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-04-22 14:07:24.670  INFO 35536 --- [http-nio-8080-exec-2] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:3, serverValue:371}] to 127.0.0.1:27017
+2022-04-22 14:07:48.555  INFO 35536 --- [http-nio-8080-exec-1] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:4, serverValue:372}] to 127.0.0.1:27017

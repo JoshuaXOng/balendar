@@ -23,9 +23,8 @@ public class DatabaseBeans {
   @Bean
   public MongoClient getMongoClient(Dotenv loadedDotenv, Log databaseLogger) {
     String connectionString = loadedDotenv.get("MONGODB_CONNECTION_STRING");
-    if (connectionString == null)
-      throw new Error("Connection string cannot be `null`.");
-    
+    if (connectionString == null) throw new Error("Connection string cannot be `null`.");
+
     return MongoClients.create(connectionString);
   }
 }

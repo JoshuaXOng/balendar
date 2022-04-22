@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class App {
   @Value("${spring.application.name}")
   String name;
+
   @Value("${server.port}")
   String port;
 

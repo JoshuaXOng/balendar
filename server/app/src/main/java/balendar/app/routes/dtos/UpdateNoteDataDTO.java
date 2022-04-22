@@ -1,22 +1,26 @@
 package balendar.app.routes.dtos;
 
-import java.sql.Date;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.Date;
 
 public class UpdateNoteDataDTO {
   public String headerText;
   public String bodyText;
+
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   public Date begDatetime;
+
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   public Date endDatetime;
 
   public UpdateNoteDataDTO(
-    @JsonProperty("headerText") String headerText, @JsonProperty("bodyText") String bodyText, 
-    @JsonProperty("begDatetime") Date begDatetime, @JsonProperty("endDatetime") Date endDatetime
-  ) {
+      @JsonProperty("headerText") String headerText,
+      @JsonProperty("bodyText") String bodyText,
+      @JsonProperty("begDatetime") Date begDatetime,
+      @JsonProperty("endDatetime") Date endDatetime) {
     this.headerText = headerText;
     this.bodyText = bodyText;
     this.begDatetime = begDatetime;

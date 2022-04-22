@@ -13,4 +13,3 @@ package balendar.app.database.models.old;
 //     public Date currentDate;
 //     public ArrayList<CalendarNote> containedNotes;
 // }
-

@@ -20,5 +20,3 @@ package balendar.app.routes.dtos.old;
 //             .collect(Collectors.toList());
 //     }
 // }
-
-
