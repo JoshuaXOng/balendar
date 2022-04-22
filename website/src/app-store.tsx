@@ -55,7 +55,7 @@ export const notesSlice = createSlice({
     },
     setSelectedDay(state, action) {
       state.selectedDay = action.payload.selectedDay;
-    },
+    }
   }
 })
 

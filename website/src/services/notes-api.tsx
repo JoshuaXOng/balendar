@@ -41,3 +41,12 @@ export const updateNote = async (props: UpdateNoteProps): Promise<Response> => {
     body: JSON.stringify(rest) 
   })
 }
+
+export type DeleteNoteProps = {
+  id: string
+}
+
+export const deleteNote = async (props: DeleteNoteProps): Promise<Response> => {
+  const { id } = props;
+  return fetch(`${baseApiUrl}notes/${id}/`, { method: "DELETE" })
+}

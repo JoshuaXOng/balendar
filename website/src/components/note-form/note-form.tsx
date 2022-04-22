@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
+import { AiFillDelete } from "react-icons/ai";
 import {
   AppShell,
   Navbar,
@@ -17,11 +18,12 @@ import {
   Textarea,
   Input,
   InputWrapper,
-  Button
+  Button,
+  ActionIcon
 } from '@mantine/core';
 import { DatePicker } from '@mantine/dates';
 import { useSelector, useDispatch } from 'react-redux'
-import { createNote, CreateNoteProps, getAllNotes, updateNote } from '../../services/notes-api';
+import { createNote, CreateNoteProps, deleteNote, getAllNotes, updateNote } from '../../services/notes-api';
 import { AppContext } from '../../old/app-context';
 import { appStore, notesSlice, stylesSlice } from '../../app-store';
 import { Note } from '../../models/note';
@@ -71,6 +73,15 @@ export default function NoteForm() {
       resetInputs();
     }
   })
+
+  const handleOnDeleteClick = () => {
+    deleteNote({ id })
+      .then(() => getAllNotes())
+      .then(response => response.json())
+      .then(allNotes => appDispatch(notesSlice.actions.setAllNotes({ allNotes })))
+      .then(() => appDispatch(notesSlice.actions.clearSelectedNote()))
+      .then(() => resetInputs())
+  }
   
   const handleOnDateChange = (date: Date | null) => {
     if (!date) return setDate(undefined);
@@ -102,7 +113,12 @@ export default function NoteForm() {
 
   return (
     <Group direction="column" grow={true}>
-      <Title order={4}>{isUpdateForm ? "Update Note" : "Create Note"}</Title>
+      <Group position='apart'>
+        <Title order={4}>{isUpdateForm ? "Update Note" : "Create Note"}</Title>
+        {isUpdateForm && <ActionIcon onClick={() => handleOnDeleteClick()}>
+          <AiFillDelete />
+        </ActionIcon>}
+      </Group>
       <DatePicker placeholder="Pick date" label="Event date" value={date} onChange={(date) => handleOnDateChange(date)} required />
       <InputWrapper
         label="Header"
