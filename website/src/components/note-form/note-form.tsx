@@ -21,51 +21,107 @@ import {
 } from '@mantine/core';
 import { DatePicker } from '@mantine/dates';
 import { useSelector, useDispatch } from 'react-redux'
-import { createNote, CreateNoteProps, getAllNotes, toNotesApiDateFromDate } from '../../services/notes-api';
+import { createNote, CreateNoteProps, getAllNotes, updateNote } from '../../services/notes-api';
 import { AppContext } from '../../old/app-context';
 import { appStore, notesSlice, stylesSlice } from '../../app-store';
+import { Note } from '../../models/note';
+import { toDateFromNotesApi, toNotesApiDateFromDate } from '../../services/notes-api-utils';
+
+type CUNotePropsDTO = {
+  id: string,
+  headerText: string,
+  bodyText: string,
+  begDatetime: Date | undefined | null,
+}
 
 export default function NoteForm() {
   const appDispatch = useDispatch();
 
-  const [date, setDate] = useState<string | undefined>(undefined);
+  const [id, setId] = useState("");
+  const [date, setDate] = useState<Date | undefined | null>(undefined);
   const [headerText, setHeaderText] = useState("");
   const [bodyText, setBodyText] = useState("");
+  
+  const resetInputs = () => {
+    setDate(null);
+    setHeaderText("");
+    setBodyText("");
+  }
 
+  const [isUpdateForm, setIsUpdateForm] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
+
+  appStore.subscribe(() => {
+    if (appStore.getState().notes.selectedNote) {
+      setIsUpdateForm(true);
+      
+      const selectedNote = appStore.getState().notes.selectedNote !as Note;
+      setId(selectedNote.id);
+      setDate(toDateFromNotesApi(selectedNote.begDatetime));
+      setHeaderText(selectedNote.headerText);
+      setBodyText(selectedNote.bodyText);
+    }
+    else if (appStore.getState().notes.selectedDay) {
+      setIsUpdateForm(false);
+      resetInputs();
+      setDate(toDateFromNotesApi(appStore.getState().notes.selectedDay!));
+    }
+    else {
+      setIsUpdateForm(false);
+      resetInputs();
+    }
+  })
+  
   const handleOnDateChange = (date: Date | null) => {
     if (!date) return setDate(undefined);
-    setDate(toNotesApiDateFromDate(date));
-  }
-  
-  const handleSubmission = async ({ headerText, bodyText, begDatetime }: CreateNoteProps) => {
-    await createNote({ headerText, bodyText, begDatetime });
-    getAllNotes()
-      .then(response => response.json())
-      .then(allNotes => appDispatch(notesSlice.actions.setAllNotes({ allNotes })));
+    setDate(date);
   }
 
-  const [isUpdatingNote, setIsUpdatingNote] = useState(false);
-  appStore.subscribe(() => {
-    if (appStore.getState().notes.selectedNote) setIsUpdatingNote(true);
-  })
+  const isSubmissionDisabled = () => {
+    if (!date) return true;
+    if (!headerText.trim().length) return true;
+  }
+
+  const handleSubmission = async ({ id, headerText, bodyText, begDatetime }: CUNotePropsDTO) => {
+    setIsUploading(true);
+    if (!isUpdateForm)
+      createNote({ headerText, bodyText, begDatetime: toNotesApiDateFromDate(begDatetime!) })
+        .then(() => getAllNotes())
+        .then(response => response.json())
+        .then(allNotes => appDispatch(notesSlice.actions.setAllNotes({ allNotes })))
+        .then(() => setIsUploading(false));
+    else 
+      updateNote({ id, headerText, bodyText, begDatetime: toNotesApiDateFromDate(begDatetime!) })
+        .then(() => getAllNotes())
+        .then(response => response.json())
+        .then(allNotes => appDispatch(notesSlice.actions.setAllNotes({ allNotes })))
+        .then(() => appDispatch(notesSlice.actions.clearSelectedNote()))
+        .then(() => resetInputs())
+        .then(() => setIsUploading(false));
+  }
 
   return (
     <Group direction="column" grow={true}>
-      <Title order={4}>{isUpdatingNote ? "Update Note" : "Create Note"}</Title>
-      <DatePicker placeholder="Pick date" label="Event date" onChange={(date) => handleOnDateChange(date)} required />
+      <Title order={4}>{isUpdateForm ? "Update Note" : "Create Note"}</Title>
+      <DatePicker placeholder="Pick date" label="Event date" value={date} onChange={(date) => handleOnDateChange(date)} required />
       <InputWrapper
         label="Header"
         required
       >
-        <Input placeholder="Enter text" onChange={(event: any) => setHeaderText(event.target.value)}/>
+        <Input placeholder="Enter text" value={headerText} onChange={(event: any) => setHeaderText(event.target.value)}/>
       </InputWrapper>
       <Textarea
         label="Body"
         placeholder="Enter text"
         minRows={7}
+        value={bodyText}
         onChange={(event: any) => setBodyText(event.target.value)}
       />
-      <Button onClick={() => handleSubmission({ headerText, bodyText, begDatetime: date })}>Create</Button>
+      <Button onClick={() => handleSubmission({ id, headerText, bodyText, begDatetime: date })} {...(isSubmissionDisabled() || isUploading) ? { disabled: true } : undefined}>
+        {isUploading ?
+          "Sending..." :
+          isUpdateForm ? "Save" : "Create"}
+      </Button>
     </Group>
   );
 }

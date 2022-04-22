@@ -1,5 +1,5 @@
 import 'dayjs/locale/ru';
-import React, { useContext, useEffect, useReducer, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useReducer, useRef, useState } from 'react';
 import {
   AppShell,
   Navbar,
@@ -35,6 +35,8 @@ export default function BalendarCalendar() {
   const appState = appStore.getState();
   const appDispatch = useDispatch();
   
+  const [isDataReady, setIsDataReady] = useState(false);
+
   const offset = appState.styles.headerHeight !as number + 50;
   const initialCalendarHeight = window.innerHeight - offset;
   const [calendarHeight, setCalendarHeight] = useState(initialCalendarHeight);
@@ -49,6 +51,7 @@ export default function BalendarCalendar() {
     getAllNotes()
       .then(response => response.json())
       .then(allNotes => appDispatch(notesSlice.actions.setAllNotes({ allNotes })))
+      .then(() => setIsDataReady(true));
   }, [])
 
   const currentWeeksMonday = getClosestPrevMonday();
@@ -56,17 +59,18 @@ export default function BalendarCalendar() {
   pastMondays.forEach((date, index) => date.setDate(date.getDate() - 7*(index+1)));
   const futureMondays = [...Array(70).keys()].map(_ => new Date(currentWeeksMonday));
   futureMondays.forEach((date, index) => date.setDate(date.getDate() + 7*(index+1)));
-  
   const [coveredMondays, setCoveredMondays] = useState([...pastMondays.reverse(), currentWeeksMonday, ...futureMondays]);
 
   const scroller = useRef<any>();
   useEffect(() => {
-    scroller.current.scrollTo({ top: (scroller.current.scrollHeight - calendarHeight) / 2, behavior: 'instant' });
-  }, [])
+    scroller.current?.scrollTo({ top: (scroller.current.scrollHeight - calendarHeight) / 2, behavior: 'instant' });
+  }, [isDataReady])
 
   return (
-    <ScrollArea style={{ height: calendarHeight }} viewportRef={scroller}>
-      {coveredMondays.map((cm, index) => <BalendarCalendarWeek key={index} height={Math.max(Math.min(calendarHeight / 4, 250), 170)} mondayDatetime={cm}></BalendarCalendarWeek>)}
-    </ScrollArea>
+    isDataReady ?
+      <ScrollArea style={{ height: calendarHeight }} viewportRef={scroller}>
+        {coveredMondays.map((cm, index) => <BalendarCalendarWeek key={index} height={Math.max(Math.min(calendarHeight / 4, 250), 170)} mondayDatetime={cm}></BalendarCalendarWeek>)}
+      </ScrollArea> :
+      <Skeleton width="100%" height="100%" />
   );
 }

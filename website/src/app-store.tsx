@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 import { Note } from './models/note'
 import { getAllNotes } from './services/notes-api';
+import { toNotesApiDateFromDate } from './services/notes-api-utils';
 
 export const stylesSlice = createSlice({
   name: 'styles',
@@ -19,7 +20,10 @@ export const notesSlice = createSlice({
   name: 'notes',
   initialState: {
     allNotes: [] as Note[],
-    selectedNote: undefined
+    allNotesIdIndexed: {} as { [key: string]: Note },
+    allNotesBegDatetimeIndexed: {} as { [key: string]: Note[] },
+    selectedNote: undefined,
+    selectedDay: undefined
   },
   reducers: {
     addNote(state, action) {
@@ -32,10 +36,26 @@ export const notesSlice = createSlice({
     },
     setAllNotes(state, action) {
       state.allNotes = action.payload.allNotes;
+
+      state.allNotesIdIndexed = {};
+      (action.payload.allNotes as Note[]).forEach(n => state.allNotesIdIndexed[n.id] = n);
+      
+      const anbdi = state.allNotesBegDatetimeIndexed = {} as { [key: string]: Note[] };
+      (action.payload.allNotes as Note[]).forEach(n => {
+        anbdi[n.begDatetime] ? 
+          anbdi[n.begDatetime] = [...anbdi[n.begDatetime], n] :
+          anbdi[n.begDatetime] = [n]
+      });
     },
     setSelectedNote(state, action) {
       state.selectedNote = action.payload.selectedNote;
-    }
+    },
+    clearSelectedNote(state) {
+      state.selectedNote = undefined;
+    },
+    setSelectedDay(state, action) {
+      state.selectedDay = action.payload.selectedDay;
+    },
   }
 })
 

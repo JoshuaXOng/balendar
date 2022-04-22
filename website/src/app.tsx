@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react';
+import React, { Profiler, useReducer, useState } from 'react';
 import { Provider } from 'react-redux'
 import {
   AppShell,
