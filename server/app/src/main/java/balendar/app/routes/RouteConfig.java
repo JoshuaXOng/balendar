@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class RouteBeans {
+public class RouteConfig {
   @Bean
   @Qualifier("no-null")
   public ObjectMapper getNoNullMapper() {

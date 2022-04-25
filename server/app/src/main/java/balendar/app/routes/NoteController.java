@@ -8,9 +8,7 @@ import balendar.app.routes.dtos.UpdateNoteDataDTO;
 import balendar.app.routes.exceptions.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-import java.lang.reflect.Field;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -46,7 +44,7 @@ public class NoteController {
   @RequestMapping(method = RequestMethod.GET, value = "/{id}/")
   public CalendarNoteDTO getNote(@PathVariable String id) {
     CalendarNote note = this.noteRepository.findOneById(id);
-    if (note == null) throw new ResourceNotFoundException();
+    if (note == null) throw new NotFoundException();
 
     return new CalendarNoteDTO(note);
   }
@@ -62,7 +60,7 @@ public class NoteController {
   public CalendarNoteDTO createNote(@RequestBody CreateNoteDataDTO createNoteData) {
     if (createNoteData.headerText.isBlank()
         || (createNoteData.begDatetime == null && createNoteData.endDatetime == null))
-      throw new ClientFaultException();
+      throw new BadRequestException();
 
     CalendarNote insertedNote = this.mongoOperations.insert(createNoteData.toCalendarNote());
     return new CalendarNoteDTO(insertedNote);
@@ -72,7 +70,7 @@ public class NoteController {
   public CalendarNoteDTO updateNote(
       @PathVariable String id, @RequestBody UpdateNoteDataDTO updateNoteData) {
     CalendarNote note = this.noteRepository.findOneById(id);
-    if (note == null) throw new ResourceNotFoundException();
+    if (note == null) throw new NotFoundException();
 
     note.headerText = updateNoteData.headerText;
     note.bodyText = updateNoteData.bodyText;
