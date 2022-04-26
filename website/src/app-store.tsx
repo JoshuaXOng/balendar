@@ -7,11 +7,15 @@ import { toNotesApiDateFromDate } from './services/notes-api-utils';
 export const stylesSlice = createSlice({
   name: 'styles',
   initialState: {
-    headerHeight: undefined
+    headerHeight: undefined,
+    isAsideOpen: false
   },
   reducers: {
     setHeaderHeight(state, action) {
       state.headerHeight = action.payload.headerHeight;
+    },
+    setIsAsideOpen(state, action) {
+      state.isAsideOpen = action.payload.setIsAsideOpen;
     }
   }
 })
@@ -19,7 +23,7 @@ export const stylesSlice = createSlice({
 export const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    authToken: undefined
+    authToken: localStorage.getItem("BALENDAR_AUTH_TOKEN")
   },
   reducers: {
     setAuthToken(state, action) {

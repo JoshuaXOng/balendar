@@ -11,10 +11,13 @@ import { useNavigate } from 'react-router-dom';
 
 export default function CalendarPage() {
   const navigate = useNavigate();
+  const appDispatch = useDispatch();
   
   useEffect(() => {
     if (!appStore.getState().auth.authToken)
-    navigate("/login/");
+      navigate("/login/");
+
+    appDispatch(stylesSlice.actions.setIsAsideOpen({ isAsideOpen: true }));
   }, []);
 
   return (

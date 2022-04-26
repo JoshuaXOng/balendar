@@ -24,34 +24,41 @@ import CalendarPage from './pages/calendar-page/calendar-page';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 export default function App() {
+  appStore.subscribe(() => {
+    const { authToken } = appStore.getState().auth;
+    authToken && localStorage.setItem('BALENDAR_AUTH_TOKEN', authToken);
+  });
+  
+  const [isAsideOpen, setIsAsideOpen] = useState(appStore.getState().styles.isAsideOpen);
+  appStore.subscribe(() => {
+    setIsAsideOpen(appStore.getState().styles.isAsideOpen);
+  });
+
   const theme = useMantineTheme();
+
   return (
-    <Provider store={appStore}>
-      <BrowserRouter>
-        <AppShell
-          styles={{
-            main: {
-              background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
-            },
-          }}
-          fixed
-          navbarOffsetBreakpoint="sm"
-          header={<BalendarHeader />}
-          asideOffsetBreakpoint="sm"
-          // aside={
-          //   <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
-          //     <Aside p="md" hiddenBreakpoint="sm" width={{ sm: 200, lg: 300 }}>
-          //       <NoteForm></NoteForm>
-          //     </Aside>
-          //   </MediaQuery>
-          // }
-        >
-          <Routes>
-            <Route path="/login/" element={<LoginPage />} />
-            <Route path="/calendar/" element={<CalendarPage />} />
-          </Routes>
-        </AppShell>
-      </BrowserRouter>
-    </Provider>
+    <AppShell
+      styles={{
+        main: {
+          background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+        },
+      }}
+      fixed
+      navbarOffsetBreakpoint="sm"
+      header={<BalendarHeader />}
+      asideOffsetBreakpoint="sm"
+      aside={
+        isAsideOpen ?
+          <Aside p="md" hiddenBreakpoint="sm" width={{ sm: 200, lg: 300 }}>
+            <NoteForm></NoteForm>
+          </Aside> :
+          <></>
+      }
+    >
+      <Routes>
+        <Route path="/login/" element={<LoginPage />} />
+        <Route path="/calendar/" element={<CalendarPage />} />
+      </Routes>
+    </AppShell>
   );
 }
