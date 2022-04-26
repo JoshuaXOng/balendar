@@ -1,4 +1,4 @@
-const baseApiUrl = "http://localhost:8080/api/v0/";
+import { baseApiUrl } from "./services";
 
 export type FetchAuthTokenProps = {
   username: string; 

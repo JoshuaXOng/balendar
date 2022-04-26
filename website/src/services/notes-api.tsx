@@ -1,6 +1,5 @@
 import { appStore } from "../app-store";
-
-const baseApiUrl = "http://localhost:3000/api/v0/";
+import { baseApiUrl } from "./services";
 
 export const getAllNotes = async (): Promise<Response> => {
   const { authToken } = appStore.getState().auth;
