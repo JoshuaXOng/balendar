@@ -21,32 +21,37 @@ import { appStore } from './app-store';
 import LoginForm from './components/login-form/login-form';
 import LoginPage from './pages/login-page/login-page';
 import CalendarPage from './pages/calendar-page/calendar-page';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 export default function App() {
   const theme = useMantineTheme();
   return (
     <Provider store={appStore}>
-      <AppShell
-        styles={{
-          main: {
-            background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
-          },
-        }}
-        fixed
-        navbarOffsetBreakpoint="sm"
-        header={<BalendarHeader />}
-        asideOffsetBreakpoint="sm"
-        // aside={
-        //   <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
-        //     <Aside p="md" hiddenBreakpoint="sm" width={{ sm: 200, lg: 300 }}>
-        //       <NoteForm></NoteForm>
-        //     </Aside>
-        //   </MediaQuery>
-        // }
-      >
-        {/* <CalendarPage /> */}
-        <LoginPage />
-      </AppShell>
+      <BrowserRouter>
+        <AppShell
+          styles={{
+            main: {
+              background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+            },
+          }}
+          fixed
+          navbarOffsetBreakpoint="sm"
+          header={<BalendarHeader />}
+          asideOffsetBreakpoint="sm"
+          // aside={
+          //   <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
+          //     <Aside p="md" hiddenBreakpoint="sm" width={{ sm: 200, lg: 300 }}>
+          //       <NoteForm></NoteForm>
+          //     </Aside>
+          //   </MediaQuery>
+          // }
+        >
+          <Routes>
+            <Route path="/login/" element={<LoginPage />} />
+            <Route path="/calendar/" element={<CalendarPage />} />
+          </Routes>
+        </AppShell>
+      </BrowserRouter>
     </Provider>
   );
 }

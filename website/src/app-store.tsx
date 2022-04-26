@@ -16,6 +16,18 @@ export const stylesSlice = createSlice({
   }
 })
 
+export const authSlice = createSlice({
+  name: 'auth',
+  initialState: {
+    authToken: undefined
+  },
+  reducers: {
+    setAuthToken(state, action) {
+      state.authToken = action.payload.authToken;
+    }
+  }
+})
+
 export const notesSlice = createSlice({
   name: 'notes',
   initialState: {
@@ -62,6 +74,7 @@ export const notesSlice = createSlice({
 export const appStore = configureStore({
   reducer: {
     styles: stylesSlice.reducer,
+    auth: authSlice.reducer,
     notes: notesSlice.reducer,
   }
 })

@@ -1,7 +1,16 @@
-const baseApiUrl = "http://localhost:8080/api/v0/";
+import { appStore } from "../app-store";
+
+const baseApiUrl = "http://localhost:3000/api/v0/";
 
 export const getAllNotes = async (): Promise<Response> => {
-  return fetch(`${baseApiUrl}notes/`)
+  const { authToken } = appStore.getState().auth;
+  if (!authToken) throw new Error("No Authorization value is in the global store.");
+  
+  return fetch(`${baseApiUrl}notes/`, {
+    headers: {
+      "Authorization": `Bearer ${authToken!}`
+    }
+  })
 }
 
 export type CreateNoteProps = {
@@ -12,11 +21,15 @@ export type CreateNoteProps = {
 }
 
 export const createNote = async (props: CreateNoteProps): Promise<Response> => {
+  const { authToken } = appStore.getState().auth;
+  if (!authToken) throw new Error("No Authorization value is in the global store.");
+
   return fetch(`${baseApiUrl}notes/`, { 
     method: "POST", 
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      "Authorization": `Bearer ${authToken!}`
     },
     body: JSON.stringify(props) 
   })
@@ -32,11 +45,16 @@ export type UpdateNoteProps = {
 
 export const updateNote = async (props: UpdateNoteProps): Promise<Response> => {
   const { id, ...rest } = props;
+
+  const { authToken } = appStore.getState().auth;
+  if (!authToken) throw new Error("No Authorization value is in the global store.");
+
   return fetch(`${baseApiUrl}notes/${id}/`, { 
     method: "PUT", 
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      "Authorization": `Bearer ${authToken!}`
     },
     body: JSON.stringify(rest) 
   })
@@ -48,5 +66,14 @@ export type DeleteNoteProps = {
 
 export const deleteNote = async (props: DeleteNoteProps): Promise<Response> => {
   const { id } = props;
-  return fetch(`${baseApiUrl}notes/${id}/`, { method: "DELETE" })
+
+  const { authToken } = appStore.getState().auth;
+  if (!authToken) throw new Error("No Authorization value is in the global store.");
+
+  return fetch(`${baseApiUrl}notes/${id}/`, { 
+    method: "DELETE",
+    headers: {
+      "Authorization": `Bearer ${authToken!}`
+    }
+  })
 }
