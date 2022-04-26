@@ -50,22 +50,34 @@ export default function LoginForm() {
     },
   });
 
+  const processAuthToken = async (authToken: string) => {
+    if (!authToken)
+      form.setErrors({ username: "Could be incorrect", password: "Could be incorrect" });
+    else {
+      await appDispatch(authSlice.actions.setAuthToken({ authToken }));
+      navigate("/calendar/");
+    }
+  }
+
   const handleOnSubmit = (value: typeof form.values) => {
     const { isCreatingAccount, username, password } = value;
     if (isCreatingAccount) {
-      createUser({ username, password })
-        .then(() => fetchAuthToken({ username, password }))
-        .then(response => response.json())
-        .then(payload => payload.authToken)
-        .then(authToken => appDispatch(authSlice.actions.setAuthToken({ authToken })))
-        .then(_ => navigate("/calendar/"))
+      (async () => {
+        const createResponse = await createUser({ username, password });
+        if (createResponse.status >= 400)
+          return form.setErrors({ username: "Already exists", password: null });
+          
+        const { authToken } = (await fetchAuthToken({ username, password })
+          .then(response => response.json()));
+        await processAuthToken(authToken);
+      })()
     }
     else {
-      fetchAuthToken({ username, password })
-        .then(response => response.json())
-        .then(payload => payload.authToken)
-        .then(authToken => appDispatch(authSlice.actions.setAuthToken({ authToken })))
-        .then(_ => navigate("/calendar/"))
+      (async () => {
+        const { authToken } = (await fetchAuthToken({ username, password })
+          .then(response => response.json()));
+        await processAuthToken(authToken);
+      })()
     };
   }
 
