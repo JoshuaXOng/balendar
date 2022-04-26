@@ -18,6 +18,9 @@ import BalendarCalendarDay from './components/balendar-calendar/balendar-calenda
 import { DragDropContext } from 'react-beautiful-dnd';
 import { AppContext } from './old/app-context';
 import { appStore } from './app-store';
+import LoginForm from './components/login-form/login-form';
+import LoginPage from './pages/login-page/login-page';
+import CalendarPage from './pages/calendar-page/calendar-page';
 
 export default function App() {
   const theme = useMantineTheme();
@@ -33,15 +36,16 @@ export default function App() {
         navbarOffsetBreakpoint="sm"
         header={<BalendarHeader />}
         asideOffsetBreakpoint="sm"
-        aside={
-          <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
-            <Aside p="md" hiddenBreakpoint="sm" width={{ sm: 200, lg: 300 }}>
-              <NoteForm></NoteForm>
-            </Aside>
-          </MediaQuery>
-        }
+        // aside={
+        //   <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
+        //     <Aside p="md" hiddenBreakpoint="sm" width={{ sm: 200, lg: 300 }}>
+        //       <NoteForm></NoteForm>
+        //     </Aside>
+        //   </MediaQuery>
+        // }
       >
-        <BalendarCalendar></BalendarCalendar>
+        {/* <CalendarPage /> */}
+        <LoginPage />
       </AppShell>
     </Provider>
   );
