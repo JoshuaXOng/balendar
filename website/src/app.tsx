@@ -22,16 +22,12 @@ import LoginForm from './components/login-form/login-form';
 import LoginPage from './pages/login-page/login-page';
 import CalendarPage from './pages/calendar-page/calendar-page';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import CustomAside from './components/custom-aside/custom-aside';
 
 export default function App() {
   appStore.subscribe(() => {
     const { authToken } = appStore.getState().auth;
     authToken && localStorage.setItem('BALENDAR_AUTH_TOKEN', authToken);
-  });
-  
-  const [isAsideOpen, setIsAsideOpen] = useState(appStore.getState().styles.isAsideOpen);
-  appStore.subscribe(() => {
-    setIsAsideOpen(appStore.getState().styles.isAsideOpen);
   });
 
   const theme = useMantineTheme();
@@ -47,17 +43,12 @@ export default function App() {
       navbarOffsetBreakpoint="sm"
       header={<BalendarHeader />}
       asideOffsetBreakpoint="sm"
-      aside={
-        isAsideOpen ?
-          <Aside p="md" hiddenBreakpoint="sm" width={{ sm: 200, lg: 300 }}>
-            <NoteForm></NoteForm>
-          </Aside> :
-          <></>
-      }
+      aside={<CustomAside></CustomAside>}
     >
       <Routes>
         <Route path="/login/" element={<LoginPage />} />
         <Route path="/calendar/" element={<CalendarPage />} />
+        <Route path="*" element={<>NOT FOUND</>} />
       </Routes>
     </AppShell>
   );

@@ -15,7 +15,7 @@ export const stylesSlice = createSlice({
       state.headerHeight = action.payload.headerHeight;
     },
     setIsAsideOpen(state, action) {
-      state.isAsideOpen = action.payload.setIsAsideOpen;
+      state.isAsideOpen = action.payload.isAsideOpen;
     }
   }
 })
