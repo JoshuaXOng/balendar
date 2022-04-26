@@ -61,3 +61,7 @@ atlassian-ide-plugin.xml
 
 # Environment Variables
 .env
+
+# Logs
+
+spring.log.*
