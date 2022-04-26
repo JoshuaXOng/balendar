@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/api/v0/notes/": {
+      "/": {
         target: 'http://localhost:8080/',
         changeOrigin: true,
         secure: true,      
