@@ -29,4 +29,9 @@ public class AuthController {
 		String authToken = JWTUtils.generateToken(user);
 		return ResponseEntity.ok(new AuthTokenDTO(authToken));
 	}
+
+	@RequestMapping(method = RequestMethod.POST, value = "/verifications/")
+	public ResponseEntity<?> verifyToken(@RequestBody POSTAuthTokenDTO credentials) {
+		return ResponseEntity.ok("");
+	}
 }
