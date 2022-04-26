@@ -23,6 +23,8 @@ import LoginPage from './pages/login-page/login-page';
 import CalendarPage from './pages/calendar-page/calendar-page';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CustomAside from './components/custom-aside/custom-aside';
+import NotFoundPage from './pages/not-found-page/login-page';
+import CustomHeader from './components/custom-header/custom-header';
 
 export default function App() {
   appStore.subscribe(() => {
@@ -41,14 +43,14 @@ export default function App() {
       }}
       fixed
       navbarOffsetBreakpoint="sm"
-      header={<BalendarHeader />}
+      header={<CustomHeader />}
       asideOffsetBreakpoint="sm"
-      aside={<CustomAside></CustomAside>}
+      aside={<CustomAside />}
     >
       <Routes>
         <Route path="/login/" element={<LoginPage />} />
         <Route path="/calendar/" element={<CalendarPage />} />
-        <Route path="*" element={<>NOT FOUND</>} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </AppShell>
   );
