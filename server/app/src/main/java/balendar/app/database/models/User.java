@@ -1,16 +1,19 @@
 package balendar.app.database.models;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Document
 public class User implements UserDetails {
-  public @Id String id;
+  public @Id String id;  
 
   boolean enabled = true;
 
@@ -19,6 +22,9 @@ public class User implements UserDetails {
   String password;
   
   public Set<Role> authorities = new HashSet<>();
+
+  @DBRef
+  public List<CalendarNote> notes = new ArrayList<>();
 
   public User() {}
 

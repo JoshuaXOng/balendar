@@ -6,6 +6,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface CalendarNoteRepo extends MongoRepository<CalendarNote, String> {
   CalendarNote findOneById(String id);
-
   List<CalendarNote> findAll();
 }

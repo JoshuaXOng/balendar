@@ -1,6 +1,6 @@
 package balendar.app.routes;
 
-import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import balendar.app.database.models.User;
 import balendar.app.database.repositories.UserRepo;
 import balendar.app.routes.dtos.CreateUserDTO;
+import balendar.app.routes.exceptions.BadRequestException;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -33,13 +34,17 @@ public class UserController {
     this.passwordEncoder = passwordEncoder;
   }
 
+  @PreAuthorize("hasAuthority('ADMIN')")
+  @RequestMapping(method = RequestMethod.GET)
+  public ResponseEntity<List<User>> createUser() {
+    List<User> users = this.userRepo.findAll();
+    return ResponseEntity.ok(users);
+  }
+
   @RequestMapping(method = RequestMethod.POST)
-  public ResponseEntity<?> createUser(@RequestBody CreateUserDTO createPayload) {
+  public ResponseEntity<User> createUser(@RequestBody CreateUserDTO createPayload) {
     User existingUser = this.userRepo.findOneByUsername(createPayload.username);
-    if (existingUser != null)
-      return ResponseEntity.badRequest().body(new HashMap<String, Object>() {{
-        put("msg", "Username already exists.");
-      }});
+    if (existingUser != null) throw new BadRequestException("Username already exists.");
 
     User newUser = new User(createPayload.username, this.passwordEncoder.encode(createPayload.password));
     return ResponseEntity.ok(userRepo.save(newUser));

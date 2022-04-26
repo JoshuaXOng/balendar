@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
-@RequestMapping(value = "/api/v0")
+@RequestMapping(value = "/api/v0/")
 public class App {
   @Value("${spring.application.name}")
   String name;

@@ -64,4 +64,5 @@ atlassian-ide-plugin.xml
 
 # Logs
 
+spring.log
 spring.log.*

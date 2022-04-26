@@ -5,8 +5,6 @@ package balendar.list;
 
 import org.junit.jupiter.api.Test;
 
-import balendar.list.LinkedList;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class LinkedListTest {

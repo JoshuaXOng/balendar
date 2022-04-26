@@ -6,6 +6,8 @@ public class POSTAuthTokenDTO {
   public String username;
   public String password;
 
+  public POSTAuthTokenDTO() {}
+  
   public POSTAuthTokenDTO(
       @JsonProperty("username") String username,
       @JsonProperty("password") String password) {

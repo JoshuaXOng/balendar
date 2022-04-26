@@ -14,6 +14,8 @@ public class UpdateNoteDataDTO {
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   public Date endDatetime;
 
+  public UpdateNoteDataDTO() {}
+  
   public UpdateNoteDataDTO(
       @JsonProperty("headerText") String headerText,
       @JsonProperty("bodyText") String bodyText,
