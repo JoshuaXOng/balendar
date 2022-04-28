@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api/": {
-        target: 'http://rammus.tech/',
+        target: 'https://rammus.tech/',
         changeOrigin: true,
         secure: true,      
         ws: true,
