@@ -1,1 +1,1 @@
-export const baseApiUrl = "http://localhost:8080/api/v0/";
+export const baseApiUrl = "https://rammus.tech/api/v0/";
