@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  balendar:
+    image: joshuaxong/balendar
+    working_dir: /balendar/server
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - MONGODB_DEFAULT_DATABASE=balendar-default
+      - MONGODB_CONNECTION_STRING=mongodb://mongo:27017/balendar-default
+    volumes:
+      - ./:/balendar
+    command: gradle bootRun
+  mongo:
+    image: mongo:4.2.8
+    ports:
+      - "27017:27017"
+    volumes:
+      - database-data:/data/db
+      - database-data:/data/configdb
+
+volumes:
+  database-data:
