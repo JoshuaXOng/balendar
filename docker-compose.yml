@@ -7,8 +7,10 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - MONGODB_DEFAULT_DATABASE=balendar-default
-      - MONGODB_CONNECTION_STRING=mongodb://mongo:27017/balendar-default
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+      - MONGODB_DEFAULT_DATABASE=${MONGODB_DEFAULT_DATABASE}
+      - MONGODB_CONNECTION_STRING=${MONGODB_CONNECTION_STRING}
+      - VITE_API_BASE_URL=${VITE_API_BASE_URL}
     # volumes: # Un-comment for 'hot-reloading' at the expense of failing Dockerfile filesystem commands
     #   - ./:/balendar 
     working_dir: /balendar/server
