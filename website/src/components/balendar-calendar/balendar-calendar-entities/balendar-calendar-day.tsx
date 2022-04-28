@@ -39,7 +39,6 @@ export default function BalendarCalendarDay(props: BalendarCalendarDayProps) {
 
   const [dayNotes, setDayNotes] = useState([] as Note[]);
   
-  // THIS IS WHERE THE NON-LOADING OCCURS 
   appStore.subscribe(() => {
     const notes = appStore.getState().notes.allNotesBegDatetimeIndexed[toNotesApiDateFromDate(currentDatetime)]
     if (notes?.length && notes.length !== dayNotes.length)
