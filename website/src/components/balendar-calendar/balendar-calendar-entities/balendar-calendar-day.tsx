@@ -46,6 +46,10 @@ export default function BalendarCalendarDay(props: BalendarCalendarDayProps) {
       setDayNotes(appStore.getState().notes.allNotesBegDatetimeIndexed[toNotesApiDateFromDate(currentDatetime)] ?? []);
   })
 
+  useEffect(() => {
+    setDayNotes(appStore.getState().notes.allNotesBegDatetimeIndexed[toNotesApiDateFromDate(currentDatetime)] ?? []);
+  }, []);
+
   const handleOnClick = () => {
     appStore.dispatch(notesSlice.actions.clearSelectedNote());
     appStore.dispatch(notesSlice.actions.setSelectedDay({ selectedDay: toNotesApiDateFromDate(currentDatetime) }));
