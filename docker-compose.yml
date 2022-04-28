@@ -9,8 +9,8 @@ services:
     environment:
       - MONGODB_DEFAULT_DATABASE=balendar-default
       - MONGODB_CONNECTION_STRING=mongodb://mongo:27017/balendar-default
-    volumes:
-      - ./:/balendar
+    # volumes: # Un-comment for 'hot-reloading' at the expense of failing Dockerfile filesystem commands
+    #   - ./:/balendar 
     working_dir: /balendar/server
     command: gradle bootRun
   mongo:
