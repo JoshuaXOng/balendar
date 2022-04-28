@@ -1,22 +1,21 @@
-# FROM openjdk
-# FROM timbru31/java-node
-FROM gradle:7-jdk17
+FROM node:16.14.0
 
 WORKDIR /balendar/
-
 COPY ./ ./
 
-# WORKDIR /balendar/website/
-# RUN yarn install
-# RUN yarn build
+WORKDIR /balendar/website/
+RUN yarn install
+RUN yarn build
+RUN mv /balendar/website/dist/ /balendar/website/static/
 
-#  && ls && cp ./dist/ /balendar/server/app/src/main/resources/
-
-# WORKDIR /balendar/server/
+FROM gradle:7-jdk17
 
 EXPOSE 8080
 
-# RUN cd ./server 
-# && gradle bootRun
+WORKDIR /balendar/
+COPY ./ ./
+
+COPY --from=0 /balendar/website/static/ /balendar/server/app/src/main/resources/static/
+
 WORKDIR /balendar/server/
 CMD ["gradle", "bootRun"]
