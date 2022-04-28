@@ -81,18 +81,19 @@ export default function LoginForm() {
     };
   }
 
-  const isViewportWide = useMediaQuery("(min-width: 900px)");  
+  const isViewportHigh = useMediaQuery("(min-width: 600px)");  
+  const isViewportWide = useMediaQuery("(min-width: 1200px)");  
 
   return (
     <Paper 
       sx={{ 
         display: 'flex', flexDirection: isViewportWide ? "row" : "column", width: isViewportWide ? "40vw" : "80vw", 
-        height: isViewportWide ? "50vh" : "80vh", 
+        height: isViewportWide ? "50vh" : (isViewportHigh ? "80vh" : "65vh"), 
         padding: `0px ${isViewportWide ? "50px" : "0px"} 0px 0px`, 
         alignItems: "center", justifyContent: "center", gap: isViewportWide ? "10%" : "5%"
       }} shadow={'md'}
     >
-      <img src={circleGunther} style={{ width: isViewportWide ? "auto" : "80%", maxWidth: isViewportWide ? "" : "15rem", height: isViewportWide ? "50%" : "auto" }} />
+      <img src={circleGunther} style={{ display: isViewportHigh ? "block": "none", width: isViewportWide ? "auto" : "80%", maxWidth: isViewportWide ? "" : "15rem", height: isViewportWide ? "50%" : "auto" }} />
       <form onSubmit={form.onSubmit((values) => handleOnSubmit(values))}>
         <Group direction={"column"} grow={true}>
             <Title order={3}>Login / Sign-up</Title>
