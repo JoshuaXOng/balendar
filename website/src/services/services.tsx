@@ -1,1 +1,1 @@
-export const baseApiUrl = "https://rammus.tech/api/v0/";
+export const baseApiUrl = `${import.meta.env.VITE_API_BASE_URL}api/v0/`;
