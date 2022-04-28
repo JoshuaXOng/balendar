@@ -27,7 +27,7 @@ import pinkGunther from '../../../assets/pink-gunther.svg';
 import { AppContext } from '../../old/app-context';
 import { appStore, authSlice, stylesSlice } from '../../app-store';
 import circleGunther from '../../../assets/circle-gunther.png';
-import { useMediaQuery } from '@mantine/hooks';
+import { useMediaQuery, useViewportSize } from '@mantine/hooks';
 import { useForm } from '@mantine/form';
 import { createUser } from '../../services/users-api';
 import { fetchAuthToken } from '../../services/auth-tokens-api';
@@ -80,20 +80,20 @@ export default function LoginForm() {
       })()
     };
   }
-
-  const isViewportHigh = useMediaQuery("(min-width: 600px)");  
-  const isViewportWide = useMediaQuery("(min-width: 1200px)");  
-
+  
+  const { width: viewportWidth, height: viewportHeight } = useViewportSize();
+  const viewportAspectRatio  = viewportWidth / viewportHeight;
+  
   return (
     <Paper 
       sx={{ 
-        display: 'flex', flexDirection: isViewportWide ? "row" : "column", width: isViewportWide ? "40vw" : "80vw", 
-        height: isViewportWide ? "50vh" : (isViewportHigh ? "80vh" : "65vh"), 
-        padding: `0px ${isViewportWide ? "50px" : "0px"} 0px 0px`, 
-        alignItems: "center", justifyContent: "center", gap: isViewportWide ? "10%" : "5%"
+        display: 'flex', flexDirection: viewportAspectRatio < 1 ? "row" : "column", width: viewportWidth > 1200 ? "40vw" : "80vw", 
+        height: viewportWidth > 1200 ? "50vh" : (viewportHeight > 600 ? "80vh" : "65vh"), 
+        padding: `0px ${viewportWidth > 1200 ? "50px" : "0px"} 0px 0px`, 
+        alignItems: "center", justifyContent: "center", gap: viewportWidth > 1200 ? "10%" : "5%"
       }} shadow={'md'}
     >
-      <img src={circleGunther} style={{ display: isViewportHigh ? "block": "none", width: isViewportWide ? "auto" : "80%", maxWidth: isViewportWide ? "" : "15rem", height: isViewportWide ? "50%" : "auto" }} />
+      <img src={circleGunther} style={{ display: viewportHeight > 600 ? "block": "none", width: viewportWidth > 1200 ? "auto" : "80%", maxWidth: viewportWidth > 1200 ? "" : "15rem", height: viewportWidth > 1200 ? "50%" : "auto" }} />
       <form onSubmit={form.onSubmit((values) => handleOnSubmit(values))}>
         <Group direction={"column"} grow={true}>
             <Title order={3}>Login / Sign-up</Title>
