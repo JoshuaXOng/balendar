@@ -114,13 +114,20 @@ export default function LoginForm() {
     console.log(paper.current!.getBoundingClientRect().width)
     setPaperHeight(`${paper.current!.getBoundingClientRect().height}px` ?? initialDimension);
   });
+
+  useEffect(() => {
+    if (viewportArea < 2.5)
+      appStore.dispatch(stylesSlice.actions.setIsHeaderVisable({ isHeaderVisable: false }));
+    else 
+      appStore.dispatch(stylesSlice.actions.setIsHeaderVisable({ isHeaderVisable: true }));
+  }, [viewportArea < 2.5]);
   
   return (
     <Paper 
       sx={{ 
         display: 'flex', flexDirection: viewportArea < 2.5 ? (viewportRatio < 1 ? "column" : "row") : (viewportRatio < 1 ? "column" : "row"), 
-        width: viewportArea < 5 ? (viewportRatio < 1 ? "85vw" : "85vw") : (viewportRatio < 1 ? "40vw" : "40vw"), 
-        minHeight: viewportArea < 5 ? (viewportRatio < 1 ? "70vh" : "85vh") : (viewportRatio < 1 ? "50vh" : "50vh"), 
+        width: viewportArea < 6 ? (viewportRatio < 1 ? "85vw" : "85vw") : (viewportRatio < 1 ? "40vw" : "40vw"), 
+        minHeight: viewportArea < 6 ? (viewportRatio < 1 ? "70vh" : "85vh") : (viewportRatio < 1 ? "50vh" : "60vh"), 
         padding: `10px ${viewportArea < 6 ? (viewportRatio < 1 ? "10px" : "10px") : (viewportRatio < 1 ? "10px" : "40px")} 10px 10px`, 
         alignItems: "center", justifyContent: viewportArea < 11 ? "center" : "space-around", gap: viewportArea < 11 ? "5%" : "0%",
         borderWidth: "5px 0px 5px 0px",
