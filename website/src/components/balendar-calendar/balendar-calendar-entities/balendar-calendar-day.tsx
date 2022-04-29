@@ -22,7 +22,6 @@ import {
 } from '@mantine/core';
 import { Calendar, DatePicker, Month } from '@mantine/dates';
 import { useMove } from '@mantine/hooks';
-import { DragDropContext, Droppable, Draggable, DroppableProvided, DroppableStateSnapshot, DropResult, ResponderProvided } from "react-beautiful-dnd";
 import BalendarCalendarNote from './balendar-calendar-note';
 import { Note } from '../../../models/note';
 import { MONTHS } from '../../../utils/date-utils';

@@ -28,6 +28,7 @@ import { AppContext } from '../../old/app-context';
 import { appStore, notesSlice, stylesSlice } from '../../app-store';
 import { Note } from '../../models/note';
 import { toDateFromNotesApi, toNotesApiDateFromDate } from '../../services/notes-api-utils';
+import { showNotification } from '@mantine/notifications';
 
 type CUNotePropsDTO = {
   id: string,
@@ -75,12 +76,20 @@ export default function NoteForm() {
   })
 
   const handleOnDeleteClick = () => {
-    deleteNote({ id })
-      .then(() => getAllNotes())
-      .then(response => response.json())
-      .then(allNotes => appDispatch(notesSlice.actions.setAllNotes({ allNotes })))
-      .then(() => appDispatch(notesSlice.actions.clearSelectedNote()))
-      .then(() => resetInputs())
+    (async () => {
+      const deleteResponse = await deleteNote({ id })
+      if (deleteResponse instanceof Error) 
+        return showNotification({ color: "red", title: "Errorrr!", message: "Server down - could not delete note" })
+
+      const getResponse = await getAllNotes();
+      if (getResponse instanceof Error) 
+        return showNotification({ color: "red", title: "Errorrr!", message: "Server down - could not refresh notes" })
+
+      const allNotes = getResponse.json()
+      appDispatch(notesSlice.actions.setAllNotes({ allNotes }));
+      appDispatch(notesSlice.actions.clearSelectedNote())
+      resetInputs()
+    })()
   }
   
   const handleOnDateChange = (date: Date | null) => {
@@ -95,20 +104,38 @@ export default function NoteForm() {
 
   const handleSubmission = async ({ id, headerText, bodyText, begDatetime }: CUNotePropsDTO) => {
     setIsUploading(true);
-    if (!isUpdateForm)
-      createNote({ headerText, bodyText, begDatetime: toNotesApiDateFromDate(begDatetime!) })
-        .then(() => getAllNotes())
-        .then(response => response.json())
-        .then(allNotes => appDispatch(notesSlice.actions.setAllNotes({ allNotes })))
-        .then(() => setIsUploading(false));
-    else 
-      updateNote({ id, headerText, bodyText, begDatetime: toNotesApiDateFromDate(begDatetime!) })
-        .then(() => getAllNotes())
-        .then(response => response.json())
-        .then(allNotes => appDispatch(notesSlice.actions.setAllNotes({ allNotes })))
-        .then(() => appDispatch(notesSlice.actions.clearSelectedNote()))
-        .then(() => resetInputs())
-        .then(() => setIsUploading(false));
+    if (!isUpdateForm) {
+      (async () => {
+        const createResponse = await createNote({ headerText, bodyText, begDatetime: toNotesApiDateFromDate(begDatetime!) });
+        if (createResponse instanceof Error) 
+          return showNotification({ color: "red", title: "Errrorrr!", message: "Server down - could not create note" })
+        
+        
+        const getResponse = await getAllNotes();
+        if (getResponse instanceof Error)
+          return showNotification({ color: "red", title: "Errrorrr!", message: "Server down - could not refresh notes" })
+
+        const allNotes = await getResponse.json()
+        appDispatch(notesSlice.actions.setAllNotes({ allNotes }))
+        setIsUploading(false)
+      })()
+    } else {
+      (async () => {
+        const updateResponse = await updateNote({ id, headerText, bodyText, begDatetime: toNotesApiDateFromDate(begDatetime!) });
+        if (updateResponse instanceof Error)
+          return showNotification({ color: "red", title: "Errrorrr!", message: "Server down - could not update note" })
+         
+        const getResponse = await getAllNotes();
+        if (getResponse instanceof Error)
+          return showNotification({ color: "red", title: "Errrorrr!", message: "Server down - could not refresh notes" })
+
+        const allNotes = await getResponse.json()
+        appDispatch(notesSlice.actions.setAllNotes({ allNotes }))
+        appDispatch(notesSlice.actions.clearSelectedNote())
+        resetInputs();
+        setIsUploading(false)
+      })()
+    }
   }
 
   return (

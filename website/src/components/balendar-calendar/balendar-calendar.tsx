@@ -30,6 +30,7 @@ import { generateMondays, getClosestPrevMonday } from '../../utils/date-utils';
 import { useScrollLock } from '@mantine/hooks';
 import short, { uuid } from 'short-uuid';
 import { appStore, notesSlice } from '../../app-store';
+import { showNotification } from '@mantine/notifications';
 
 export default function BalendarCalendar() {
   const appState = appStore.getState();
@@ -48,10 +49,16 @@ export default function BalendarCalendar() {
   }, []);
   
   useEffect(() => {
-    getAllNotes()
-      .then(response => response.json())
-      .then(allNotes => appDispatch(notesSlice.actions.setAllNotes({ allNotes })))
-      .then(() => setIsDataReady(true));
+    (async () => {
+      const notesReponse = await getAllNotes();
+      if (notesReponse instanceof Error) {
+        showNotification({ color: "red", title: "Errrorrr!", message: "Server down - cannot load notes" })
+      } else {
+        const allNotes = await notesReponse.json()
+        appDispatch(notesSlice.actions.setAllNotes({ allNotes }))
+        setIsDataReady(true);
+      }
+    })()
   }, [])
 
   const currentWeeksMonday = getClosestPrevMonday();

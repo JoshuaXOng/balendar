@@ -15,7 +15,6 @@ import BalendarHeader from './components/balendar-header/balendar-header';
 import BalendarCalendar from './components/balendar-calendar/balendar-calendar';
 import NoteForm from './components/note-form/note-form';
 import BalendarCalendarDay from './components/balendar-calendar/balendar-calendar-entities/balendar-calendar-day';
-import { DragDropContext } from 'react-beautiful-dnd';
 import { AppContext } from './old/app-context';
 import { appStore } from './app-store';
 import LoginForm from './components/login-form/login-form';
@@ -25,6 +24,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CustomAside from './components/custom-aside/custom-aside';
 import NotFoundPage from './pages/not-found-page/login-page';
 import CustomHeader from './components/custom-header/custom-header';
+
 
 export default function App() {
   appStore.subscribe(() => {
