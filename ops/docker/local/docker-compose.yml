@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  balendar:
+    image: joshuaxong/balendar-local
+    build: 
+      context: ../../../
+      dockerfile: ./ops/docker/local/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+      - MONGODB_DEFAULT_DATABASE=${MONGODB_DEFAULT_DATABASE}
+      - MONGODB_CONNECTION_STRING=${MONGODB_CONNECTION_STRING}
+      - VITE_API_BASE_URL=${VITE_API_BASE_URL}
+    volumes:
+      - ./:/balendar 
+    working_dir: /balendar/server
+    command: gradle bootRun
+  mongo:
+    image: mongo:4.2.8
+    ports:
+      - "27017:27017"
+    volumes:
+      - database-data:/data/db
+      - database-data:/data/configdb
+
+volumes:
+  database-data:
