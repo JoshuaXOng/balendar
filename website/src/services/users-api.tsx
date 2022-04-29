@@ -5,7 +5,7 @@ export type CreateUserProps = {
   password: string;
 }
 
-export const createUser = async (props: CreateUserProps): Promise<Response> => {
+export const createUser = async (props: CreateUserProps): Promise<Response | Error> => {
   return fetch(`${baseApiUrl}users/`, { 
     method: "POST", 
     headers: {
@@ -13,5 +13,5 @@ export const createUser = async (props: CreateUserProps): Promise<Response> => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(props) 
-  })
+  }).catch(error => error)
 }

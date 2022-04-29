@@ -1,7 +1,7 @@
 import { appStore } from "../app-store";
 import { baseApiUrl } from "./services";
 
-export const getAllNotes = async (): Promise<Response> => {
+export const getAllNotes = async (): Promise<Response | Error> => {
   const { authToken } = appStore.getState().auth;
   if (!authToken) throw new Error("No Authorization value is in the global store.");
   
@@ -9,7 +9,7 @@ export const getAllNotes = async (): Promise<Response> => {
     headers: {
       "Authorization": `Bearer ${authToken!}`
     }
-  })
+  }).catch(error => error)
 }
 
 export type CreateNoteProps = {
@@ -19,7 +19,7 @@ export type CreateNoteProps = {
   endDatetime?: string,
 }
 
-export const createNote = async (props: CreateNoteProps): Promise<Response> => {
+export const createNote = async (props: CreateNoteProps): Promise<Response | Error> => {
   const { authToken } = appStore.getState().auth;
   if (!authToken) throw new Error("No Authorization value is in the global store.");
 
@@ -31,7 +31,7 @@ export const createNote = async (props: CreateNoteProps): Promise<Response> => {
       "Authorization": `Bearer ${authToken!}`
     },
     body: JSON.stringify(props) 
-  })
+  }).catch(error => error)
 }
 
 export type UpdateNoteProps = {
@@ -42,7 +42,7 @@ export type UpdateNoteProps = {
   endDatetime?: string,
 }
 
-export const updateNote = async (props: UpdateNoteProps): Promise<Response> => {
+export const updateNote = async (props: UpdateNoteProps): Promise<Response | Error> => {
   const { id, ...rest } = props;
 
   const { authToken } = appStore.getState().auth;
@@ -56,14 +56,14 @@ export const updateNote = async (props: UpdateNoteProps): Promise<Response> => {
       "Authorization": `Bearer ${authToken!}`
     },
     body: JSON.stringify(rest) 
-  })
+  }).catch(error => error)
 }
 
 export type DeleteNoteProps = {
   id: string
 }
 
-export const deleteNote = async (props: DeleteNoteProps): Promise<Response> => {
+export const deleteNote = async (props: DeleteNoteProps): Promise<Response | Error> => {
   const { id } = props;
 
   const { authToken } = appStore.getState().auth;
@@ -74,5 +74,5 @@ export const deleteNote = async (props: DeleteNoteProps): Promise<Response> => {
     headers: {
       "Authorization": `Bearer ${authToken!}`
     }
-  })
+  }).catch(error => error)
 }

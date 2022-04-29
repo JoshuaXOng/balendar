@@ -5,7 +5,7 @@ export type FetchAuthTokenProps = {
   password: string;
 }
 
-export const fetchAuthToken = async (props: FetchAuthTokenProps): Promise<Response> => {
+export const fetchAuthToken = async (props: FetchAuthTokenProps): Promise<Response | Error> => {
   return fetch(`${baseApiUrl}auth-tokens/`, { 
     method: "POST", 
     headers: {
@@ -13,5 +13,5 @@ export const fetchAuthToken = async (props: FetchAuthTokenProps): Promise<Respon
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(props) 
-  })
+  }).catch(error => error)
 }
