@@ -15,7 +15,7 @@ EXPOSE 8080
 WORKDIR /balendar/
 COPY ./ ./
 
-RUN mkdir /balendar/server/app/src/main/resources/static/
+RUN mkdir /balendar/server/app/src/main/resources/static/ || (rm -r /balendar/server/app/src/main/resources/static/ && mkdir /balendar/server/app/src/main/resources/static/)
 COPY --from=0 /balendar/website/static/ /balendar/server/app/src/main/resources/static/
 
 WORKDIR /balendar/server/
