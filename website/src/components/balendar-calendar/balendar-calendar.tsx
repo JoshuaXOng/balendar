@@ -51,13 +51,12 @@ export default function BalendarCalendar() {
   useEffect(() => {
     (async () => {
       const notesReponse = await getAllNotes();
-      if (notesReponse instanceof Error) {
-        showNotification({ color: "red", title: "Errrorrr!", message: "Server down - cannot load notes" })
-      } else {
-        const allNotes = await notesReponse.json()
-        appDispatch(notesSlice.actions.setAllNotes({ allNotes }))
-        setIsDataReady(true);
-      }
+      if (notesReponse instanceof Error) 
+        return showNotification({ color: "red", title: "Errrorrr!", message: "Server down - cannot load notes" })
+      
+      const allNotes = await notesReponse.json()
+      appDispatch(notesSlice.actions.setAllNotes({ allNotes }))
+      setIsDataReady(true);
     })()
   }, [])
 

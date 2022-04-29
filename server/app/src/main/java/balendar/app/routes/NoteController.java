@@ -111,8 +111,7 @@ public class NoteController {
 
   private void verifyNoteIsOwnedByUser(String noteId) {
     User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    
-    Boolean doesUserOwnNote = user.notes.stream().filter(un -> un.id == noteId).collect(Collectors.toList()).size() == 1;
+    Boolean doesUserOwnNote = user.notes.stream().filter(un -> un.id.equals(noteId)).collect(Collectors.toList()).size() == 1;
     if (!doesUserOwnNote) throw new ForbiddenException("You do not own this note.");
   }
 }

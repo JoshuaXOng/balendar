@@ -22,7 +22,7 @@ import LoginPage from './pages/login-page/login-page';
 import CalendarPage from './pages/calendar-page/calendar-page';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CustomAside from './components/custom-aside/custom-aside';
-import NotFoundPage from './pages/not-found-page/login-page';
+import NotFoundPage from './pages/not-found-page/not-found-page';
 import CustomHeader from './components/custom-header/custom-header';
 
 export default function App() {

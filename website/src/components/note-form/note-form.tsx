@@ -85,7 +85,7 @@ export default function NoteForm() {
       if (getResponse instanceof Error) 
         return showNotification({ color: "red", title: "Errorrr!", message: "Server down - could not refresh notes" })
 
-      const allNotes = getResponse.json()
+      const allNotes = await getResponse.json()
       appDispatch(notesSlice.actions.setAllNotes({ allNotes }));
       appDispatch(notesSlice.actions.clearSelectedNote())
       resetInputs()

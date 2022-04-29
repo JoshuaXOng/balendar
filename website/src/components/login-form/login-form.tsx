@@ -111,7 +111,6 @@ export default function LoginForm() {
   const [paperHeight, setPaperHeight] = useState(initialDimension);
   useEffect(() => {
     setPaperWidth(`${paper.current!.getBoundingClientRect().width}px` ?? initialDimension);
-    console.log(paper.current!.getBoundingClientRect().width)
     setPaperHeight(`${paper.current!.getBoundingClientRect().height}px` ?? initialDimension);
   });
 

@@ -40,8 +40,8 @@ export default function BalendarCalendarDay(props: BalendarCalendarDayProps) {
   
   appStore.subscribe(() => {
     const notes = appStore.getState().notes.allNotesBegDatetimeIndexed[toNotesApiDateFromDate(currentDatetime)]
-    if (notes?.length && notes.length !== dayNotes.length)
-      setDayNotes(appStore.getState().notes.allNotesBegDatetimeIndexed[toNotesApiDateFromDate(currentDatetime)] ?? []);
+    if ((notes?.length && notes.length !== dayNotes.length) || (dayNotes.length === 1 && !notes))
+      setDayNotes(notes ?? []);
   })
 
   useEffect(() => {
