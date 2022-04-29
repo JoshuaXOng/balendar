@@ -105,8 +105,6 @@ export default function LoginForm() {
   const viewportArea = userViewportArea();
   const viewportRatio  = userViewportRatio();
 
-  const a = viewportArea < 6 ? (viewportRatio < 1 ? 10 : 10) : (viewportRatio < 1 ? 10 : 40);
-
   const paper = useRef<HTMLDivElement | null>(null);
   const initialDimension = "0px"
   const [paperWidth, setPaperWidth] = useState(initialDimension);
