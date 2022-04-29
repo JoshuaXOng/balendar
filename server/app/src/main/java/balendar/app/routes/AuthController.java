@@ -33,7 +33,7 @@ public class AuthController {
 		if (user == null)
 			throw new BadRequestException("Username does not match any users");
 
-		if (!this.passwordEncoder.encode(credentials.password).equals(user.getPassword()))
+		if (!this.passwordEncoder.matches(credentials.password, user.getPassword()))
 			throw new BadRequestException("Password does not match the username");
 
 		String authToken = JWTUtils.generateToken(user);
