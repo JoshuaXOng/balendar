@@ -16,7 +16,7 @@ services:
     volumes:
       - ../../../:/balendar 
     working_dir: /balendar/server
-    command: gradle bootRun
+    command: sleep infinity
   mongo:
     image: mongo:4.2.8
     ports:

@@ -6,4 +6,4 @@ WORKDIR /balendar/
 COPY ./ ./
 
 WORKDIR /balendar/server/
-CMD ["gradle", "bootRun"]
+CMD ["sleep", "infinity"]

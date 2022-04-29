@@ -25,7 +25,6 @@ import CustomAside from './components/custom-aside/custom-aside';
 import NotFoundPage from './pages/not-found-page/login-page';
 import CustomHeader from './components/custom-header/custom-header';
 
-
 export default function App() {
   appStore.subscribe(() => {
     const { authToken } = appStore.getState().auth;

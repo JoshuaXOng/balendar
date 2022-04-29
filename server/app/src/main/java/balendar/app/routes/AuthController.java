@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import balendar.app.database.models.User;
 import balendar.app.routes.dtos.AuthTokenDTO;
 import balendar.app.routes.dtos.POSTAuthTokenDTO;
+import balendar.app.routes.exceptions.BadRequestException;
 import balendar.app.security.JWTUtils;
 import balendar.app.security.UserDetailsService;
 
@@ -26,6 +27,9 @@ public class AuthController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<AuthTokenDTO> createAuthenticationToken(@RequestBody POSTAuthTokenDTO credentials) {
 		User user = userDetailsService.loadUserByUsername(credentials.username);
+		if (user == null)
+			throw new BadRequestException("Username does not match any users");
+
 		String authToken = JWTUtils.generateToken(user);
 		return ResponseEntity.ok(new AuthTokenDTO(authToken));
 	}
