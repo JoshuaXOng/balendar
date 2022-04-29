@@ -8,6 +8,7 @@ services:
       dockerfile: ./ops/docker/local/Dockerfile
     ports:
       - "8080:8080"
+      - "3000:3000"
     environment:
       - JWT_SECRET_KEY=${JWT_SECRET_KEY}
       - MONGODB_DEFAULT_DATABASE=${MONGODB_DEFAULT_DATABASE}
