@@ -35,14 +35,16 @@ import { fetchAuthToken } from '../../services/auth-tokens-api';
 import { useNavigate } from 'react-router-dom';
 import userViewportArea from '../../hooks/use-viewport-area';
 import userViewportRatio from '../../hooks/use-viewport-ratio';
+import { sleep } from '../../utils/time-utils';
 
 export default function LoginForm() {
   const appDispatch = useDispatch();
   
   const navigate = useNavigate();
 
-  const [formAlertPayload, setFormAlertPayload] = useState({ isVisable: false, bodyText: "O.o" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const [formAlertPayload, setFormAlertPayload] = useState({ isVisable: false, bodyText: "O.o" });
   const form = useForm({
     initialValues: {
       username: "",
@@ -57,24 +59,29 @@ export default function LoginForm() {
 
   const processAuthToken = async (authToken: string) => {
     if (!authToken)
-      form.setErrors({ username: "Could be incorrect", password: "Could be incorrect" });
-    else {
-      await appDispatch(authSlice.actions.setAuthToken({ authToken }));
-      navigate("/calendar/");
-    }
+      return form.setErrors({ username: "Could be incorrect", password: "Could be incorrect" });
+    
+    await appDispatch(authSlice.actions.setAuthToken({ authToken }));
+    navigate("/calendar/");
   }
 
-  const doAuthProcess = async (username: string, password: string) => {
+  const doAuthProcess = async (username: string, password: string) => {    
     const tokenResponse = await fetchAuthToken({ username, password })
     if (tokenResponse instanceof Error) 
       return setFormAlertPayload({ isVisable: true, bodyText: "Server down - can't authenticate user" });
+    if (tokenResponse.status >= 400 && tokenResponse.status < 500)
+      return form.setErrors({ username: "Could be incorrect", password: "Could be incorrect" });
     
     const { authToken } = await tokenResponse.json();
     await processAuthToken(authToken);
   }
 
-  const handleOnSubmit = (value: typeof form.values) => {
+  const handleOnSubmit = async (value: typeof form.values) => {
     const { isCreatingAccount, username, password } = value;
+
+    setIsSubmitting(true);
+    await sleep(2000);
+
     if (isCreatingAccount) {
       (async () => {
         const createResponse = await createUser({ username, password });
@@ -89,10 +96,26 @@ export default function LoginForm() {
     else {
       doAuthProcess(username, password);
     };
+
+    setIsSubmitting(false);
   }
   
+  const theme = useMantineTheme();
+
   const viewportArea = userViewportArea();
   const viewportRatio  = userViewportRatio();
+
+  const a = viewportArea < 6 ? (viewportRatio < 1 ? 10 : 10) : (viewportRatio < 1 ? 10 : 40);
+
+  const paper = useRef<HTMLDivElement | null>(null);
+  const initialDimension = "0px"
+  const [paperWidth, setPaperWidth] = useState(initialDimension);
+  const [paperHeight, setPaperHeight] = useState(initialDimension);
+  useEffect(() => {
+    setPaperWidth(`${paper.current!.getBoundingClientRect().width}px` ?? initialDimension);
+    console.log(paper.current!.getBoundingClientRect().width)
+    setPaperHeight(`${paper.current!.getBoundingClientRect().height}px` ?? initialDimension);
+  });
   
   return (
     <Paper 
@@ -101,8 +124,24 @@ export default function LoginForm() {
         width: viewportArea < 5 ? (viewportRatio < 1 ? "85vw" : "85vw") : (viewportRatio < 1 ? "40vw" : "40vw"), 
         minHeight: viewportArea < 5 ? (viewportRatio < 1 ? "70vh" : "85vh") : (viewportRatio < 1 ? "50vh" : "50vh"), 
         padding: `10px ${viewportArea < 6 ? (viewportRatio < 1 ? "10px" : "10px") : (viewportRatio < 1 ? "10px" : "40px")} 10px 10px`, 
-        alignItems: "center", justifyContent: viewportArea < 11 ? "center" : "space-around", gap: viewportArea < 11 ? "5%" : "0%" 
-      }} shadow={'md'}
+        alignItems: "center", justifyContent: viewportArea < 11 ? "center" : "space-around", gap: viewportArea < 11 ? "5%" : "0%",
+        borderWidth: "5px 0px 5px 0px",
+        borderStyle: isSubmitting ? "solid" : "none",
+        borderColor: theme.colors.blue[5],
+        overflow: "hidden",
+        transition: "border 2s",
+        zIndex: 0,
+        "::before": {
+          position: "absolute",
+          zIndex: -1,
+          transform: `translate(${viewportArea < 6 ? (viewportRatio < 1 ? "0px" : "0px") : (viewportRatio < 1 ? "0px" : "15px")}, 0px)`,
+          background: `${theme.white}`,
+          width: isSubmitting ? "0px" : paperWidth,
+          height: paperHeight,
+          ...isSubmitting ? { transition: "width 2s" } : {},
+          content: "''",
+        },
+      }} shadow={'md'} ref={paper}
     >
       <img src={circleGunther} style={{ display: viewportArea < 6 ? "none": "block", width: viewportArea < 10 ? "50%" : "50%", height: viewportArea < 10 ? "auto": "auto" }} />
       <form onSubmit={form.onSubmit((values) => handleOnSubmit(values))} onChange={() => setFormAlertPayload({ isVisable: false, bodyText: "o.O"})}>
@@ -124,8 +163,8 @@ export default function LoginForm() {
             <Group position='apart'>
               <Switch label="Creating account?" {...form.getInputProps("isCreatingAccount")} />
             </Group>
-            <Button type="submit">
-              Proceed
+            <Button type="submit" disabled={isSubmitting ? true : false}>
+              {isSubmitting ? "Loading" : "Proceed"}
             </Button>
         </Group>
       </form>
