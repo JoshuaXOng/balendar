@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import {
-  Box
+  Box, Text, Title
 } from '@mantine/core';
 import { useSelector, useDispatch } from 'react-redux'
 import pinkGunther from '../../../assets/pink-gunther.svg';
@@ -19,7 +19,9 @@ export default function NotFoundPage() {
 
   return (
     <Box sx={{ display: "flex", width: "100%", height: `calc(100% - ${appStore.getState().styles.headerHeight!}px)`, alignItems: "center", justifyContent: "center" }}>
-      <img src={orgalorg}></img>
+      <img src={orgalorg} style={{ width: "20vw", height: "auto" }}></img>
+      <Title>404 - Gunther Not Found</Title>
+      <img src={orgalorg} style={{ width: "20vw", height: "auto" }}></img>
     </Box>
   );
 }
