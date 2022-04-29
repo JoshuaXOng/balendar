@@ -1,6 +1,7 @@
 package balendar.app.routes;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,9 +20,11 @@ import balendar.app.security.UserDetailsService;
 @RequestMapping(value = "/api/v0/auth-tokens/")
 public class AuthController {
 	UserDetailsService userDetailsService;
+	BCryptPasswordEncoder passwordEncoder;
 
-	public AuthController(UserDetailsService userDetailsService) {
+	public AuthController(UserDetailsService userDetailsService, BCryptPasswordEncoder passwordEncoder) {
 		this.userDetailsService = userDetailsService;
+		this.passwordEncoder = passwordEncoder;
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
@@ -29,6 +32,9 @@ public class AuthController {
 		User user = userDetailsService.loadUserByUsername(credentials.username);
 		if (user == null)
 			throw new BadRequestException("Username does not match any users");
+
+		if (!this.passwordEncoder.encode(credentials.password).equals(user.getPassword()))
+			throw new BadRequestException("Password does not match the username");
 
 		String authToken = JWTUtils.generateToken(user);
 		return ResponseEntity.ok(new AuthTokenDTO(authToken));
