@@ -7,7 +7,6 @@ export const stylesSlice = createSlice({
   initialState: {
     headerHeight: undefined,
     isHeaderVisable: true,
-    isAsideOpen: false
   },
   reducers: {
     setHeaderHeight(state, action) {

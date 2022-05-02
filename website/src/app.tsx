@@ -5,7 +5,8 @@ import {
 import { appStore } from './app-store';
 import { CalendarPage, LoginPage, NotFoundPage } from './pages';
 import { Route, Routes } from 'react-router-dom';
-import CustomHeader from './components/custom-header/custom-header';
+import BalendarHeader from './components/balendar-header/balendar-header';
+import { useEffect, useState } from 'react';
 
 export default function App() {
   appStore.subscribe(() => {
@@ -13,8 +14,13 @@ export default function App() {
     authToken && localStorage.setItem('BALENDAR_AUTH_TOKEN', authToken);
   });
 
-  const theme = useMantineTheme();
+  const [isHeaderOpen, setIsHeaderOpen] = useState(appStore.getState().styles.isHeaderVisable);
+  useEffect(() => {
+    appStore.subscribe(() => setIsHeaderOpen(appStore.getState().styles.isHeaderVisable));
+  }, [])
 
+  const theme = useMantineTheme();
+  
   return (
     <AppShell
       styles={{
@@ -24,7 +30,7 @@ export default function App() {
       }}
       fixed
       navbarOffsetBreakpoint="sm"
-      header={<CustomHeader />}
+      header={isHeaderOpen ? <BalendarHeader /> : <></>}
       asideOffsetBreakpoint="sm"
     >
       <Routes>

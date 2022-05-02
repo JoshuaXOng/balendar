@@ -3,6 +3,7 @@ import {
   Group,
   Title
 } from '@mantine/core';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux'
 import pinkGunther from '../../../assets/pink-gunther.svg';
 import { appStore, stylesSlice } from '../../app-store';
@@ -10,7 +11,9 @@ import { appStore, stylesSlice } from '../../app-store';
 export default function BalendarHeader() {
   const appDispatch = useDispatch();
 
-  appDispatch(stylesSlice.actions.setHeaderHeight({ headerHeight: 70 }));
+  useEffect(() => {
+    appDispatch(stylesSlice.actions.setHeaderHeight({ headerHeight: 70 }));
+  }, [appStore.getState().styles.headerHeight])
 
   return (
     <Header height={appStore.getState().styles.headerHeight!} p="md">

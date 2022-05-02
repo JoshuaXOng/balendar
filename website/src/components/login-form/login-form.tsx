@@ -17,7 +17,7 @@ import { useForm } from '@mantine/form';
 import { appStore, authSlice, stylesSlice } from '../../app-store';
 import circleGunther from '../../../assets/circle-gunther.png';
 import { createUser, fetchAuthToken } from '../../services';
-import { userViewportArea, userViewportRatio } from '../../hooks';
+import { useViewportArea, useViewportRatio } from '../../hooks';
 import { sleep } from '../../utils';
 
 export default function LoginForm() {
@@ -85,8 +85,8 @@ export default function LoginForm() {
   
   const theme = useMantineTheme();
 
-  const viewportArea = userViewportArea();
-  const viewportRatio  = userViewportRatio();
+  const viewportArea = useViewportArea();
+  const viewportRatio  = useViewportRatio();
 
   const paper = useRef<HTMLDivElement | null>(null);
   const initialDimension = "0px"
@@ -96,13 +96,6 @@ export default function LoginForm() {
     setPaperWidth(`${paper.current!.getBoundingClientRect().width}px` ?? initialDimension);
     setPaperHeight(`${paper.current!.getBoundingClientRect().height}px` ?? initialDimension);
   });
-
-  useEffect(() => {
-    if (viewportArea < 2.5)
-      appStore.dispatch(stylesSlice.actions.setIsHeaderVisable({ isHeaderVisable: false }));
-    else 
-      appStore.dispatch(stylesSlice.actions.setIsHeaderVisable({ isHeaderVisable: true }));
-  }, [viewportArea < 2.5]);
   
   return (
     <Paper 
