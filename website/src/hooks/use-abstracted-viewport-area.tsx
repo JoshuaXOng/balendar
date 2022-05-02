@@ -4,7 +4,6 @@ export function useAbstractedViewportArea(): "s" | "sm" | "m" | "l" {
   const { width: viewportWidth, height: viewportHeight } = useViewportSize();
 
   const viewportArea = viewportWidth * viewportHeight / 100000;
-  console.log(viewportArea)
   if (viewportArea < 2.5)
     return "s"
   
