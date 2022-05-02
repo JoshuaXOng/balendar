@@ -25,7 +25,7 @@ public class JWTUtils {
 
 		return JWT.create()
 			.withSubject(JWTUtils.getDecodedJwt(jwt).getSubject())
-			.withClaim("username", JWTUtils.getDecodedJwt(jwt).getClaim("username").toString())
+			.withClaim("username", JWTUtils.getDecodedJwt(jwt).getClaim("username").asString())
 			.withIssuedAt(new Date())
 			.withExpiresAt(new Date(new Date().getTime() + 1000 * (60 * 60)))
 			.sign(Algorithm.HMAC256(Dotenv.load().get("JWT_SECRET_KEY")));
