@@ -1,16 +1,11 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Box, Modal } from '@mantine/core';
-import { useSelector, useDispatch } from 'react-redux'
-import pinkGunther from '../../../assets/pink-gunther.svg';
-import { AppContext } from '../../old/app-context';
-import { appStore, notesSlice, stylesSlice } from '../../app-store';
-import circleGunther from '../../../assets/circle-gunther.png';
-import LoginForm from '../../components/login-form/login-form';
-import BalendarCalendar from '../../components/balendar-calendar/balendar-calendar';
 import { useNavigate } from 'react-router-dom';
+import { appStore, notesSlice } from '../../app-store';
+import BalendarCalendar from '../../components/balendar-calendar/balendar-calendar';
 import NoteForm from '../../components/note-form/note-form';
 
-export default function CalendarPage() {
+export function CalendarPage() {
   const navigate = useNavigate();
   
   useEffect(() => {

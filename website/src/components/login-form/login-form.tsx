@@ -1,21 +1,9 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
-  AppShell,
-  Navbar,
-  Header,
-  Footer,
-  Aside,
-  Text,
-  MediaQuery,
-  Burger,
   useMantineTheme,
-  Grid,
-  Image,
   Group,
-  TypographyStylesProvider,
   Title,
   Paper,
-  Input,
   Button,
   InputWrapper,
   PasswordInput,
@@ -23,19 +11,14 @@ import {
   TextInput,
   Alert
 } from '@mantine/core';
-import { useSelector, useDispatch } from 'react-redux'
-import pinkGunther from '../../../assets/pink-gunther.svg';
-import { AppContext } from '../../old/app-context';
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
+import { useForm } from '@mantine/form';
 import { appStore, authSlice, stylesSlice } from '../../app-store';
 import circleGunther from '../../../assets/circle-gunther.png';
-import { useMediaQuery, useViewportSize } from '@mantine/hooks';
-import { useForm } from '@mantine/form';
-import { createUser } from '../../services/users-api';
-import { fetchAuthToken } from '../../services/auth-tokens-api';
-import { useNavigate } from 'react-router-dom';
-import userViewportArea from '../../hooks/use-viewport-area';
-import userViewportRatio from '../../hooks/use-viewport-ratio';
-import { sleep } from '../../utils/time-utils';
+import { createUser, fetchAuthToken } from '../../services';
+import { userViewportArea, userViewportRatio } from '../../hooks';
+import { sleep } from '../../utils';
 
 export default function LoginForm() {
   const appDispatch = useDispatch();

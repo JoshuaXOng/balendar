@@ -1,34 +1,13 @@
 import 'dayjs/locale/ru';
-import React, { useCallback, useContext, useEffect, useReducer, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
-  AppShell,
-  Navbar,
-  Header,
-  Footer,
-  Aside,
-  Text,
-  MediaQuery,
-  Burger,
-  useMantineTheme,
-  Grid,
-  Image,
-  Group,
-  TypographyStylesProvider,
-  Title,
-  Box,
-  SimpleGrid,
   ScrollArea,
   Skeleton
 } from '@mantine/core';
-import { Calendar, DatePicker, Month } from '@mantine/dates';
-import { useSelector, useDispatch } from 'react-redux'
-import BalendarCalendarDay from './balendar-calendar-entities/balendar-calendar-day';
+import { useDispatch } from 'react-redux'
 import BalendarCalendarWeek from './balendar-calendar-entities/balendar-calendar-week';
-import { AppContext } from '../../old/app-context';
-import { getAllNotes } from '../../services/notes-api';
-import { generateMondays, getClosestPrevMonday } from '../../utils/date-utils';
-import { useScrollLock } from '@mantine/hooks';
-import short, { uuid } from 'short-uuid';
+import { getAllNotes } from '../../services';
+import { getClosestPrevMonday } from '../../utils';
 import { appStore, notesSlice } from '../../app-store';
 import { showNotification } from '@mantine/notifications';
 

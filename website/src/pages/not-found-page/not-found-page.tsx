@@ -1,15 +1,12 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 import {
-  Box, Text, Title
+  Box, Title
 } from '@mantine/core';
-import { useSelector, useDispatch } from 'react-redux'
-import pinkGunther from '../../../assets/pink-gunther.svg';
-import { AppContext } from '../../old/app-context';
-import { appStore, stylesSlice } from '../../app-store';
+import { useDispatch } from 'react-redux'
 import orgalorg from '../../../assets/orgalorg.png';
-import LoginForm from '../../components/login-form/login-form';
+import { appStore, stylesSlice } from '../../app-store';
 
-export default function NotFoundPage() {
+export function NotFoundPage() {
   const appDispatch = useDispatch();
 
   useEffect(() => {

@@ -1,27 +1,10 @@
-import React, { Profiler, useReducer, useState } from 'react';
-import { Provider } from 'react-redux'
 import {
   AppShell,
-  Navbar,
-  Header,
-  Footer,
-  Aside,
-  Text,
-  MediaQuery,
-  Burger,
   useMantineTheme,
 } from '@mantine/core';
-import BalendarHeader from './components/balendar-header/balendar-header';
-import BalendarCalendar from './components/balendar-calendar/balendar-calendar';
-import NoteForm from './components/note-form/note-form';
-import BalendarCalendarDay from './components/balendar-calendar/balendar-calendar-entities/balendar-calendar-day';
-import { AppContext } from './old/app-context';
 import { appStore } from './app-store';
-import LoginForm from './components/login-form/login-form';
-import LoginPage from './pages/login-page/login-page';
-import CalendarPage from './pages/calendar-page/calendar-page';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import NotFoundPage from './pages/not-found-page/not-found-page';
+import { CalendarPage, LoginPage, NotFoundPage } from './pages';
+import { Route, Routes } from 'react-router-dom';
 import CustomHeader from './components/custom-header/custom-header';
 
 export default function App() {

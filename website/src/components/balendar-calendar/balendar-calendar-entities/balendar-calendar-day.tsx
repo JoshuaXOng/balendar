@@ -1,33 +1,12 @@
-import short from 'short-uuid';
-import 'dayjs/locale/ru';
-import React, { Profiler, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
-  AppShell,
-  Navbar,
-  Header,
-  Footer,
-  Aside,
   Text,
-  MediaQuery,
-  Burger,
-  useMantineTheme,
-  Grid,
-  Image,
-  Group,
-  TypographyStylesProvider,
-  Title,
-  Box,
-  SimpleGrid,
-  ScrollArea
+  Box
 } from '@mantine/core';
-import { Calendar, DatePicker, Month } from '@mantine/dates';
-import { useMove } from '@mantine/hooks';
 import BalendarCalendarNote from './balendar-calendar-note';
-import { Note } from '../../../models/note';
-import { MONTHS } from '../../../utils/date-utils';
-import { AppContext } from '../../../old/app-context';
+import { Note } from '../../../models';
+import { MONTHS, toYyyyMmDdFromDate } from '../../../utils';
 import { appStore, notesSlice } from '../../../app-store';
-import { toYyyyMmDdFromDate } from '../../../utils';
 
 type BalendarCalendarDayProps = {
   currentDatetime: Date;

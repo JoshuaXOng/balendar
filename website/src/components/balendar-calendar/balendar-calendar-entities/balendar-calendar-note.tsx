@@ -1,30 +1,8 @@
-import 'dayjs/locale/ru';
-import React, { Profiler, ReactElement, useEffect, useMemo, useRef, useState } from 'react';
-import {
-  AppShell,
-  Navbar,
-  Header,
-  Footer,
-  Aside,
-  Text,
-  MediaQuery,
-  Burger,
-  useMantineTheme,
-  Grid,
-  Image,
-  Group,
-  TypographyStylesProvider,
-  Title,
-  Box,
-  SimpleGrid,
-  Modal
-} from '@mantine/core';
-import { Calendar, DatePicker, Month } from '@mantine/dates';
-import { useSelector, useDispatch } from 'react-redux'
-import { Note } from '../../../models/note';
+import { useMemo, useState } from 'react';
+import { Text, Box } from '@mantine/core';
+import { useDispatch } from 'react-redux'
+import { Note } from '../../../models';
 import { appStore, notesSlice } from '../../../app-store';
-import NoteForm from '../../note-form/note-form';
-import { sleep } from '../../../utils/time-utils';
 
 type BalendarCalendarNoteProps = {
   defaultBackgroundColor: string,

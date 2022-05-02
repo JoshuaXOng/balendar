@@ -1,38 +1,22 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { AiFillDelete } from "react-icons/ai";
 import {
-  AppShell,
-  Navbar,
-  Header,
-  Footer,
-  Aside,
-  Text,
-  MediaQuery,
-  Burger,
-  useMantineTheme,
-  Grid,
-  Image,
   Group,
-  TypographyStylesProvider,
   Title,
   Textarea,
-  Input,
   InputWrapper,
   Button,
   ActionIcon,
   TextInput,
-  ColorPicker,
-  ColorSwatch,
   ColorInput
 } from '@mantine/core';
 import { DatePicker } from '@mantine/dates';
-import { useSelector, useDispatch } from 'react-redux'
-import { createNote, CreateNoteProps, deleteNote, getAllNotes, updateNote } from '../../services/notes-api';
-import { AppContext } from '../../old/app-context';
-import { appStore, notesSlice, stylesSlice } from '../../app-store';
-import { Note } from '../../models/note';
-import { showNotification } from '@mantine/notifications';
+import { useDispatch } from 'react-redux'
 import { useForm } from '@mantine/form';
+import { showNotification } from '@mantine/notifications';
+import { appStore, notesSlice } from '../../app-store';
+import { createNote, deleteNote, getAllNotes, updateNote } from '../../services';
+import { Note } from '../../models';
 import { DateStringed, stringifyDateAttributes, toDateFromYyyyMmDd, toYyyyMmDdFromDate } from '../../utils';
 
 export default function NoteForm() {
