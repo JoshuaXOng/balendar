@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AiFillDelete } from "react-icons/ai";
 import {
   Group,
@@ -30,7 +30,7 @@ export default function NoteForm() {
       begDatetime: selectedDay !as string, endDatetime: selectedDay !as string
     };
 
-  const [formType, setFormType] = useState<"create" | "update">(!!selectedNote ? "update" : "create");
+  const formType = !!selectedNote ? "update" : "create";
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm({
@@ -45,26 +45,6 @@ export default function NoteForm() {
     },
   });
 
-  appStore.subscribe(() => {
-    const { selectedNote, selectedDay } = appStore.getState().notes;
-
-    if (selectedNote) {
-      setFormType("update");
-      
-      const { id, primaryColor, headerText, bodyText, begDatetime, endDatetime } = selectedNote !as Note;
-      form.setValues({ 
-        id, primaryColor, headerText, bodyText, begDatetime, endDatetime
-      })
-    }
-    
-    if (selectedDay) {
-      setFormType("create");
-      form.reset();
-      form.setFieldValue("begDatetime", toYyyyMmDdFromDate(new Date()));
-      form.setFieldValue("endDatetime", toYyyyMmDdFromDate(new Date()));
-    }
-  })
-
   const handleOnDeleteClick = () => {
     (async () => {
       const deleteResponse = await deleteNote({ id: form.values.id })
@@ -76,9 +56,8 @@ export default function NoteForm() {
         return showNotification({ color: "red", title: "Errorrr!", message: "Server down - could not refresh notes" })
 
       const allNotes = await getResponse.json()
-      appDispatch(notesSlice.actions.setAllNotes({ allNotes }));
-
       appDispatch(notesSlice.actions.clearSelectedNote());
+      appDispatch(notesSlice.actions.setAllNotes({ allNotes }));
 
       appStore.dispatch(notesSlice.actions.setIsNoteFormOpen({ isNoteFormOpen: false }));
       form.reset();
