@@ -5,6 +5,8 @@ import { appStore, notesSlice, uiSlice } from '../../app-store';
 import BalendarCalendar from '../../components/balendar-calendar/balendar-calendar';
 import NoteForm from '../../components/note-form/note-form';
 import { AuthenticatedRightControls } from '../../components/balendar-header/balendar-header-entities/authenticated-right-controls';
+import { useAbstractedViewportArea } from '../../hooks';
+import BalendarHeader from '../../components/balendar-header/balendar-header';
 
 export function CalendarPage() {
   const navigate = useNavigate();
@@ -36,9 +38,11 @@ export function CalendarPage() {
     window.addEventListener("resize", () => handleWindowReize(), false);
   }, []);
 
+  const abstractedViewportArea = useAbstractedViewportArea();
+
   return (
     <Box sx={{ width: "100%", height: calendarPageHeight, alignItems: "center", justifyContent: "center" }}>
-      <Portal target="#balendar-header__right-controls"><AuthenticatedRightControls /></Portal>
+      {abstractedViewportArea !== "s" && <Portal target="#app-shell__header"><BalendarHeader><AuthenticatedRightControls /></BalendarHeader></Portal>}
       <BalendarCalendar />
       <Modal centered={true} opened={isNoteFormOpen} closeOnClickOutside={true} 
         onClose={() => handleOnModalExitClick()}

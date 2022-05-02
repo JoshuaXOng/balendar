@@ -1,20 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
-import React from 'react';
 import { Note } from './models/note'
 
 export const uiSlice = createSlice({
   name: 'styles',
   initialState: {
-    headerHeight: undefined,
-    isHeaderVisable: true,
+    headerHeight: 70,
   },
   reducers: {
     setHeaderHeight(state, action) {
       state.headerHeight = action.payload.headerHeight;
-    },
-    setIsHeaderVisable(state, action) {
-      state.isHeaderVisable = action.payload.isHeaderVisable;
     }
   }
 })

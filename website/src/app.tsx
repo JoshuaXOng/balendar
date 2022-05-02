@@ -31,11 +31,6 @@ export default function App() {
     await appStore.dispatch(authSlice.actions.setAuthToken({ authToken }));
   }, 1000 * 60 * 9);
 
-  const [isHeaderOpen, setIsHeaderOpen] = useState(appStore.getState().ui.isHeaderVisable);
-  useEffect(() => {
-    appStore.subscribe(() => setIsHeaderOpen(appStore.getState().ui.isHeaderVisable));
-  }, [])
-
   const theme = useMantineTheme();
   
   return (
@@ -47,7 +42,7 @@ export default function App() {
       }}
       fixed
       navbarOffsetBreakpoint="sm"
-      header={isHeaderOpen ? <BalendarHeader /> : <></>}
+      header={<div id="app-shell__header"></div>}
       asideOffsetBreakpoint="sm"
     >
       <Routes>

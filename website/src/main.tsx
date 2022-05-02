@@ -1,13 +1,13 @@
 import { NotificationsProvider } from '@mantine/notifications'
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import App from './app'
 import { appStore } from './app-store'
 import './index.css'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.render(
   <React.StrictMode>
     <Provider store={appStore}>
       <NotificationsProvider>
@@ -16,5 +16,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         </BrowserRouter>
       </NotificationsProvider>
     </Provider> 
-  </React.StrictMode>
+  </React.StrictMode>, document.getElementById('root')
 )

@@ -4,24 +4,23 @@ import {
   Title,
   Box,
 } from '@mantine/core';
-import { useEffect, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux'
 import pinkGunther from '../../../assets/pink-gunther.svg';
 import { appStore, uiSlice } from '../../app-store';
 import { useAbstractedViewportArea } from '../../hooks';
 import { AuthenticatedRightControls } from './balendar-header-entities/authenticated-right-controls';
 
-export default function BalendarHeader() {
-  const appDispatch = useDispatch();
+type BalendarHeaderProps = {
+  children: ReactElement;
+}
 
-  const initialHeight = 70;
-  useEffect(() => {
-    appDispatch(uiSlice.actions.setHeaderHeight({ headerHeight: initialHeight }));
-  }, [])
-  const [height, setHeight] = useState(initialHeight);
+export default function BalendarHeader(props: BalendarHeaderProps) {
+  const { children } = props;
 
+  const [height, setHeight] = useState(appStore.getState().ui.headerHeight);
   useEffect(() => {
-    appStore.subscribe(() => setHeight(appStore.getState().ui.headerHeight ?? initialHeight));
+    appStore.subscribe(() => setHeight(appStore.getState().ui.headerHeight));
   }, [])
   
   const abstractedViewportArea = useAbstractedViewportArea();
@@ -35,7 +34,7 @@ export default function BalendarHeader() {
           {["s", "sm"].includes(abstractedViewportArea) ? <></> : <Title order={2}>Balendar</Title>}
         </Group>
         <Box sx={{ display: "flex", flexDirection: "row-reverse" }}>
-          <div id="balendar-header__right-controls"></div>
+          {children}
         </Box>
       </Group>
     </Header>
