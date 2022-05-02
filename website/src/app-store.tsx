@@ -1,8 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 import { Note } from './models/note'
-import { getAllNotes } from './services/notes-api';
-import { toNotesApiDateFromDate } from './services/notes-api-utils';
 
 export const stylesSlice = createSlice({
   name: 'styles',
@@ -18,9 +16,6 @@ export const stylesSlice = createSlice({
     setIsHeaderVisable(state, action) {
       state.isHeaderVisable = action.payload.isHeaderVisable;
     },
-    setIsAsideOpen(state, action) {
-      state.isAsideOpen = action.payload.isAsideOpen;
-    }
   }
 })
 
@@ -43,15 +38,16 @@ export const notesSlice = createSlice({
     allNotesIdIndexed: {} as { [key: string]: Note },
     allNotesBegDatetimeIndexed: {} as { [key: string]: Note[] },
     selectedNote: undefined,
-    selectedDay: undefined
+    selectedDay: undefined,
+    isNoteFormOpen: false,
   },
   reducers: {
     addNote(state, action) {
-      const { id, headerText, bodyText, begDatetime, endDatetime, backgroundColor } = action.payload;
+      const { id, headerText, bodyText, begDatetime, endDatetime, primaryColor } = action.payload;
       state.allNotes.push({
         id, headerText, bodyText, 
         begDatetime, endDatetime, 
-        backgroundColor
+        primaryColor
       })
     },
     setAllNotes(state, action) {
@@ -75,6 +71,9 @@ export const notesSlice = createSlice({
     },
     setSelectedDay(state, action) {
       state.selectedDay = action.payload.selectedDay;
+    },
+    setIsNoteFormOpen(state, action) {
+      state.isNoteFormOpen = action.payload.isNoteFormOpen;
     }
   }
 })

@@ -12,10 +12,6 @@ import LoginForm from '../../components/login-form/login-form';
 export default function LoginPage() {
   const appDispatch = useDispatch();
 
-  useEffect(() => {
-    appDispatch(stylesSlice.actions.setIsAsideOpen({ isAsideOpen: false }));
-  }, []);
-
   return (
     <Box sx={{ display: "flex", width: "100%", height: `calc(100% - ${appStore.getState().styles.headerHeight!}px)`, alignItems: "center", justifyContent: "center" }}>
       <LoginForm></LoginForm>

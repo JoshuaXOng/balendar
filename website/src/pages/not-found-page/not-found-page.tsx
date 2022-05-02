@@ -14,7 +14,6 @@ export default function NotFoundPage() {
 
   useEffect(() => {
     appDispatch(stylesSlice.actions.setIsHeaderVisable({ isHeaderVisable: false }));
-    appDispatch(stylesSlice.actions.setIsAsideOpen({ isAsideOpen: false }));
   }, []);
 
   return (

@@ -21,7 +21,6 @@ import LoginForm from './components/login-form/login-form';
 import LoginPage from './pages/login-page/login-page';
 import CalendarPage from './pages/calendar-page/calendar-page';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import CustomAside from './components/custom-aside/custom-aside';
 import NotFoundPage from './pages/not-found-page/not-found-page';
 import CustomHeader from './components/custom-header/custom-header';
 
@@ -44,7 +43,6 @@ export default function App() {
       navbarOffsetBreakpoint="sm"
       header={<CustomHeader />}
       asideOffsetBreakpoint="sm"
-      aside={<CustomAside />}
     >
       <Routes>
         <Route path="/login/" element={<LoginPage />} />

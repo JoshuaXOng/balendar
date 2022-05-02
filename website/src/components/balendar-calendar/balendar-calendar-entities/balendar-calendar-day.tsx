@@ -27,7 +27,7 @@ import { Note } from '../../../models/note';
 import { MONTHS } from '../../../utils/date-utils';
 import { AppContext } from '../../../old/app-context';
 import { appStore, notesSlice } from '../../../app-store';
-import { toNotesApiDateFromDate } from '../../../services/notes-api-utils';
+import { toYyyyMmDdFromDate } from '../../../utils';
 
 type BalendarCalendarDayProps = {
   currentDatetime: Date;
@@ -37,20 +37,21 @@ export default function BalendarCalendarDay(props: BalendarCalendarDayProps) {
   const { currentDatetime } = props;
 
   const [dayNotes, setDayNotes] = useState([] as Note[]);
-  
+
   appStore.subscribe(() => {
-    const notes = appStore.getState().notes.allNotesBegDatetimeIndexed[toNotesApiDateFromDate(currentDatetime)]
+    const notes = appStore.getState().notes.allNotesBegDatetimeIndexed[toYyyyMmDdFromDate(currentDatetime)]
     if ((notes?.length && notes.length !== dayNotes.length) || (dayNotes.length === 1 && !notes))
       setDayNotes(notes ?? []);
   })
 
   useEffect(() => {
-    setDayNotes(appStore.getState().notes.allNotesBegDatetimeIndexed[toNotesApiDateFromDate(currentDatetime)] ?? []);
+    setDayNotes(appStore.getState().notes.allNotesBegDatetimeIndexed[toYyyyMmDdFromDate(currentDatetime)] ?? []);
   }, []);
 
   const handleOnClick = () => {
     appStore.dispatch(notesSlice.actions.clearSelectedNote());
-    appStore.dispatch(notesSlice.actions.setSelectedDay({ selectedDay: toNotesApiDateFromDate(currentDatetime) }));
+    appStore.dispatch(notesSlice.actions.setSelectedDay({ selectedDay: toYyyyMmDdFromDate(currentDatetime) }));
+    appStore.dispatch(notesSlice.actions.setIsNoteFormOpen({ isNoteFormOpen: true }));
   }
 
   return (
@@ -67,7 +68,7 @@ export default function BalendarCalendarDay(props: BalendarCalendarDayProps) {
     >
       <Text>{currentDatetime.getDate() === 1 ? `${MONTHS[currentDatetime.getMonth()]} ${currentDatetime.getDate()}` : `${currentDatetime.getDate()}`}</Text>
       <Box sx={{ height: "70%", overflowY: 'auto', '::-webkit-scrollbar': { display: 'none' } }}> 
-        {dayNotes.map((dn, index) => <BalendarCalendarNote key={index} backgroundColor='salmon' isJoinedLeft={false} isJoinedRight={true} note={dn} />)}
+        {dayNotes.map((dn, index) => <BalendarCalendarNote key={index} defaultBackgroundColor='salmon' isJoinedLeft={false} isJoinedRight={true} note={dn} />)}
       </Box>
     </Box>
   );

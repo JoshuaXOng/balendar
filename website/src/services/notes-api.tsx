@@ -13,6 +13,7 @@ export const getAllNotes = async (): Promise<Response | Error> => {
 }
 
 export type CreateNoteProps = {
+  primaryColor: string,
   headerText: string,
   bodyText: string,
   begDatetime?: string, 
@@ -36,6 +37,7 @@ export const createNote = async (props: CreateNoteProps): Promise<Response | Err
 
 export type UpdateNoteProps = {
   id: string
+  primaryColor?: string,
   headerText?: string,
   bodyText?: string,
   begDatetime?: string, 
