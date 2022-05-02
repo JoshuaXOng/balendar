@@ -1,9 +1,15 @@
-import { ActionIcon, Menu, Text } from "@mantine/core";
+import { ActionIcon, Divider, Menu, Text } from "@mantine/core";
 import { AiFillSetting } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { appStore, authSlice } from "../../../app-store";
 
-export const AuthenticatedRightControls = () => {
+type AuthenticatedRightControlsProps = {
+  recenterCalendar: () => void
+}
+
+export const AuthenticatedRightControls = (props: AuthenticatedRightControlsProps) => {
+  const { recenterCalendar } = props;
+
   const navigate = useNavigate();
 
   const onLogoutClick = () => {
@@ -15,6 +21,11 @@ export const AuthenticatedRightControls = () => {
   return (
     <Menu control={<ActionIcon><AiFillSetting /></ActionIcon>}>
       <Menu.Label>Application</Menu.Label>
+      <Menu.Item onClick={() => recenterCalendar()}>
+        <Text>Re-center</Text>
+      </Menu.Item>
+      <Divider />
+      <Menu.Label>Profile</Menu.Label>
       <Menu.Item onClick={() => onLogoutClick()}>
         <Text>Logout</Text>
       </Menu.Item>

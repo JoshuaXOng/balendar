@@ -1,5 +1,5 @@
 import 'dayjs/locale/ru';
-import { useEffect, useRef, useState } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import {
   ScrollArea,
   Skeleton,
@@ -12,7 +12,13 @@ import { getClosestPrevMonday } from '../../utils';
 import { notesSlice } from '../../app-store';
 import { showNotification } from '@mantine/notifications';
 
-export default function BalendarCalendar() {
+type BalendarCalendarProps = {
+  onIsDataReady: () => void
+}
+
+export const BalendarCalendar = forwardRef((props: BalendarCalendarProps, ref) => {
+  const { onIsDataReady } = props
+
   const appDispatch = useDispatch();
 
   const theme = useMantineTheme();
@@ -38,16 +44,18 @@ export default function BalendarCalendar() {
   futureMondays.forEach((date, index) => date.setDate(date.getDate() + 7*(index+1)));
   const [coveredMondays, setCoveredMondays] = useState([...pastMondays.reverse(), currentWeeksMonday, ...futureMondays]);
 
-  const scroller = useRef<any>();
+  let scroller = useRef<any>();
   useEffect(() => {
     scroller.current?.scrollTo({ top: (scroller.current.scrollHeight - window.innerHeight) / 2, behavior: 'instant' });
+    onIsDataReady();
   }, [isDataReady])
   
   return (
-    isDataReady ?
-      <ScrollArea style={{ height: "100%", backgroundColor: theme.colors.gray[3] }} viewportRef={scroller}>
+    <>
+      <ScrollArea style={{ height: isDataReady ? "100%" : "0%", backgroundColor: theme.colors.gray[3] }} viewportRef={ref as any ?? scroller}>
         {coveredMondays.map((cm, index) => <BalendarCalendarWeek key={index} mondayDatetime={cm}></BalendarCalendarWeek>)}
-      </ScrollArea> :
-      <Skeleton width="100%" height="100%" />
+      </ScrollArea> 
+      {isDataReady ? <></> : <Skeleton width="100%" height="100%" />}
+    </>
   );
-}
+})

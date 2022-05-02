@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { Box, Modal, Portal } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
-import { appStore, notesSlice, uiSlice } from '../../app-store';
-import BalendarCalendar from '../../components/balendar-calendar/balendar-calendar';
+import { appStore, notesSlice } from '../../app-store';
+import { BalendarCalendar } from '../../components/balendar-calendar/balendar-calendar';
 import NoteForm from '../../components/note-form/note-form';
 import { AuthenticatedRightControls } from '../../components/balendar-header/balendar-header-entities/authenticated-right-controls';
 import { useAbstractedViewportArea } from '../../hooks';
@@ -40,10 +40,18 @@ export function CalendarPage() {
 
   const abstractedViewportArea = useAbstractedViewportArea();
 
+  const balendarCalendar = useRef<any>();
+  const [isDataReady, setIsDataReady] = useState(false);
+  useEffect(() => {
+    recenterCalendar();
+  }, [isDataReady])
+
+  const recenterCalendar = () => balendarCalendar.current?.scrollTo({ top: (balendarCalendar.current.scrollHeight - window.innerHeight) / 2, behavior: 'instant' });
+  
   return (
     <Box sx={{ width: "100%", height: calendarPageHeight, alignItems: "center", justifyContent: "center" }}>
-      {abstractedViewportArea !== "s" && <Portal target="#app-shell__header"><BalendarHeader><AuthenticatedRightControls /></BalendarHeader></Portal>}
-      <BalendarCalendar />
+      {abstractedViewportArea !== "s" && <Portal target="#app-shell__header"><BalendarHeader><AuthenticatedRightControls recenterCalendar={() => recenterCalendar()}/></BalendarHeader></Portal>}
+      <BalendarCalendar ref={balendarCalendar} onIsDataReady={() => setIsDataReady(true)} />
       <Modal centered={true} opened={isNoteFormOpen} closeOnClickOutside={true} 
         onClose={() => handleOnModalExitClick()}
       >
