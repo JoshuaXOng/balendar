@@ -131,9 +131,10 @@ export default function NoteForm() {
       <Group direction="column" grow={true}>
         <Group position='apart'>
           <Title order={4}>{formType === "update" ? "Update Note" : "Create Note"}</Title>
-          {formType && <ActionIcon onClick={() => handleOnDeleteClick()}>
-            <AiFillDelete />
-          </ActionIcon>}
+          {formType === "update" && 
+            <ActionIcon onClick={() => handleOnDeleteClick()}>
+              <AiFillDelete />
+            </ActionIcon>}
         </Group>
         <DatePicker label="Event date" placeholder="Pick date" {...form.getInputProps("begDatetime")} 
           value={form.getInputProps("begDatetime").value ? toDateFromYyyyMmDd(form.getInputProps("begDatetime").value) : null} required 
