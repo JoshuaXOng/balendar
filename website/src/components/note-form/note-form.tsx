@@ -25,7 +25,7 @@ export default function NoteForm() {
   const { selectedNote, selectedDay } = appStore.getState().notes;
   const initialNote: DateStringed<Note> = selectedNote ?
     stringifyDateAttributes(selectedNote, (date) => toYyyyMmDdFromDate(date))! : { 
-      id: "", primaryColor: "salmon", 
+      id: "", primaryColor: "", 
       headerText: "", bodyText: "", 
       begDatetime: selectedDay !as string, endDatetime: selectedDay !as string
     };

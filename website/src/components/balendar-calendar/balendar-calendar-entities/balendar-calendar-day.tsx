@@ -45,8 +45,8 @@ export default function BalendarCalendarDay(props: BalendarCalendarDayProps) {
       })}
       onClick={() => handleOnClick()}
     >
-      <Text>{currentDatetime.getDate() === 1 ? `${MONTHS[currentDatetime.getMonth()]} ${currentDatetime.getDate()}` : `${currentDatetime.getDate()}`}</Text>
-      <Box sx={{ overflowY: 'auto', '::-webkit-scrollbar': { display: 'none' } }}> 
+      <Text sx={{ height: "15%" }}>{currentDatetime.getDate() === 1 ? `${MONTHS[currentDatetime.getMonth()]} ${currentDatetime.getDate()}` : `${currentDatetime.getDate()}`}</Text>
+      <Box sx={{ height: "85%", overflowY: 'auto', '::-webkit-scrollbar': { display: 'none' } }}> 
         {dayNotes.map((dn, index) => <BalendarCalendarNote key={index} defaultBackgroundColor='salmon' isJoinedLeft={false} isJoinedRight={true} note={dn} />)}
       </Box>
     </Box>
