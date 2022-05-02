@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.client.HttpClientErrorException.BadRequest;
+import org.springframework.web.client.HttpClientErrorException.Unauthorized;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import balendar.app.routes.exceptions.ForbiddenException;
@@ -18,7 +19,7 @@ import balendar.app.routes.exceptions.NotFoundException;
 @ControllerAdvice
 public class Catcher extends ResponseEntityExceptionHandler {
    @ExceptionHandler(BadRequest.class)
-   protected ResponseEntity<Object> handleForbidden(BadRequest exception) {
+   protected ResponseEntity<Object> handleBadRequest(BadRequest exception) {
       return new ResponseEntity<Object>(new HashMap<String, String>() {{ put("msg", exception.getMessage()); }}, HttpStatus.BAD_REQUEST);
    }
 
@@ -30,5 +31,10 @@ public class Catcher extends ResponseEntityExceptionHandler {
    @ExceptionHandler(NotFoundException.class)
    protected ResponseEntity<Object> handleEntityNotFound(NotFoundException exception) {
       return new ResponseEntity<Object>(new HashMap<String, String>() {{ put("msg", exception.getMessage()); }}, HttpStatus.NOT_FOUND);
+   }
+
+   @ExceptionHandler(Unauthorized.class)
+   protected ResponseEntity<Object> handleUnauthorized(Unauthorized exception) {
+      return new ResponseEntity<Object>(new HashMap<String, String>() {{ put("msg", exception.getMessage()); }}, HttpStatus.UNAUTHORIZED);
    }
 }

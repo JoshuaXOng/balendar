@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
 
 public class UpdateNoteDataDTO {
+  public String primaryColor;
+
   public String headerText;
   public String bodyText;
 
@@ -18,9 +20,11 @@ public class UpdateNoteDataDTO {
   
   public UpdateNoteDataDTO(
       @JsonProperty("headerText") String headerText,
+      @JsonProperty("primaryColor") String primaryColor,
       @JsonProperty("bodyText") String bodyText,
       @JsonProperty("begDatetime") Date begDatetime,
       @JsonProperty("endDatetime") Date endDatetime) {
+    this.primaryColor = primaryColor;
     this.headerText = headerText;
     this.bodyText = bodyText;
     this.begDatetime = begDatetime;

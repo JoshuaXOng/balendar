@@ -50,7 +50,11 @@ public class NoteController {
 
   @RequestMapping(method = RequestMethod.GET)
   public ResponseEntity<List<CalendarNoteDTO>> getNotes() {
-    User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    if (principal.equals("anonymousUser"))
+      throw new UnauthorizedException("Must be logged in to access own notes.");
+    
+    User user = (User) principal;
 
     return ResponseEntity.ok(
       user.notes.stream().map(n -> new CalendarNoteDTO(n)).collect(Collectors.toList())
@@ -59,7 +63,11 @@ public class NoteController {
 
   @RequestMapping(method = RequestMethod.POST)
   public ResponseEntity<CalendarNoteDTO> createNote(@RequestBody CreateNoteDataDTO createNoteData) {
-    User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    if (principal.equals("anonymousUser"))
+      throw new UnauthorizedException("Must be logged in to access own notes.");
+
+    User user = (User) principal;
     
     if (createNoteData.headerText.isBlank() || (createNoteData.begDatetime == null && createNoteData.endDatetime == null))
       throw new BadRequestException("Header text is blank OR there is not date.");
@@ -79,6 +87,7 @@ public class NoteController {
 
     this.verifyNoteIsOwnedByUser(id);
 
+    note.primaryColor = updateNoteData.primaryColor;
     note.headerText = updateNoteData.headerText;
     note.bodyText = updateNoteData.bodyText;
     note.begDatetime = updateNoteData.begDatetime;
@@ -110,7 +119,12 @@ public class NoteController {
   }
 
   private void verifyNoteIsOwnedByUser(String noteId) {
-    User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    if (principal.equals("anonymousUser"))
+      throw new UnauthorizedException("Must be logged in to access own notes.");
+    
+    User user = (User) principal;
+    
     Boolean doesUserOwnNote = user.notes.stream().filter(un -> un.id.equals(noteId)).collect(Collectors.toList()).size() == 1;
     if (!doesUserOwnNote) throw new ForbiddenException("You do not own this note.");
   }

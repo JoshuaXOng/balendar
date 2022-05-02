@@ -6,6 +6,9 @@ import java.util.Date;
 
 public class CalendarNoteDTO {
   public String id;
+
+  public String primaryColor;
+
   public String headerText;
   public String bodyText;
 
@@ -19,6 +22,7 @@ public class CalendarNoteDTO {
 
   public CalendarNoteDTO(CalendarNote calendarNote) {
     this.id = calendarNote.id;
+    this.primaryColor = calendarNote.primaryColor;
     this.headerText = calendarNote.headerText;
     this.bodyText = calendarNote.bodyText;
     this.begDatetime = calendarNote.begDatetime;
