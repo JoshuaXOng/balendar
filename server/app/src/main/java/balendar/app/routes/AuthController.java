@@ -12,6 +12,7 @@ import balendar.app.database.models.User;
 import balendar.app.routes.dtos.AuthTokenDTO;
 import balendar.app.routes.dtos.POSTAuthTokenDTO;
 import balendar.app.routes.exceptions.BadRequestException;
+import balendar.app.routes.exceptions.UnauthorizedException;
 import balendar.app.security.JWTUtils;
 import balendar.app.security.UserDetailsService;
 
@@ -29,14 +30,19 @@ public class AuthController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<AuthTokenDTO> createAuthenticationToken(@RequestBody POSTAuthTokenDTO credentials) {
+		boolean isUsingToken = credentials.authToken != null;
+		
 		User user = userDetailsService.loadUserByUsername(credentials.username);
-		if (user == null)
+		if (!isUsingToken && user == null)
 			throw new BadRequestException("Username does not match any users");
 
-		if (!this.passwordEncoder.matches(credentials.password, user.getPassword()))
+		if (!isUsingToken && !this.passwordEncoder.matches(credentials.password, user.getPassword()))
 			throw new BadRequestException("Password does not match the username");
 
-		String authToken = JWTUtils.generateToken(user);
+		String authToken = isUsingToken ? JWTUtils.generateLinkedAuthToken(credentials.authToken) : JWTUtils.generateAuthToken(user);
+		if (isUsingToken && authToken == null) 
+			throw new UnauthorizedException("Token has expired");
+		
 		return ResponseEntity.ok(new AuthTokenDTO(authToken));
 	}
 

@@ -26,7 +26,7 @@ public class JWTAuthFilter extends OncePerRequestFilter {
 
   @Override
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
-    DecodedJWT decodedJwt = JWTUtils.getDecodedJwt(request.getHeader("Authorization"));
+    DecodedJWT decodedJwt = JWTUtils.getDecodedJwtFromHeaderValue(request.getHeader("Authorization"));
 
     if (decodedJwt != null) {
       User user = this.userRepo.findOneByUsername(decodedJwt.getClaim("username").asString());
