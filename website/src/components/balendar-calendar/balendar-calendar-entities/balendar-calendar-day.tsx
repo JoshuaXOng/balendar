@@ -41,9 +41,13 @@ export default function BalendarCalendarDay(props: BalendarCalendarDayProps) {
         position: 'relative',
         height: '200px',
         padding: '5px 0 5px 0',
-        border: isToday ? `1px solid ${theme.colors.lime[4]}` : `1px solid ${theme.colors.gray[3]}`,
-        backgroundColor: isToday ? theme.colors.lime[1] : (theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0]),
+        border: isToday ? `1px solid ${theme.colors.lime[2]}` : `1px solid ${theme.colors.gray[3]}`,
+        backgroundColor: isToday ? theme.colors.lime[0] : (theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0]),
         textAlign: 'center',
+        ":hover": {
+          border: `1px solid ${theme.colors.blue[2]}`,
+          backgroundColor: theme.colors.blue[0]
+        }
       })}
       onClick={() => handleOnClick()}
     >
