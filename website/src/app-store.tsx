@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
+import React from 'react';
 import { Note } from './models/note'
 
-export const stylesSlice = createSlice({
+export const uiSlice = createSlice({
   name: 'styles',
   initialState: {
     headerHeight: undefined,
@@ -14,7 +15,7 @@ export const stylesSlice = createSlice({
     },
     setIsHeaderVisable(state, action) {
       state.isHeaderVisable = action.payload.isHeaderVisable;
-    },
+    }
   }
 })
 
@@ -26,7 +27,10 @@ export const authSlice = createSlice({
   reducers: {
     setAuthToken(state, action) {
       state.authToken = action.payload.authToken;
-    }
+    },
+    clearAuthToken(state) {
+      state.authToken = null;
+    },
   }
 })
 
@@ -79,7 +83,7 @@ export const notesSlice = createSlice({
 
 export const appStore = configureStore({
   reducer: {
-    styles: stylesSlice.reducer,
+    ui: uiSlice.reducer,
     auth: authSlice.reducer,
     notes: notesSlice.reducer,
   }

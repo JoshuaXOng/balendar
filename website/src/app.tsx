@@ -2,11 +2,13 @@ import {
   AppShell,
   useMantineTheme,
 } from '@mantine/core';
-import { appStore } from './app-store';
+import { appStore, authSlice } from './app-store';
 import { CalendarPage, LoginPage, NotFoundPage } from './pages';
 import { Route, Routes } from 'react-router-dom';
 import BalendarHeader from './components/balendar-header/balendar-header';
 import { useEffect, useState } from 'react';
+import { fetchAuthToken } from './services';
+import { showNotification } from '@mantine/notifications';
 
 export default function App() {
   appStore.subscribe(() => {
@@ -14,9 +16,24 @@ export default function App() {
     authToken && localStorage.setItem('BALENDAR_AUTH_TOKEN', authToken);
   });
 
-  const [isHeaderOpen, setIsHeaderOpen] = useState(appStore.getState().styles.isHeaderVisable);
+  setInterval(async () => {
+    const { authToken: oldAuthToken } = appStore.getState().auth;
+    if (!oldAuthToken) return;
+
+    const tokenResponse = await fetchAuthToken({ authToken: oldAuthToken })
+    if (tokenResponse instanceof Error || (tokenResponse.status >= 400 && tokenResponse.status < 500)) 
+      return showNotification({ color: "red", title: "Server down", message: "Can't re-authenticate login" });
+  
+    const { authToken } = await tokenResponse.json();
+    if (!authToken)
+      return showNotification({ color: "red", title: "Server down", message: "Can't re-authenticate login" });
+    
+    await appStore.dispatch(authSlice.actions.setAuthToken({ authToken }));
+  }, 1000 * 60 * 9);
+
+  const [isHeaderOpen, setIsHeaderOpen] = useState(appStore.getState().ui.isHeaderVisable);
   useEffect(() => {
-    appStore.subscribe(() => setIsHeaderOpen(appStore.getState().styles.isHeaderVisable));
+    appStore.subscribe(() => setIsHeaderOpen(appStore.getState().ui.isHeaderVisable));
   }, [])
 
   const theme = useMantineTheme();
