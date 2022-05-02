@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Box, Modal } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 import { appStore, notesSlice } from '../../app-store';
@@ -24,9 +24,20 @@ export function CalendarPage() {
     appStore.dispatch(notesSlice.actions.setIsNoteFormOpen({ isNoteFormOpen: false }));
   }
 
+  const [calendarPageHeight, setCalendarPageHeight] = useState(0);
+  const handleWindowReize = () => {
+    const offset = appStore.getState().styles.headerHeight !as number + 50;
+    setCalendarPageHeight(window.innerHeight - offset);
+  }
+  useEffect(() => {
+    const offset = appStore.getState().styles.headerHeight !as number + 50;
+    setCalendarPageHeight(window.innerHeight - offset);
+    window.addEventListener("resize", () => handleWindowReize(), false);
+  }, []);
+
   return (
-    <Box sx={{ width: "100%", height: "100%", alignItems: "center", justifyContent: "center" }}>
-      <BalendarCalendar></BalendarCalendar>
+    <Box sx={{ width: "100%", height: calendarPageHeight, alignItems: "center", justifyContent: "center" }}>
+      <BalendarCalendar />
       <Modal centered={true} opened={isNoteFormOpen} closeOnClickOutside={true} 
         onClose={() => handleOnModalExitClick()}
       >

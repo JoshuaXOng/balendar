@@ -37,7 +37,7 @@ export default function BalendarCalendarDay(props: BalendarCalendarDayProps) {
     <Box
       sx={(theme) => ({
         position: 'relative',
-        height: '100%',
+        height: '200px',
         padding: '5px 0 5px 0',
         border: '1px solid #eee',
         backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
@@ -46,7 +46,7 @@ export default function BalendarCalendarDay(props: BalendarCalendarDayProps) {
       onClick={() => handleOnClick()}
     >
       <Text>{currentDatetime.getDate() === 1 ? `${MONTHS[currentDatetime.getMonth()]} ${currentDatetime.getDate()}` : `${currentDatetime.getDate()}`}</Text>
-      <Box sx={{ height: "70%", overflowY: 'auto', '::-webkit-scrollbar': { display: 'none' } }}> 
+      <Box sx={{ overflowY: 'auto', '::-webkit-scrollbar': { display: 'none' } }}> 
         {dayNotes.map((dn, index) => <BalendarCalendarNote key={index} defaultBackgroundColor='salmon' isJoinedLeft={false} isJoinedRight={true} note={dn} />)}
       </Box>
     </Box>
