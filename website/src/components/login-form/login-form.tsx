@@ -14,11 +14,11 @@ import {
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { useForm } from '@mantine/form';
-import { appStore, authSlice, stylesSlice } from '../../app-store';
+import { authSlice } from '../../app-store';
 import circleGunther from '../../../assets/circle-gunther.png';
 import { createUser, fetchAuthToken } from '../../services';
-import { useViewportArea, useViewportRatio } from '../../hooks';
 import { sleep } from '../../utils';
+import { useAbstractedViewportArea, useAbstractedViewportRatio } from '../../hooks';
 
 export default function LoginForm() {
   const appDispatch = useDispatch();
@@ -85,8 +85,8 @@ export default function LoginForm() {
   
   const theme = useMantineTheme();
 
-  const viewportArea = useViewportArea();
-  const viewportRatio  = useViewportRatio();
+  const abstractedViewportArea = useAbstractedViewportArea();
+  const abstractedViewportRatio = useAbstractedViewportRatio();
 
   const paper = useRef<HTMLDivElement | null>(null);
   const initialDimension = "0px"
@@ -95,16 +95,16 @@ export default function LoginForm() {
   useEffect(() => {
     setPaperWidth(`${paper.current!.getBoundingClientRect().width}px` ?? initialDimension);
     setPaperHeight(`${paper.current!.getBoundingClientRect().height}px` ?? initialDimension);
-  });
+  }, [paper.current?.getBoundingClientRect().width, paper.current?.getBoundingClientRect().height]);
   
   return (
     <Paper 
       sx={{ 
-        display: 'flex', flexDirection: viewportArea < 2.5 ? (viewportRatio < 1 ? "column" : "row") : (viewportRatio < 1 ? "column" : "row"), 
-        width: viewportArea < 6 ? (viewportRatio < 1 ? "85vw" : "85vw") : (viewportRatio < 1 ? "40vw" : "40vw"), 
-        minHeight: viewportArea < 6 ? (viewportRatio < 1 ? "70vh" : "85vh") : (viewportRatio < 1 ? "50vh" : "60vh"), 
-        padding: `10px ${viewportArea < 6 ? (viewportRatio < 1 ? "10px" : "10px") : (viewportRatio < 1 ? "10px" : "40px")} 10px 10px`, 
-        alignItems: "center", justifyContent: viewportArea < 11 ? "center" : "space-around", gap: viewportArea < 11 ? "5%" : "0%",
+        display: 'flex', flexDirection: abstractedViewportRatio === "v" ? "column" : "row", 
+        width: ["s", "sm"].includes(abstractedViewportArea) ? (abstractedViewportRatio === "v" ? "85vw" : "85vw") : (abstractedViewportRatio === "v" ? "40vw" : "40vw"), 
+        minHeight: ["s", "sm"].includes(abstractedViewportArea) ? (abstractedViewportRatio === "v" ? "70vh" : "80vh") : (abstractedViewportRatio === "v" ? "50vh" : "60vh"), 
+        padding: `10px ${["s", "sm"].includes(abstractedViewportArea) ? (abstractedViewportRatio === "v" ? "10px" : "10px") : (abstractedViewportRatio === "v" ? "10px" : "40px")} 10px 10px`, 
+        alignItems: "center", justifyContent: ["s", "sm", "m"].includes(abstractedViewportArea) ? "center" : "space-around", gap: ["s", "sm", "m"].includes(abstractedViewportArea) ? "5%" : "0%",
         borderWidth: "5px 0px 5px 0px",
         borderStyle: isSubmitting ? "solid" : "none",
         borderColor: theme.colors.blue[5],
@@ -114,7 +114,7 @@ export default function LoginForm() {
         "::before": {
           position: "absolute",
           zIndex: -1,
-          transform: `translate(${viewportArea < 6 ? (viewportRatio < 1 ? "0px" : "0px") : (viewportRatio < 1 ? "0px" : "15px")}, 0px)`,
+          transform: `translate(${["s", "sm"].includes(abstractedViewportArea) ? (abstractedViewportRatio === "v" ? "0px" : "0px") : (abstractedViewportRatio === "v" ? "0px" : "15px")}, 0px)`,
           background: `${theme.white}`,
           width: isSubmitting ? "0px" : paperWidth,
           height: paperHeight,
@@ -123,7 +123,7 @@ export default function LoginForm() {
         },
       }} shadow={'md'} ref={paper}
     >
-      <img src={circleGunther} style={{ display: viewportArea < 6 ? "none": "block", width: viewportArea < 10 ? "50%" : "50%", height: viewportArea < 10 ? "auto": "auto" }} />
+      <img src={circleGunther} style={{ display: ["s", "sm"].includes(abstractedViewportArea) ? "none": "block", width: abstractedViewportArea === "m" ? "50%" : "50%", height: abstractedViewportArea === "m" ? "auto": "auto" }} />
       <form onSubmit={form.onSubmit((values) => handleOnSubmit(values))} onChange={() => setFormAlertPayload({ isVisable: false, bodyText: "o.O"})}>
         <Group direction={"column"} grow={true}>
             <Title order={3}>Login / Sign-up</Title>

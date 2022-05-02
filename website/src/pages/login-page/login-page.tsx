@@ -9,7 +9,7 @@ export function LoginPage() {
 
   useEffect(() => {
     let isHeaderVisable: boolean; 
-    if (abstractedViewportArea === "small") isHeaderVisable = false
+    if (abstractedViewportArea === "s") isHeaderVisable = false
     else isHeaderVisable = true
     appStore.dispatch(stylesSlice.actions.setIsHeaderVisable({ isHeaderVisable }));
   }, [abstractedViewportArea]);

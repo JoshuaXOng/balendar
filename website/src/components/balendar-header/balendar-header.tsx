@@ -11,9 +11,9 @@ import { appStore, stylesSlice } from '../../app-store';
 export default function BalendarHeader() {
   const appDispatch = useDispatch();
 
-  useEffect(() => {
+  // useEffect(() => {
     appDispatch(stylesSlice.actions.setHeaderHeight({ headerHeight: 70 }));
-  }, [appStore.getState().styles.headerHeight])
+  // }, [])
 
   return (
     <Header height={appStore.getState().styles.headerHeight!} p="md">
