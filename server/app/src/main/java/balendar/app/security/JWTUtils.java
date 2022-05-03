@@ -41,7 +41,7 @@ public class JWTUtils {
     return JWTUtils.getDecodedJwt(splitAhv[1]);
   }
 
-	static private DecodedJWT getDecodedJwt(String jwt) {
+	static public DecodedJWT getDecodedJwt(String jwt) {
     try {
       return JWT.require(Algorithm.HMAC256(Dotenv.load().get("JWT_SECRET_KEY")))
         .build().verify(jwt);

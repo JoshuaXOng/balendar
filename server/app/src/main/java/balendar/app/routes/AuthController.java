@@ -1,5 +1,7 @@
 package balendar.app.routes;
 
+import com.auth0.jwt.interfaces.DecodedJWT;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import balendar.app.database.models.User;
 import balendar.app.routes.dtos.AuthTokenDTO;
+import balendar.app.routes.dtos.CreateTokenValidationDTO;
 import balendar.app.routes.dtos.POSTAuthTokenDTO;
 import balendar.app.routes.exceptions.BadRequestException;
 import balendar.app.routes.exceptions.UnauthorizedException;
@@ -46,8 +49,16 @@ public class AuthController {
 		return ResponseEntity.ok(new AuthTokenDTO(authToken));
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/verifications/")
-	public ResponseEntity<?> verifyToken(@RequestBody POSTAuthTokenDTO credentials) {
-		return ResponseEntity.ok("");
+	@RequestMapping(method = RequestMethod.POST, value = "/validations/")
+	public ResponseEntity<AuthTokenDTO> verifyToken(@RequestBody CreateTokenValidationDTO validationPayload) {
+		String authToken = validationPayload.authToken;
+		if (authToken == null)
+			throw new BadRequestException("Auth token is required.");
+
+		DecodedJWT decodedJwt = JWTUtils.getDecodedJwt(authToken);
+		if (decodedJwt == null)
+			throw new BadRequestException("Auth token is invalid.");
+
+		return ResponseEntity.ok(new AuthTokenDTO(authToken));
 	}
 }
