@@ -4,30 +4,49 @@ import {
 } from '@mantine/core';
 import { appStore, authSlice } from './app-store';
 import { CalendarPage, LoginPage, NotFoundPage } from './pages';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { fetchAuthToken } from './services';
 import { showNotification } from '@mantine/notifications';
+import { useEffect } from 'react';
+import { useJwt } from 'react-jwt';
+import { authRoutes } from './app-constants';
 
 export default function App() {
-  appStore.subscribe(() => {
-    const { authToken } = appStore.getState().auth;
-    authToken && localStorage.setItem('BALENDAR_AUTH_TOKEN', authToken);
-  });
+  const navigate = useNavigate();
 
-  setInterval(async () => {
-    const { authToken: oldAuthToken } = appStore.getState().auth;
-    if (!oldAuthToken) return;
+  useEffect(
+    appStore.subscribe(() => {
+      const { authToken } = appStore.getState().auth;
+      authToken && localStorage.setItem('BALENDAR_AUTH_TOKEN', authToken);
+    })
+  , [])
 
-    const tokenResponse = await fetchAuthToken({ authToken: oldAuthToken })
-    if (tokenResponse instanceof Error || (tokenResponse.status >= 400 && tokenResponse.status < 500)) 
-      return showNotification({ color: "red", title: "Server down", message: "Can't re-authenticate login" });
+  useEffect(() => {
+    setInterval(async () => {
+      const { authToken: oldAuthToken } = appStore.getState().auth;
+      if (!oldAuthToken) return;
   
-    const { authToken } = await tokenResponse.json();
-    if (!authToken)
-      return showNotification({ color: "red", title: "Server down", message: "Can't re-authenticate login" });
+      const tokenResponse = await fetchAuthToken({ authToken: oldAuthToken })
+      if (tokenResponse instanceof Error || (tokenResponse.status >= 400 && tokenResponse.status < 500)) 
+        return showNotification({ color: "red", title: "Server down", message: "Can't re-authenticate login" });
     
-    await appStore.dispatch(authSlice.actions.setAuthToken({ authToken }));
-  }, 1000 * 60 * 9);
+      const { authToken } = await tokenResponse.json();
+      if (!authToken)
+        return showNotification({ color: "red", title: "Server down", message: "Can't re-authenticate login" });
+      
+      await appStore.dispatch(authSlice.actions.setAuthToken({ authToken }));
+    }, 1000 * 60 * 9);
+  }, [])
+
+  useEffect(() => {
+    setInterval(async () => {
+      const { authToken } = appStore.getState().auth;
+      if (authRoutes.includes(window.location.href) && (!authToken || useJwt(authToken).isExpired)) {
+        navigate("/login/")
+        showNotification({ color: 'blue', title: 'Authentication', message: "Your authentication has ran out - returned to the login page" })
+      }
+    }, 1000 * 60);
+  }, [])
 
   const theme = useMantineTheme();
   
