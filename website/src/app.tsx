@@ -4,7 +4,7 @@ import {
 } from '@mantine/core';
 import { appStore, authSlice } from './app-store';
 import { CalendarPage, LoginPage, NotFoundPage } from './pages';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import { fetchAuthToken } from './services';
 import { showNotification } from '@mantine/notifications';
 import { useEffect } from 'react';
@@ -63,7 +63,7 @@ export default function App() {
       asideOffsetBreakpoint="sm"
     >
       <Routes>
-        <Route path="/" element={<CalendarPage />} />
+        <Route path="/" element={<Navigate to={"/calendar/"} />} />
         <Route path="/login/" element={<LoginPage />} />
         <Route path="/calendar/" element={<CalendarPage />} />
         <Route path="*" element={<NotFoundPage />} />
