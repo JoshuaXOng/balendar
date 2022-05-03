@@ -3,7 +3,7 @@ import { baseApiUrl } from "./services";
 
 export const getAllNotes = async (): Promise<Response | Error> => {
   const { authToken } = appStore.getState().auth;
-  if (!authToken) throw new Error("No Authorization value is in the global store.");
+  if (!authToken) return new Error("No Authorization value is in the global store.");
   
   return fetch(`${baseApiUrl}notes/`, {
     headers: {
@@ -22,7 +22,7 @@ export type CreateNoteProps = {
 
 export const createNote = async (props: CreateNoteProps): Promise<Response | Error> => {
   const { authToken } = appStore.getState().auth;
-  if (!authToken) throw new Error("No Authorization value is in the global store.");
+  if (!authToken) return new Error("No Authorization value is in the global store.");
 
   return fetch(`${baseApiUrl}notes/`, { 
     method: "POST", 
@@ -48,7 +48,7 @@ export const updateNote = async (props: UpdateNoteProps): Promise<Response | Err
   const { id, ...rest } = props;
 
   const { authToken } = appStore.getState().auth;
-  if (!authToken) throw new Error("No Authorization value is in the global store.");
+  if (!authToken) return new Error("No Authorization value is in the global store.");
 
   return fetch(`${baseApiUrl}notes/${id}/`, { 
     method: "PUT", 
@@ -69,7 +69,7 @@ export const deleteNote = async (props: DeleteNoteProps): Promise<Response | Err
   const { id } = props;
 
   const { authToken } = appStore.getState().auth;
-  if (!authToken) throw new Error("No Authorization value is in the global store.");
+  if (!authToken) return new Error("No Authorization value is in the global store.");
 
   return fetch(`${baseApiUrl}notes/${id}/`, { 
     method: "DELETE",
