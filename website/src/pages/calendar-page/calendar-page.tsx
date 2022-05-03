@@ -6,12 +6,15 @@ import { BalendarCalendar } from '../../components/balendar-calendar/balendar-ca
 import NoteForm from '../../components/note-form/note-form';
 import { AuthenticatedRightControls } from '../../components/balendar-header/balendar-header-entities/authenticated-right-controls';
 import BalendarHeader from '../../components/balendar-header/balendar-header';
+import { useJwt } from 'react-jwt';
 
 export function CalendarPage() {
   const navigate = useNavigate();
   
+  const { authToken } = appStore.getState().auth;
+  const isAuthTokenBad = !authToken || useJwt(authToken).isExpired;
   useEffect(() => {
-    if (!appStore.getState().auth.authToken)
+    if (isAuthTokenBad)
       navigate("/login/");
   }, []);
 
