@@ -51,7 +51,7 @@ export function CalendarPage() {
   return (
     <Box sx={{ width: "100%", height: calendarPageHeight, alignItems: "center", justifyContent: "center" }}>
       <Portal target="#app-shell__header"><BalendarHeader><AuthenticatedRightControls recenterCalendar={() => recenterCalendar()}/></BalendarHeader></Portal>
-      <BalendarCalendar ref={balendarCalendar} onIsDataReady={() => setIsDataReady(true)} />
+      {!isAuthTokenBad && <BalendarCalendar ref={balendarCalendar} onIsDataReady={() => setIsDataReady(true)} />}
       <Modal centered={true} opened={isNoteFormOpen} closeOnClickOutside={true} 
         onClose={() => handleOnModalExitClick()}
       >
