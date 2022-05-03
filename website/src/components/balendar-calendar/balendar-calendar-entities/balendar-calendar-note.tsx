@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Text, Box } from '@mantine/core';
 import { useDispatch } from 'react-redux'
 import { Note } from '../../../models';
@@ -18,9 +18,11 @@ export default function BalendarCalendarNote(props: BalendarCalendarNoteProps) {
     (appStore.getState().notes.selectedNote !as Note).id === note.id : false
 
   const [isSelected, setIsSelected] = useState(checkIsSelected())
-  appStore.subscribe(() => {
-    setIsSelected(checkIsSelected())
-  })
+  useEffect(() =>
+    appStore.subscribe(() => {
+      setIsSelected(checkIsSelected())
+    })
+  , [])
 
   const appDispatch = useDispatch();
   const handleOnClick = () => {

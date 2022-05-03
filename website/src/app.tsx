@@ -5,8 +5,6 @@ import {
 import { appStore, authSlice } from './app-store';
 import { CalendarPage, LoginPage, NotFoundPage } from './pages';
 import { Route, Routes } from 'react-router-dom';
-import BalendarHeader from './components/balendar-header/balendar-header';
-import { useEffect, useState } from 'react';
 import { fetchAuthToken } from './services';
 import { showNotification } from '@mantine/notifications';
 
@@ -46,6 +44,7 @@ export default function App() {
       asideOffsetBreakpoint="sm"
     >
       <Routes>
+        <Route path="/" element={<CalendarPage />} />
         <Route path="/login/" element={<LoginPage />} />
         <Route path="/calendar/" element={<CalendarPage />} />
         <Route path="*" element={<NotFoundPage />} />

@@ -19,11 +19,13 @@ export default function BalendarCalendarDay(props: BalendarCalendarDayProps) {
 
   const [dayNotes, setDayNotes] = useState([] as Note[]);
 
-  appStore.subscribe(() => {
-    const notes = appStore.getState().notes.allNotesBegDatetimeIndexed[toYyyyMmDdFromDate(currentDatetime)]
-    if ((notes?.length && notes.length !== dayNotes.length) || (dayNotes.length === 1 && !notes))
-      setDayNotes(notes ?? []);
-  })
+  useEffect(() => 
+    appStore.subscribe(() => {
+      const notes = appStore.getState().notes.allNotesBegDatetimeIndexed[toYyyyMmDdFromDate(currentDatetime)]
+      if ((notes?.length && notes.length !== dayNotes.length) || (dayNotes.length === 1 && !notes))
+        setDayNotes(notes ?? []);
+    })
+  , [])
 
   useEffect(() => {
     setDayNotes(appStore.getState().notes.allNotesBegDatetimeIndexed[toYyyyMmDdFromDate(currentDatetime)] ?? []);
