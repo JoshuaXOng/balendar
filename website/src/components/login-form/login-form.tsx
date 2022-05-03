@@ -96,15 +96,15 @@ export default function LoginForm() {
     setPaperWidth(`${paper.current!.getBoundingClientRect().width}px` ?? initialDimension);
     setPaperHeight(`${paper.current!.getBoundingClientRect().height}px` ?? initialDimension);
   }, [paper.current?.getBoundingClientRect().width, paper.current?.getBoundingClientRect().height]);
-  
+
   return (
     <Paper 
       sx={{ 
         display: 'flex', flexDirection: abstractedViewportRatio === "v" ? "column" : "row", 
         width: ["s", "sm"].includes(abstractedViewportArea) ? (abstractedViewportRatio === "v" ? "85vw" : "85vw") : (abstractedViewportRatio === "v" ? "40vw" : "40vw"), 
-        minHeight: ["s", "sm"].includes(abstractedViewportArea) ? (abstractedViewportRatio === "v" ? "70vh" : "80vh") : (abstractedViewportRatio === "v" ? "50vh" : "60vh"), 
+        minHeight: ["s", "sm"].includes(abstractedViewportArea) ? (abstractedViewportRatio === "v" ? "70vh" : "80vh") : (abstractedViewportRatio === "v" ? "50vh" : "50vh"), 
         padding: `10px ${["s", "sm"].includes(abstractedViewportArea) ? (abstractedViewportRatio === "v" ? "10px" : "10px") : (abstractedViewportRatio === "v" ? "10px" : "40px")} 10px 10px`, 
-        alignItems: "center", justifyContent: ["s", "sm", "m"].includes(abstractedViewportArea) ? "center" : "space-around", gap: ["s", "sm", "m"].includes(abstractedViewportArea) ? "5%" : "0%",
+        alignItems: "center", justifyContent: ["s", "sm"].includes(abstractedViewportArea) ? "center" : "space-around", gap: ({ s: "5%", sm: "5%", m: "10%", l: "5%", xl: "0%" })[abstractedViewportArea],
         borderWidth: "5px 0px 5px 0px",
         borderStyle: isSubmitting ? "solid" : "none",
         borderColor: theme.colors.blue[5],
