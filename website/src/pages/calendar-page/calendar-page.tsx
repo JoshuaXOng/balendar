@@ -1,3 +1,4 @@
+import ReactGA from 'react-ga';
 import { useEffect, useRef, useState } from 'react';
 import { Box, Modal, Portal } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +10,8 @@ import BalendarHeader from '../../components/balendar-header/balendar-header';
 import { useJwt } from 'react-jwt';
 
 export function CalendarPage() {
+  ReactGA.pageview(window.location.pathname);
+
   const navigate = useNavigate();
   
   const { authToken } = appStore.getState().auth;

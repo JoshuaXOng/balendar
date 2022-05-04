@@ -1,9 +1,12 @@
+import ReactGA from 'react-ga';
 import { Box, Portal } from '@mantine/core';
 import BalendarHeader from '../../components/balendar-header/balendar-header';
 import LoginForm from '../../components/login-form/login-form';
 import { useAbstractedViewportArea } from '../../hooks/use-abstracted-viewport-area';
 
 export function LoginPage() {
+  ReactGA.pageview(window.location.pathname);
+
   const abstractedViewportArea = useAbstractedViewportArea();
 
   return (
