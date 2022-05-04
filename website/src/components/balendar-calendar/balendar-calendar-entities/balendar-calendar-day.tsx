@@ -17,13 +17,13 @@ export default function BalendarCalendarDay(props: BalendarCalendarDayProps) {
 
   const isToday = toYyyyMmDdFromDate(currentDatetime) === toYyyyMmDdFromDate(new Date());
 
-  const [dayNotes, setDayNotes] = useState([] as Note[]);
+  const [dayNotes, setDayNotes] = useState<Note[]>();
 
   useEffect(() => 
     appStore.subscribe(() => {
       const notes = appStore.getState().notes.allNotesBegDatetimeIndexed[toYyyyMmDdFromDate(currentDatetime)]
-      if ((notes?.length && notes.length !== dayNotes.length) || (dayNotes.length === 1 && !notes))
-        setDayNotes(notes ?? []);
+      // if ((notes && notes.length && notes.length !== dayNotes.length) || (dayNotes.length === 1 && !notes))
+      setDayNotes(notes && notes.length !== 0 ? notes : undefined);
     })
   , [])
 
@@ -55,7 +55,7 @@ export default function BalendarCalendarDay(props: BalendarCalendarDayProps) {
     >
       <Text sx={{ height: "15%" }}>{currentDatetime.getDate() === 1 ? `${MONTHS[currentDatetime.getMonth()]} ${currentDatetime.getDate()}` : `${currentDatetime.getDate()}`}{isToday && " - TODAY"}</Text>
       <Box sx={{ height: "85%", overflowY: 'auto', '::-webkit-scrollbar': { display: 'none' } }}> 
-        {dayNotes.map((dn, index) => <BalendarCalendarNote key={index} defaultBackgroundColor='salmon' isJoinedLeft={false} isJoinedRight={true} note={dn} />)}
+        {dayNotes?.map((dn, index) => <BalendarCalendarNote key={index} defaultBackgroundColor='salmon' isJoinedLeft={false} isJoinedRight={true} note={dn} />)}
       </Box>
     </Box>
   );
