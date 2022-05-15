@@ -13,8 +13,8 @@ export function LoginPage() {
   return (
     <Box sx={{ display: "flex", width: "100%", height: "100%", alignItems: "center", justifyContent: "center" }}>
       {abstractedViewportArea !== "s" && <Portal target="#app-shell__header"><BalendarHeader><></></BalendarHeader></Portal>}
-      <MockLoginForm></MockLoginForm>
-      {/* <LoginForm></LoginForm> */}
+      {/* <MockLoginForm></MockLoginForm> */}
+      <LoginForm></LoginForm>
     </Box>
   );
 }
